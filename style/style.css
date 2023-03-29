@@ -1,3 +1,10 @@
+element {
+    --color-blue: #0d1d3c;
+    --color-grey: #5c5e5d;
+    --color-brown: #a59263;
+
+}
+
 .bg-img-blur {
     background-image: url('../images/aram.jpg');
     background-position: center;
@@ -14,6 +21,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    backdrop-filter: blur(15px); /* Niveau de flou */
+    backdrop-filter: blur(15px); 
     z-index: -1;
-  }
+}
+
+#login-column{
+
+    background-color: rgba(130, 130, 130, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10%;
+}
