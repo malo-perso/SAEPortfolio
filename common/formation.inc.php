@@ -1,8 +1,8 @@
 <?php
 
-/*classe permettant de representer les tuples de la table formation */
+
 class Formation {
-    /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table formation*/
+
     private $idformation;
     private $nometablissement;
     private $villeetablissement;
@@ -10,12 +10,7 @@ class Formation {
     private $domaine;
     private $datedebut;
     private $datefin;
-
-    /* Les méthodes qui commencent par __ sont des methodes magiques
-    Elles sont appelées automatiquement par php suite à certains événements.
-    Ici c'est l'appel à new sur la classe qui déclenche l'exécution de la méthode
-    des valeurs par défaut doivent être spécifiées pour les paramètres du constructeur sinon
-    il y aura une erreur lorsqu'il sera appelé automatiquement par PDO */    
+   
 
     public function __construct($i=-1,$n="",$v="", $di="", $do="", $dd="", $df="") {
       	$this->idformation = $i;
