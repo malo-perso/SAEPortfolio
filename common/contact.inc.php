@@ -3,31 +3,31 @@
 
 class Contact {
 
-    private $idcontact;
-    private $nomcontact;
-    private $desccontact;
+    private $idContact;
+    private $nomContact;
+    private $descContact;
 
-      
+
     public function __construct($i=-1,$n="",$d="") {
-      	$this->idcontact = $i;
-	    $this->nomcontact = $n;
-	    $this->desccontact = $d;
+      	$this->idContact = $i;
+	      $this->nomContact = $n;
+	      $this->descContact = $d;
     }
 
-    public function getIdcontact() { return $this->idcontact; }
-    public function getNomcontact() { return $this->nomcontact; }
-    public function getDesccontact() { return $this->desccontact; }
+    public function getIdContact  () { return $this->idContact; }
+    public function getNomContact () { return $this->nomContact; }
+    public function getDescContact() { return $this->descContact; }
 
     public function __toString() {
-      	$res = "idcli:".$this->idcontact."\n";
-        $res = $res ."nomcontact:".$this->nomcontact."\n";
-        $res = $res ."desccontact:".$this->desccontact."\n";
+      	$res = "idContact:".$this->idContact."\n";
+        $res = $res ."nomContact:".$this->nomContact."\n";
+        $res = $res ."descContact:".$this->descContact."\n";
         $res = $res ."<br/>";
-	    return $res;
+	      return $res;
     }
 }
 
 //test
-//$uncontact = new Contact(1, 'messagerie', 'jolibonhomme31@gmail.com');o
-//echo $uncontact;
+//$unContact = new Contact(1, 'messagerie', 'jolibonhomme31@gmail.com');o
+//echo $unContact;
 ?>

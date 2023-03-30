@@ -3,48 +3,48 @@
 
 class Experience {
 
-    private $idexperience;
-    private $intituleposte;
-    private $nomemployeur;
-    private $villeemployeur;
-    private $descexperience;
-    private $datedebut;
-    private $datefin;
+    private $idExperience;
+    private $intitulePoste;
+    private $nomEmployeur;
+    private $villeEmployeur;
+    private $descExperience;
+    private $dateDebut;
+    private $dateFin;
     
       
     public function __construct($i=-1,$ip="",$ne="",$ve="",$de="",$dd="",$df="") {
-      	$this->idexperience = $i;
-        $this->intituleposte = $ip;
-        $this->nomemployeur = $ne;
-        $this->villeemployeur = $ve;
-        $this->datedebut = $dd;
-        $this->datefin = $df;
-        $this->descexperience = $de;
+      	$this->idExperience = $i;
+        $this->intitulePoste = $ip;
+        $this->nomEmployeur = $ne;
+        $this->villeEmployeur = $ve;
+        $this->dateDebut = $dd;
+        $this->dateFin = $df;
+        $this->descExperience = $de;
     }
 
-    public function getIdexperience() { return $this->idexperience; }
-    public function getIntituleposte() { return $this->intituleposte; }
-    public function getNomemployeur() { return $this->nomemployeur; }
-    public function getVilleemployeur() { return $this->villeemployeur; }
-    public function getDescexperience() { return $this->descexperience; }
-    public function getDatedebut() { return $this->datedebut; }
-    public function getDatefin() { return $this->datefin; }
+    public function getIdExperience  () { return $this->idExperience; }
+    public function getIntitulePoste () { return $this->intitulePoste; }
+    public function getNomEmployeur  () { return $this->nomEmployeur; }
+    public function getVilleEmployeur() { return $this->villeEmployeur; }
+    public function getDescExperience() { return $this->descExperience; }
+    public function getDateDebut     () { return $this->dateDebut; }
+    public function getDateFin       () { return $this->dateFin; }
     
 
     public function __toString() {
-      	$res = "idcli:".$this->idexperience."\n";
-        $res = $res ."intituleposte:".$this->intituleposte."\n";
-        $res = $res ."nomemployeur:".$this->nomemployeur."\n";
-        $res = $res ."villeemployeur:".$this->villeemployeur."\n";
-        $res = $res ."descexperience:".$this->descexperience."\n";
-        $res = $res ."datedebut:".$this->datedebut."\n";
-        $res = $res ."datefin:".$this->datefin."\n";
+      	$res = "idExperience:".$this->idExperience."\n";
+        $res = $res ."intitulePoste:".$this->intitulePoste."\n";
+        $res = $res ."nomEmployeur:".$this->nomEmployeur."\n";
+        $res = $res ."villeEmployeur:".$this->villeEmployeur."\n";
+        $res = $res ."descExperience:".$this->descExperience."\n";
+        $res = $res ."dateDebut:".$this->dateDebut."\n";
+        $res = $res ."dateFin:".$this->dateFin."\n";
         $res = $res ."<br/>";
 	    return $res;
     }
 }
 
 //test
-//$uneexperience = new Experience(1, 'Développeur', 'Sopra Steria', 'Paris', 'Développement d\'une application web', '2017-01-01', '2017-12-31');
-//echo $uneexperience;
+//$uneExperience = new Experience(1, 'Développeur', 'Sopra Steria', 'Paris', 'Développement d\'une application web', '2017-01-01', '2017-12-31');
+//echo $uneExperience;
 ?>
