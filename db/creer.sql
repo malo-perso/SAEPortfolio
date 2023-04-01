@@ -7,21 +7,23 @@ DROP TABLE IF EXISTS portfolio CASCADE;
 DROP TABLE IF EXISTS page CASCADE;
 
 CREATE TABLE utilisateur(
-    pseudo VARCHAR(20) PRIMARY KEY,
+    idUtilisateur SERIAL PRIMARY KEY,
+    prenom VARCHAR(20) NOT NULL,
+    nom VARCHAR(20) NOT NULL,
     mdp VARCHAR(20) NOT NULL,
     mail VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE portfolio(
     idPortfolio SERIAL PRIMARY KEY,
-    nom VARCHAR(20) NOT NULL,
+    nomPortfolio VARCHAR(20) NOT NULL,
     estPublic BOOLEAN NOT NULL,
-    pseudo VARCHAR(20) REFERENCES utilisateur(pseudo)
+    pseudo VARCHAR(20) REFERENCES utilisateur(idUtilisateur)
 );
 
 CREATE TABLE page(
     idPage SERIAL PRIMARY KEY,
-    nom VARCHAR(20) NOT NULL,
-    contenu VARCHAR(1000) NOT NULL,
-    idPortfolio INTEGER REFERENCES portfolio(idPortfolio)
+    nomPage VARCHAR(20) NOT NULL,
+    contenu JSON NOT NULL,
+    idPortfolio INTEGER REFERENCES portfolio(idPortfolio),
 );
