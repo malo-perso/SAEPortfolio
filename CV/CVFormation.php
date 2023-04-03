@@ -27,6 +27,10 @@
     ?>
         <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
             <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Formations</h2>
+            <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
+                <p class="index_nom_ville">1 : Nom de l&#39;établissement - Ville</p>
+                <p class="diplome_domaine_dates">Diplôme - domaine détude - date début | date fin</p>
+            </section>
             <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 788px;height: 504.25px;border-style: solid;padding-left: 11px;padding-right: 0px;margin-right: 26px;margin-left: 156px;">
                 <form style="height: 405px;width: 817.6px;">
                     <div class="row profile-row" style="height: 327px;width: 880.6px;margin-right: -116px;margin-top: 6px;margin-left: 103px;">
