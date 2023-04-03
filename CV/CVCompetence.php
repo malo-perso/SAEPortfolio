@@ -50,8 +50,8 @@
                 </div>
             </form>
         </div>
-    </section><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVExperience.html" style="color: var(--color-brown)" >Précédent (expérience)</a></button>
-    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;margin-left: 0px;margin-right: 21px;"><a href="CVLangue.html" style="color: var(--color-brown)">Suivant (langues)</a></button>
+    </section><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVExperience.php" style="color: var(--color-brown)" >Précédent (expérience)</a></button>
+    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;margin-left: 0px;margin-right: 21px;"><a href="CVLangue.php" style="color: var(--color-brown)">Suivant (langues)</a></button>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
     <script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
