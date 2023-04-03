@@ -1,11 +1,10 @@
 <?php
 
-require ('user.inc.php');
+require ('utilisateur.inc.php');
 //require '.inc.php';
 //require '.inc.php';
 //require '.inc.php';
 //require '.inc.php';
-
 
 class DB {
     private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
@@ -31,7 +30,7 @@ class DB {
         catch (PDOException $e) {
             echo "probleme de connexion :".$e->getMessage();
         }
-        return null;    
+        return null;
     }
 
     /************************************************************************/
@@ -41,7 +40,7 @@ class DB {
     /************************************************************************/
     public static function getInstance() {
       	if (is_null(self::$instance)) {
- 	     	try { 
+ 	     	try {
 		      self::$instance = new DB(); 
  		} 
 		catch (PDOException $e) {
@@ -61,7 +60,7 @@ class DB {
     /************************************************************************/
     public function close() {
         $this->connect = null;
-    } 
+    }
 
     /************************************************************************/
     //	Exécution requête SQL
@@ -100,13 +99,51 @@ class DB {
     }
 
     /************************************************************************/
-    //  Fonctions qui peuvent être utilisées dans les scripts PHP
+    //  Fonctions des requêtes
     /************************************************************************/
-
-    public function getUser() {
-            $requete = "SELECT nom,prenom FROM utilisateur";
-        return $this->execQuery($requete,null,'Utilisateur');
+    /*****************************/
+    //  Fonctions vérification 
+    /*****************************/
+    
+    public function isemailOK($mail){
+        $requete = "SELECT * FROM utilisateur WHERE mail = ?";
+        $tparam = array($mail);
+        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return false;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            echo "Aucun utilisateur trouvé";
+            return false;
+        } else {
+            //utilisateurs trouvés
+            echo count($resultats) . " utilisateurs trouvés";
+            return true;
+        }
     }
+
+    public function isMotDePasseOK($mail,$mdp){
+        $requete = "SELECT * FROM utilisateur WHERE mail = ? AND mdp = ?";
+        $tparam = array($mail,$mdp);
+        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return false;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            //echo "Aucun utilisateur trouvé";
+            return false;
+        } else {
+            //echo count($resultats) . " utilisateurs trouvés";
+            return true;
+        }
+    }
+    /*****************************/
+    //  Fonctions getters 
+    /*****************************/
 
     //récupérer le nom, prénom métier de tous les utilisateurs qui ont un portfolio publié
     /*public function getUserPortfolioPublie() {
@@ -114,9 +151,11 @@ class DB {
         return $this->execQuery($requete,null,'Utilisateur');
     }
     */
+
     public function getUserPortfolioPublie() {
         $requete = "SELECT nom,prenom FROM utilisateur WHERE idUser IN (SELECT idUser FROM portfolio WHERE estPublic = true)";
-        $resultats = $this->execQuery($requete,null,'Utilisateur');
+        $resultats = $this->execQuery($requete,null,'utilisateur');
+        var_dump($resultats);
         if (!$resultats) {
             //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
             return null;
@@ -129,8 +168,57 @@ class DB {
         }
     }
     
+    public function getNom($mail){
+        $requete = "SELECT nom FROM utilisateur WHERE mail = ?";
+        $tparam = array($mail);
+        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            return null;
+        } else {
+            if (null !==$row->getNom()) {
+                //L'objet est valide, on peut accéder à sa propriété "nom"
+                return $row->getNom();
+            } else {
+                //La propriété "nom" n'existe pas dans l'objet
+                return null;
+            }
+        }
+    }
 
+    public function getPrenom($mail){
+        $requete = "SELECT prenom FROM utilisateur WHERE mail = ?";
+        $tparam = array($mail);
+        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
+        //$row = $resultats->fetch(PDO::FETCH_ASSOC);
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            //echo "Aucun utilisateur trouvé";
+            return null;
+        } else {
+            if (null !==$row->getPrenom()) {
+                //L'objet est valide, on peut accéder à sa propriété "prenom"
+                return $row->getPrenom();
+            } else {
+                //La propriété "prenom" n'existe pas dans l'objet
+                //echo "La propriété prenom n'existe pas dans l'objet";
+                return null;
+            }
+        }
+    }
 
+    /*****************************/
+    //  Fonctions setters 
+    /*****************************/
 
     //récupérer le mot de passe d'un utilisateur par son mail ou son pseudo
 
@@ -150,5 +238,4 @@ class DB {
     //récupérer les pages d'un portfolio d'un utilisateur
     //récupérer les portfolios d'un utilisateur
 }
-
 ?>
