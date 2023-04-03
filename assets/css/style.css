@@ -1,0 +1,35 @@
+:root {
+  --color-blue: #0d1d3c;
+  --color-grey: rgb(91, 93, 92);
+  --color-brown: #a59263;
+}
+
+.bg-img-blur {
+  background-image: url('../images/aram.jpg');
+  background-position: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  max-width: 100vw;
+}
+
+.bg-img-blur::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: -1;
+}
+
+#login-column {
+  background-color: rgba(130, 130, 130, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10%;
+}
+
