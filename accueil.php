@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION["nom_utilisateur"])){
-    echo "Bonjour " .$_SESSION["nom_utilisateur"]. ", bienvenue sur notre site !";
+    echo "Bonjour " .$_SESSION["nom_utilisateur"]. ", bienvenue sur notre site !\n";
 }
 
 // Affiche les données stockées dans la session

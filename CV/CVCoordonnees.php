@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>PageCVCoord</title>
+    <title>CV Coordonnées</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
@@ -76,7 +76,9 @@
         <section>
             <h2 style="margin-left: 193px;margin-top: 39px;padding-left: 159px;">Ajoutez une phrase d'accroche</h2>
             <form><textarea class="form-control" style="height: 300px;width: 850px;padding-right: 0px;margin-right: -1px;margin-left: 340px;padding-top: 5px;margin-top: 15px;margin-bottom: 95px;"></textarea></form>
-        </section><button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-left: 14px;margin-bottom: 44px;border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);margin-right: 201px;">Suivant (Formations)</button>
+        </section>
+        <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-bottom: 45px;"><a href="CVResume.html" style="color: var(--color-brown)">Précédent (résumé)</a></button>
+        <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-left: 14px;margin-bottom: 44px;border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);margin-right: 201px;"><a href="CVFormation.html" style="color: var(--color-brown)">Suivant (Formations)</a></button>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>

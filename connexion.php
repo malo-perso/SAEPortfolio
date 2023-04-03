@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 1);
-require ("DB.inc.php");
-include "fctAux.inc.php";
+require ("./common/DB.inc.php");
+include "./common/fctAux.inc.php";
 
 enTete();
 contenu();
