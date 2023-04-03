@@ -17,23 +17,13 @@
 
 <body>
     <div class="text-start">
-        <div style="width: 155px;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 900px;padding-top: 0px;margin-top: 0px;">
-            <ul class="nav nav-tabs flex-column" style="border-style: none;">
-                <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);">Page accueil</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#" style="color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);border-left: px solid var(--color-blue);">CV</a>
-                    <ul class="nav nav-tabs" style="border-style: none;">
-                        <li class="nav-item"><a class="nav-link active" href="#" style="border-style: none;color: var(--bs-body-color);width: 150px;background: #e7e4df;">Coordonées</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);width: 150px;background: #e7e4df;">Formations</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#" style="color: var(--bs-body-color);background: #e7e4df;width: 150px;">Expériences</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);width: 150px;background: #e7e4df;">Compétences</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);width: 150px;">Langues</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#" style="border-style: none;color: var(--bs-body-color);">Compétences</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);">Projets</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="border-style: solid;color: var(--bs-body-color);">Contacts</a></li>
-            </ul>
-        </div>
+    <?php  
+
+        include '../common/nav.inc.php';
+
+        getNav();
+
+    ?>
         <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
             <h2 style="text-align: center;">Résumé du CV :</h2>
             <div class="container" style="height: 679px;width: 579.6px;color: var(--bs-body-color);border-style: solid;border-color: var(--bs-body-color);"></div>
