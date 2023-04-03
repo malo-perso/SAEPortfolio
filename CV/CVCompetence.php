@@ -24,7 +24,7 @@
 
     include '../common/nav.inc.php';
 
-    getNav();
+    getNav("CVCompetence.php");
     
     ?>
 

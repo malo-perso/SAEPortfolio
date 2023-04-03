@@ -21,7 +21,7 @@
 
         include '../common/nav.inc.php';
 
-        getNav();
+        getNav("CVResume.php");
 
     ?>
         <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
