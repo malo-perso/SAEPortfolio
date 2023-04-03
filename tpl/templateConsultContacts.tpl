@@ -1,7 +1,5 @@
 {% extends "templateBase.tpl" %}
 
-<h1> Contacts </h1>
-
 {% block contenu %}
     <div>
         <h2> Consultation des contacts </h2>

@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="footer">
                     <div class="footer-logo">
-                        <a href="index.php"><img src="images/logo.png" alt="logo"></a>
+                        <a href="index.php"><img src="../images/logo.png" alt="logo"></a>
                     </div>
                     <div class="footer-menu">
                         <ul>
@@ -15,11 +15,11 @@
                     </div>
                     <div class="footer-social">
                         <ul>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"> facebook </i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"> twitter </i></a></li>
+                            <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"> linkedin </i></a></li>
+                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"> pinterest </i></a></li>
+                            <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"> youtube </i></a></li>
                         </ul>
                     </div>
                     <div class="footer-text">
