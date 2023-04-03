@@ -1,6 +1,6 @@
 <?php
 
-require ('utilisateur.inc.php');
+require ('user.inc.php');
 //require '.inc.php';
 //require '.inc.php';
 //require '.inc.php';
@@ -155,7 +155,7 @@ class DB {
     public function getUserPortfolioPublie() {
         $requete = "SELECT nom,prenom FROM utilisateur WHERE idUser IN (SELECT idUser FROM portfolio WHERE estPublic = true)";
         $resultats = $this->execQuery($requete,null,'utilisateur');
-        var_dump($resultats);
+
         if (!$resultats) {
             //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
             return null;
@@ -171,7 +171,7 @@ class DB {
     public function getNom($mail){
         $requete = "SELECT nom FROM utilisateur WHERE mail = ?";
         $tparam = array($mail);
-        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
+        $resultats = $this->execQuery($requete,$tparam,'user');
         $row = $resultats[0];
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
@@ -193,9 +193,10 @@ class DB {
     public function getPrenom($mail){
         $requete = "SELECT prenom FROM utilisateur WHERE mail = ?";
         $tparam = array($mail);
-        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
+        $resultats = $this->execQuery($requete,$tparam,'user');
         //$row = $resultats->fetch(PDO::FETCH_ASSOC);
         $row = $resultats[0];
+        echo $row->getPrenom();
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
@@ -221,62 +222,14 @@ class DB {
     /*****************************/
 
     //récupérer le mot de passe d'un utilisateur par son mail ou son pseudo
-    public function getMdp($mail){
-        $requete = "SELECT mdp FROM utilisateur WHERE mail = ?";
-        $tparam = array($mail);
-        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
-        $row = $resultats[0];
-        if (!$resultats) {
-            //Erreur lors de l'exécution de la requête
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
-            return null;
-        } elseif (empty($resultats)) {
-            //Aucun utilisateur trouvé
-            //echo "Aucun utilisateur trouvé";
-            return null;
-        } else {
-            if (null !==$row->getMdp()) {
-                //L'objet est valide, on peut accéder à sa propriété "mdp"
-                return $row->getMdp();
-            } else {
-                //La propriété "mdp" n'existe pas dans l'objet
-                //echo "La propriété mdp n'existe pas dans l'objet";
-                return null;
-            }
-        }
-    }
+
 
     //récupérer un utilisateur par son identifiant
-    public function getUserById($idUser){
-        $requete = "SELECT * FROM utilisateur WHERE idUser = ?";
-        $tparam = array($idUser);
-        $resultats = $this->execQuery($requete,$tparam,'utilisateur');
-        $row = $resultats[0];
-        if (!$resultats) {
-            //Erreur lors de l'exécution de la requête
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
-            return null;
-        } elseif (empty($resultats)) {
-            //Aucun utilisateur trouvé
-            //echo "Aucun utilisateur trouvé";
-            return null;
-        } else {
-            if (null !==$row->getIdUser()) {
-                //L'objet est valide, on peut accéder à sa propriété "idUser"
-                return $row;
-            } else {
-                //La propriété "idUser" n'existe pas dans l'objet
-                //echo "La propriété idUser n'existe pas dans l'objet";
-                return null;
-            }
-        }
-    }
-
     //récupérer un portfolio par son identifiant
     //récupérer une page par son nom
     //créer un utilisateur  
-    //créer un portfolio
-    //créer une page de chaque
+        //créer un portfolio
+            //créer une page de chaque
     //suprimer un utilisateur
     //suprimer un portfolio
     //suprimer une page
