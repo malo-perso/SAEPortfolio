@@ -18,23 +18,13 @@
 
 <body>
     <div class="text-start">
-        <div style="width: 155px;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 900px;padding-top: 0px;margin-top: 0px;">
-            <ul class="nav nav-tabs flex-column" style="border-style: none;">
-                <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);">Page accueil</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#" style="color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);border-left: px solid var(--color-blue);">CV</a>
-                    <ul class="nav nav-tabs" style="border-style: none;">
-                        <li class="nav-item"><a class="nav-link active" href="#" style="border-style: none;color: var(--bs-body-color);width: 150px;background: #c8b79c;">Coordonées</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);width: 150px;">Formations</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);background: #e7e4df;width: 150px;">Expériences</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);width: 150px;">Compétences</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);width: 150px;">Langues</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#" style="border-style: none;color: var(--bs-body-color);">Compétences</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="color: var(--bs-body-color);">Projets</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="border-style: solid;color: var(--bs-body-color);">Contacts</a></li>
-            </ul>
-        </div>
+    <?php  
+
+        include '../common/nav.inc.php';
+
+        getNav();
+
+    ?>
         <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
             <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Coordonnées</h2>
             <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 850px;height: 427.25px;border-style: solid;padding-left: 11px;padding-right: 0px;margin-right: 26px;margin-left: 161px;">
@@ -48,10 +38,10 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    <div class="form-group mb-3"><label class="form-label form-label">Prénom</label><input class="form-control form-control" type="text" name="firstname"></div>
+                                    <div class="form-group mb-3"><label class="form-label form-label">Prénom</label><input class="form-control form-control" type="text" name="prenom"></div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
-                                    <div class="form-group mb-3"><label class="form-label form-label">Nom</label><input class="form-control form-control" type="text" name="lastname"></div>
+                                    <div class="form-group mb-3"><label class="form-label form-label">Nom</label><input class="form-control form-control" type="text" name="nom"></div>
                                 </div>
                             </div>
                             <div class="row">
