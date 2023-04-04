@@ -28,7 +28,7 @@
         
         <h1 class="text-center" style="margin-left: 152px;padding-top: 30px;margin-top: 0px;padding-right: 0px;">Page d'Accueil</h1>
 
-        <div id=editorjs style="margin-top: 80px; margin-right:30px;margin-left: 185px;padding:0px;border:solid"></div>
+        <div id=editorjs style="margin-top: 80px;padding-top: 30px; margin-right:30px;margin-left: 185px;border:solid"></div>
 
         
         <script src="ckeditor/ckeditor.js"></script>
