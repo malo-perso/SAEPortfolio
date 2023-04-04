@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <script src="competence.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,53 @@
 
     ?>
     <h1 class="text-center" style="margin-left: 152px;margin-top: 0px;padding-top: 30px;">Page de Compétences</h1>
-    <script src="competence.js"></script>
+    
+    <div id="editorjs" style="margin-left: 160px; margin-right: 5px; border: 1px black solid;">
+    </div>
+    
+    <script src="ckeditor/ckeditor.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+
+
+        <!-- Load Editor.js's Core -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+
+        <script> 
+
+            var editor = new EditorJS({
+            holder: 'editorjs',
+            tools: {
+            // Liste des outils que vous souhaitez utiliser
+            header: {
+                class: Header,
+                inlineToolbar: true
+            },
+            image: SimpleImage,
+            list: {
+                class: List,
+                inlineToolbar: true
+            },
+            checklist: {
+            class: Checklist,
+            inlineToolbar: true
+            },
+            quote: {
+            class: Quote,
+            inlineToolbar: true,
+            config: {
+                quotePlaceholder: 'Enter a quote',
+                captionPlaceholder: 'Quote\'s author',
+            }
+            }
+        }
+        });
+
+        </script>
     
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
