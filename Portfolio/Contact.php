@@ -28,6 +28,23 @@
     ?>
 
     <h1 class="text-center" style="margin-left: 152px;margin-top: 0px;padding-top: 30px;">Page de Contacts</h1>
+
+    <div style="padding: 19px;margin: 15px;margin-left: 210px;margin-right: 55px;">
+    <p class="text-center" style="border: 1px solid var(--color-blue);border-radius: 5px;margin-left: 360px;margin-right: 360px;">Nom contact - lien</p>
+    </div>
+
+    <div class="d-xl-flex justify-content-xl-center" style="margin: 15px;margin-right: 55px;margin-left: 210px;padding: 19px;border: 1px none var(--color-brown);">
+    <form style="border: 1px solid var(--color-brown);padding: 15px;">
+        <div class="row">
+            <div class="col-xl-6"><label class="form-label form-label">Nom contact : </label><input class="form-control form-control" type="text" /></div>
+            <div class="col-xl-6"><label class="form-label form-label">Lien / numéro / mail : </label><input class="form-control form-control" type="text" /></div>
+        </div>
+        <div class="row">
+            <div class="col d-xl-flex justify-content-xl-center"><button class="btn btn-primary" type="submit" style="margin-top: 30px;margin-bottom: 6px;background: var(--color-brown);border-color: var(--color-brown);">Ajouter contact</button></div>
+        </div>
+    </form>
+    </div>
+
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
     <script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
