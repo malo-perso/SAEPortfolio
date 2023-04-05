@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <style>
+        .ce-block__content, 
+        .ce-toolbar__content { 
+            max-width: calc(100% - 100px) !important; 
+        } 
+        .cdx-block { 
+            max-width: 100% !important;
+        }
+    </style>
 </head>
 
 <body>
