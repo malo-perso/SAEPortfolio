@@ -1,25 +1,15 @@
-<footer>
+<footer style="padding-left : 150px">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="footer">
                     <div class="footer-logo">
-                        <a href="index.php"><img src="../images/logo.png" alt="logo"></a>
                     </div>
-                    <div class="footer-menu">
-                        <ul>
-                            <li><a href="index.php">Accueil</a></li>
-                            <li><a href="about.php">A propos de nous</a></li>
-                            <li><a href="contact.php">Contactez-nous</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-social">
-                        <ul>
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"> facebook </i></a></li>
-                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"> twitter </i></a></li>
-                            <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"> linkedin </i></a></li>
-                            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"> pinterest </i></a></li>
-                            <li><a href="https://www.youtube.com/"><i class="fa fa-youtube"> youtube </i></a></li>
+                    <div class="footer-menu" style="text-align : center">
+                        <ul style="display : inline; list-style : none">
+                            <li style="display : inline; margin : 100px"><a href="index.php">Accueil</a></li>
+                            <li style="display : inline; margin : 100px"><a href="about.php">A propos de nous</a></li>
+                            <li style="display : inline; margin : 100px"><a href="contact.php">Contactez-nous</a></li>
                         </ul>
                     </div>
                     <div class="footer-text">

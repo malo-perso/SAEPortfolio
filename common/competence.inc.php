@@ -3,27 +3,22 @@
 
 class Competence {
 
-    private $idComp;
-    private $descComp;
+    private $nomComp;
 
-      
-    public function __construct($i=-1,$d="") {
-      	$this->idComp = $i;
-	    $this->descComp = $d;
+    public function __construct($n="") {
+	    $this->nomComp = $n;
     }
 
-    public function getIdComp  () { return $this->idComp; }
-    public function getDescComp() { return $this->descComp; }
+    public function getNomComp() { return $this->nomComp; }
 
     public function __toString() {
-      	$res = "idComp:".$this->idComp."\n";
-	    $res = $res ."descComp:".$this->descComp."\n";
+	    $res = "nomComp:".$this->nomComp."\n";
         $res = $res ."<br/>";
 	    return $res;
     }
 }
 
 //test
-//$uneComp = new Competence(5,'Planter les choux');
+//$uneComp = new Competence('Planter les choux');
 //echo $uneComp;
 ?>
