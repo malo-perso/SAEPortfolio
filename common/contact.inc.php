@@ -1,7 +1,7 @@
 <?php
 
 
-class Contact {
+class Contact implements \JsonSerializable {
 
     private $idContact;
     private $nomContact;
@@ -25,7 +25,14 @@ class Contact {
         $res = $res ."<br/>";
 	      return $res;
     }
+
+    public function jsonSerialize()
+    {
+      $vars = get_object_vars($this);
+      return $vars;
+    }
 }
+
 
 //test
 //$unContact = new Contact(1, 'messagerie', 'jolibonhomme31@gmail.com');o
