@@ -53,7 +53,7 @@
                 <div class="row profile-row" style="width: 865.2px;margin-right: -265px;padding-right: 48px;margin-left: -1px;margin-top: -1px;">
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col d-flex justify-content-center"><button class="btn btn-primary" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;">Ajouter langue</button></div>
+                            <div class="col d-flex justify-content-center"><button class="btn btn-primary" data-bss-hover-animate="pulse" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;">Ajouter langue</button></div>
                         </div>
                     </div>
                 </div>

@@ -96,7 +96,7 @@
                             <div class="col-lg-12" style="margin-bottom: 17px;"><label class="form-label form-label">Description</label><textarea class="form-control form-control" style="width: 530px;height: 90px;" placeholder="Description des missions effectuer"></textarea></div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 17px;margin-top: 0px;"><button class="btn btn-primary d-lg-flex" type="button" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;padding-top: 6px;margin-top: 8px;">Ajouter expérience</button></div>
+                            <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 17px;margin-top: 0px;"><button class="btn btn-primary d-lg-flex" data-bss-hover-animate="pulse" type="button" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;padding-top: 6px;margin-top: 8px;">Ajouter expérience</button></div>
                         </div>
                     </div>
                 </div>
