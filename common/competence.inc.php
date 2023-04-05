@@ -1,7 +1,7 @@
 <?php
 
 
-class Competence {
+class Competence implements \JsonSerializable {
 
     private $nomComp;
 
@@ -15,6 +15,12 @@ class Competence {
 	    $res = "nomComp:".$this->nomComp."\n";
         $res = $res ."<br/>";
 	    return $res;
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

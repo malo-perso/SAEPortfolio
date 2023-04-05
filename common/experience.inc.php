@@ -1,7 +1,7 @@
 <?php
 
 
-class Experience {
+class Experience implements \JsonSerializable{
 
     private $idExperience;
     private $intitulePoste;
@@ -41,6 +41,12 @@ class Experience {
         $res = $res ."dateFin:".$this->dateFin."\n";
         $res = $res ."<br/>";
 	    return $res;
+    }
+    
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

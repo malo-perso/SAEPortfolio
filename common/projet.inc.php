@@ -1,12 +1,10 @@
 <?php
 
-
-class Projet {
+class Projet implements \JsonSerializable {
 
     private $idProjet;
     private $nomProjet;
     private $descProjet;
-  
       
     public function __construct($i=-1,$n="",$d="") {
       	$this->id = $i;
@@ -24,6 +22,12 @@ class Projet {
         $res = $res ."descProjet:".$this->descProjet."\n";
         $res = $res ."<br/>";
 	    return $res;
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 
