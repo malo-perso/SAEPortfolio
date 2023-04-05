@@ -1,10 +1,8 @@
 <?php
 
 require ('user.inc.php');
-//require '.inc.php';
-//require '.inc.php';
-//require '.inc.php';
-//require '.inc.php';
+require ('page.inc.php');
+require ('Portfolio.inc.php');
 
 class DB {
     private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
@@ -217,9 +215,47 @@ class DB {
         }
     }
 
+    public function getContenu($contenu,$idPortfolio){
+        $requete ="SELECT contenu FROM portfolio WHERE contenu = ? AND idPortfolio = ?";
+        $tparam = array($contenu,$idPortfolio);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            //echo "Aucun utilisateur trouvé";
+            return null;
+        } else {
+            if (null !==$row->getContenu()) {
+                //L'objet est valide, on peut accéder à sa propriété "contenu"
+                return $row->getContenu();
+            } else {
+                //La propriété "contenu" n'existe pas dans l'objet
+                //echo "La propriété contenu n'existe pas dans l'objet";
+                return null;
+            }
+        }
+    }
+
     /*****************************/
     //  Fonctions setters 
     /*****************************/
+
+    public function UpadateContenu($contenu, $idPortfolio){
+        $requete = "UPDATE portfolio SET contenu = ? WHERE idPortfolio = ?";
+        $tparam = array($contenu, $idPortfolio);
+        $resultats = $this->execMaj($requete,$tparam);
+        if (!$resultats) {
+            return false;
+        } elseif (empty($resultats)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     //récupérer le mot de passe d'un utilisateur par son mail ou son pseudo
 
