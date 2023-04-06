@@ -13,23 +13,33 @@ class DB {
       //	NB : il est non utilisable a l'exterieur de la classe DB
       /************************************************************************/	
     private function __construct() {
-            // Connexion à la base de données
-        //$connStr = 'pgsql:host=woody port=5432 dbname=rm211190'; // A MODIFIER ! 
-        $dsn = 'mysql:host=localhost;dbname=aram';
+
+        $dbname = "rm211190"; //A MODIIER (nom de la base Postgres)
+        $host="woody.iut.univ-lehavre.fr"; 
+        $user="rm211190"; //A MODIFIER (login compte Postgres)
+        $pwd = "123"; //A MODIFIER (mot de passe compte Postgres)
+        $port = 5432; //on utilise le port local du tunnel SSH
+
+        // Connexion à la base de données
+        $connStr = 'pgsql:host='.$host.' port='.$port.' dbname='.$dbname; 
+        //$dsn = 'mysql:host=localhost;dbname=aram';
         try {
         // Connexion à la base
-            //$this->connect = new PDO($connStr, 'rm211190', ''); //A MODIFIER !
-            $this->connect = new PDO($dsn, 'root', '');
+            $this->connect = new PDO($connStr, $user, $pwd);
+            //$this->connect = new PDO($dsn, 'root', '');
             //echo '1 => Connexion réussie !<br/>';
         // Configuration facultative de la connexion
         $this->connect->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER); 
         $this->connect->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION); 
         }
         catch (PDOException $e) {
-            echo "probleme de connexion :".$e->getMessage();
+            echo "\nprobleme de connexion :".$e->getMessage();
         }
+        //echo '\n3=> deconnexion';
         return null;
+    
     }
+    
 
     /************************************************************************/
     //	Methode permettant d'obtenir un objet instance de DB
@@ -109,15 +119,15 @@ class DB {
         $resultats = $this->execQuery($requete,$tparam,'utilisateur');
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
             return false;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
-            echo "Aucun utilisateur trouvé";
+            //echo "Aucun utilisateur trouvé";
             return false;
         } else {
             //utilisateurs trouvés
-            echo count($resultats) . " utilisateurs trouvés";
+            //echo count($resultats) . " utilisateurs trouvés";
             return true;
         }
     }
@@ -194,7 +204,7 @@ class DB {
         $resultats = $this->execQuery($requete,$tparam,'user');
         //$row = $resultats->fetch(PDO::FETCH_ASSOC);
         $row = $resultats[0];
-        echo $row->getPrenom();
+        //echo $row->getPrenom();
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
@@ -274,5 +284,6 @@ class DB {
     //modifier une page
     //récupérer les pages d'un portfolio d'un utilisateur
     //récupérer les portfolios d'un utilisateur
+
 }
 ?>
