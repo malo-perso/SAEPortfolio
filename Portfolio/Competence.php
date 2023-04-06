@@ -39,7 +39,7 @@
     
     <div style="margin-left:15%; width:85%;">
 
-            <h1 class="text-center" style="padding-top: 30px;">Page de Compétences</h1>
+            <h1 class="text-center" style="padding-top: 5%;">Page de Compétences</h1>
 
             <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;"></div>
 

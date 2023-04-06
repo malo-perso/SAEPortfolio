@@ -14,7 +14,7 @@ function getNav($pageEnCours)
     //le premier lien est une image
     if ($array[0] == $pageEnCours)
     {
-        echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"../$array[0]\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);border-left: px solid var(--color-blue);\"><img src=\"../images/logoAcc.png\" alt=\"Logo\" style=\"width: 50px;\"></a></li>\n";
+        echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"../$array[0]\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);\"><img src=\"../images/logoAcc.png\" alt=\"Logo\" style=\"width: 50px;\"></a></li>\n";
     }
     else
     {
@@ -28,7 +28,7 @@ function getNav($pageEnCours)
         {
             if ($array[$i] == $pageEnCours)
             {
-                echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"./$array[$i]\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);border-left: px solid var(--color-blue); padding-left:35px;\">$arrayNom[$i]</a></li>\n";
+                echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"./$array[$i]\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg); padding-left:35px;\">$arrayNom[$i]</a></li>\n";
             }
             else
             {
@@ -40,7 +40,7 @@ function getNav($pageEnCours)
             
             if ($array[$i] == $pageEnCours)
             {
-                echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"./$array[$i]\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);border-left: px solid var(--color-blue);\">$arrayNom[$i]</a></li>\n";
+                echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"./$array[$i]\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);\">$arrayNom[$i]</a></li>\n";
             }
             else
             {
@@ -53,7 +53,7 @@ function getNav($pageEnCours)
     echo "</div>\n";
     
     /*echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"../accueil.php\" style=\"color: var(--bs-body-color);\">Page accueil</a></li>\n";
-    echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"../CV/CVResume.php\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);border-left: px solid var(--color-blue);\">CV</a>\n";
+    echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"../CV/CVResume.php\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);\">CV</a>\n";
     echo "<ul class=\"nav nav-tabs\" style=\"border-style: none;\">\n";
     echo "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"../CV/CVCoordonnees.php\" style=\"border-style: none;color: var(--bs-body-color);width: 150px;background: #e7e4df;\">Coordonnées</a></li>\n";
     echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"../CV/CVFormation.php\" style=\"color: var(--bs-body-color);width: 150px;background: #c8b79c;\">Formations</a></li>\n";

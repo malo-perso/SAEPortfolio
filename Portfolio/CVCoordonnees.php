@@ -25,10 +25,10 @@
         getNav("CVCoordonnees.php");
 
     ?>
-        <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
-            <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Coordonnées</h2>
-            <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 850px;height: 427.25px;border-style: solid;padding-left: 11px;padding-right: 0px;margin-right: 26px;margin-left: 161px;">
-                <form style="height: 405px;">
+        <section class="text-start" style="margin-left:15%; width:85%;">
+            <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Coordonnées</h2>
+            <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 70%;height: 40%;border: 1px solid; margin-top:5%;">
+                <form style="padding:5%;">
                     <div class="row profile-row">
                         <div class="col-md-4 relative">
                             <div class="avatar">
@@ -72,13 +72,17 @@
                     </div>
                 </form>
             </div>
-        </section>
-        <section>
-            <h2 style="margin-left: 193px;margin-top: 39px;padding-left: 159px;">Ajoutez une phrase d'accroche</h2>
-            <form><textarea class="form-control" style="height: 300px;width: 850px;padding-right: 0px;margin-right: -1px;margin-left: 340px;padding-top: 5px;margin-top: 15px;margin-bottom: 95px;"></textarea></form>
-        </section>
+
+            <h4 class="text-center" style="margin:2%;" >Ajoutez une phrase d'accroche</h4>
+            <!--mettre le textarea dans un div pour pouvoir le centrer-->
+            <div style="width: 50%;height: 60%;border: 1px solid;margin-left:25%; margin-right:25%; margin-bottom:5%;">
+                <form><textarea class="form-control"></textarea> </form>
+            </div>
+            
+        
         <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-bottom: 45px;"><a href="CVResume.php" style="color: var(--color-brown)">Précédent (résumé)</a></button>
         <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-left: 14px;margin-bottom: 44px;border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);margin-right: 201px;"><a href="CVFormation.php" style="color: var(--color-brown)">Suivant (Formations)</a></button>
+        </section>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>

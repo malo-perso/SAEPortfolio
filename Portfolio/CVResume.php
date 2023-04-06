@@ -17,22 +17,22 @@
 
 <body>
     <div class="text-start">
-    <?php  
+        <?php  
 
-        include '../common/nav.inc.php';
+            include '../common/nav.inc.php';
 
-        getNav("CVResume.php");
+            getNav("CVResume.php");
 
-    ?>
-        <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
-            <h2 style="text-align: center;">Résumé du CV :</h2>
-            <div class="container" style="height: 679px;width: 579.6px;color: var(--bs-body-color);border-style: solid;border-color: var(--bs-body-color);"></div>
-            <div class="row">
-                <div class="col d-flex justify-content-center" style="margin-top: 16px;margin-bottom: 32px;">
-                    <div class="btn-group align-items-center" role="group"><button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);"><a href="CVCoordonnees.php" style="color: var(--color-brown)">Modifier le CV</a></button><button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button><button class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button></div>
+        ?>
+            <div class="text-start" style="margin-left:15%; width:85%">
+                <h3 style="text-align: center; padding-top:5%; margin-bottom:2%;">Résumé du CV :</h3>
+                <div class="container" style="height: 679px;width: 579.6px;color: var(--bs-body-color);border-style: solid;border-color: var(--bs-body-color);"></div>
+                <div class="row">
+                    <div class="col d-flex justify-content-center" style="margin-top: 16px;margin-bottom: 32px;">
+                        <div class="btn-group align-items-center" role="group"><button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);"><a href="CVCoordonnees.php" style="color: var(--color-brown)">Modifier le CV</a></button><button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button><button class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button></div>
+                    </div>
                 </div>
             </div>
-        </section>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
