@@ -44,8 +44,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div><label class="form-label form-label form-label">Diplome</label><select class="form-select">
-                                            <optgroup label="Sélectionner" id="diplome">
+                                    <div><label class="form-label form-label form-label">Diplome</label><select class="form-select" id="diplome">
+                                            <optgroup label="Sélectionner">
                                                 <option value="cap">CAP</option>
                                                 <option value="bep">BEP</option>
                                                 <option value="BAC" selected="">Baccalauréat</option>

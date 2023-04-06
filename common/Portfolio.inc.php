@@ -1,11 +1,6 @@
-CREATE TABLE portfolio(
-    idPortfolio SERIAL PRIMARY KEY,
-    nomPortfolio VARCHAR(20) NOT NULL,
-    estPublic BOOLEAN NOT NULL,
-);
 <?php
 class portfolio {
-      /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
+
     private $idPortfolio;
     private $nomPortfolio;
     private $estPublic;

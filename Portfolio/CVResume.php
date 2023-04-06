@@ -25,15 +25,34 @@
 
         ?>
             <div class="text-start" style="margin-left:15%; width:85%">
-                <h3 style="text-align: center; padding-top:5%; margin-bottom:2%;">Résumé du CV :</h3>
+                <h3 style="text-align: center; padding-top:1%; margin-bottom:2%;">Résumé du CV :</h3>
                 <div class="container" style="height: 679px;width: 579.6px;color: var(--bs-body-color);border-style: solid;border-color: var(--bs-body-color);"></div>
                 <div class="row">
                     <div class="col d-flex justify-content-center" style="margin-top: 16px;margin-bottom: 32px;">
-                        <div class="btn-group align-items-center" role="group"><button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);"><a href="CVCoordonnees.php" style="color: var(--color-brown)">Modifier le CV</a></button><button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button><button class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button></div>
+                        <div class="btn-group align-items-center" role="group">
+                            <a href="CVCoordonnees.php" style="color: var(--color-brown)">
+                                <button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">
+                                    Modifier le CV</button>
+                            </a>
+                                <button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
+                                <button id="choixTemplate" class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button>
+                        </div>
                     </div>
                 </div>
             </div>
     </div>
+   
+    <script>
+        //event listener for the button
+        document.getElementById("choixTemplate").addEventListener("click", function() {
+
+
+            console.log("Choisissez une template");
+        });
+    </script>
+
+
+
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
     <script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
