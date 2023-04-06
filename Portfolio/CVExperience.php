@@ -26,15 +26,27 @@
         getNav("CVExperience.php");
 
     ?>
-   <section class="text-start" style="margin-left:15%; width:85%">
-        <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Expériences</h2>
-        <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
-            <p class="index_nom_ville">1 : Intitulé du poste - Employeur</p>
-            <p class="diplome_domaine_dates">Type de contrat - date début | date fin</p>
-        </section>
-        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 850px;height: 500px;border-style: solid;padding-right: 0px;margin-right: 26px;margin-top: 0px;padding-top: 0px;padding-left: 0px;margin-left: 159px;">
-            <form>
-                <div class="row profile-row" style="width: 865.2px;margin-right: -265px;padding-right: 48px;margin-left: -1px;">
+    
+    <section class="text-start" style="margin-left:15%; width:85%;">
+
+        <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Expériences</h2>
+        
+        <!-- container au milieu et 2 lignes pour les balises p -->
+        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" style="margin-top:5%;width:40%; border-style: solid;border-color: var(--color-brown);">
+            <div class ="col" style=padding:2%;>
+                <div class="row">
+                    <p class="index_nom_ville">1 : Intitulé du poste - Employeur</p><br>
+                </div>
+                <div class="row">
+                    <p class="diplome_domaine_dates">Type de contrat - date début | date fin</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
+            <form style=width:70%;>
+                <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
@@ -102,9 +114,12 @@
                 </div>
             </form>
         </div>
+    
+        <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-top: 2%;margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-bottom: 45px;"><a href="CVFormation.php" style="color: var(--color-brown)">Précédent (Formations)</a></button>
+        <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-top: 2%;margin-left: 14px;margin-bottom: 44px;border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);margin-right: 201px;"><a href="CVCompetence.php" style="color: var(--color-brown)">Suivant (Compétences)</a></button>
+
     </section>
-    <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVFormation.php" style="color: var(--color-brown)">Précédent (formations)</a></button>
-    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-top: 40px;margin-right: 27px;background: rgba(255,255,255,0.5);color: var(--color-brown);border-style: solid;border-color: var(--color-brown);"><a href="CVCompetence.php" style="color: var(--color-brown)">Suivant (compétences)</a></button>
+
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
     <script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
