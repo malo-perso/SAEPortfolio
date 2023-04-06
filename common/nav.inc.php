@@ -8,7 +8,7 @@ function getNav($pageEnCours)
 
     /* on traverse le tableau et on crée un lien pour chaque page, si la page est la page en cours, on met le li en une autre couleur */
 
-    echo "<div style=\"width: 155px;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 900px;padding-top: 0px;margin-top: 0px;\">\n";
+    echo "<div style=\"width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 900px;padding-top: 0px;margin-top: 0px;\">\n";
     echo "<ul class=\"nav nav-tabs flex-column\" style=\"border-style: none;\">\n";
 
     //le premier lien est une image
