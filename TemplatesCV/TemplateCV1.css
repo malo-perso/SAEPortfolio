@@ -1,0 +1,59 @@
+#cv {
+    width: 21cm;
+    height: 29.7cm;
+    border: 1px #D3D3D3 solid;
+}
+
+
+#div-gauche {
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(12, 40, 64);
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #D3D3D3;
+}
+
+#resume {
+    text-align: justify;
+}
+
+#div-haut {
+    padding-left: 40%;
+    width: auto;
+    height: 20%;
+    margin-bottom: -10%;
+}
+
+#div-milieu {
+    padding-left: 40%;
+    width: auto;
+    height: 85%;
+    background-color: #ffffff;
+}
+
+span {
+    font-weight: bold;
+    color: rgb(12, 40, 64);
+}
+
+.cadre {
+    font-size: 1.5em;
+    background-color: rgb(212, 230, 242);
+}
+
+hr {
+    border: 5px rgb(212, 230, 242) solid;
+    margin-left: -40%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.tab {
+    padding-left: 2%
+}
+
+#footer {
+    padding-bottom: 10px;
+}

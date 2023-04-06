@@ -1,12 +1,11 @@
 <?php
 
-/*classe permettant de representer les tuples de la table User */
 class Page implements \JsonSerializable{
-      /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
+
     private $idPage;
     private $nomPage;
     private $contenu;
-    private $idPortfolio;  
+    private $idPortfolio;
       
     public function __construct($idPage="",$n="",$c="",$idPortfolio="") {
         $this->idPage = $idPage;
