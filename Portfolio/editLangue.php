@@ -1,6 +1,6 @@
 <?php
 
-include "../common/langue.inc.php";
+include "../common/CV/langue.inc.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

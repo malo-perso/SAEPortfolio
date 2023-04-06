@@ -1,6 +1,6 @@
 <?php
 
-include "../common/competence.inc.php";
+include "../common/CV/competence.inc.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
