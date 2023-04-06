@@ -7,7 +7,7 @@ class Langue {
     private $niveauLangue;
 
     public function __construct($n="", $nl="") {
-	    $this->nomComp = $n;
+	    $this->nomLangue = $n;
         $this->niveauLangue = $nl;
     }
 

@@ -21,3 +21,7 @@ function ajouterFormation() {
                                 "</section> \n";
     }
 }
+
+function ajouterLangue() {
+    // TODO
+}
