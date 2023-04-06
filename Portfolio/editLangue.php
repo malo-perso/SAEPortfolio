@@ -17,11 +17,11 @@ $titrecentre = "Langues";
 
 $tpl = $twig->loadTemplate( "templateEditLangues.tpl" );
 
-$langues = array( new Langue("Anglais", "Intermédiaire (B2)"),
-                  new Langue("Espagnol", "Intermédiaire (B2)"),
-                  new Langue("Allemand", "Intermédiaire (B2)")
-                );
+$tabLangues = array( new Langue(0, "Anglais", "Intermédiaire (B2)"),
+                     new Langue(1, "Espagnol", "Intermédiaire (B2)"),
+                     new Langue(2, "Allemand", "Intermédiaire (B2)")
+                   );
 
 
-echo $tpl->render( array("langues"=>$langues,"titre"=>$titre,"titrecentre"=>$titrecentre) );
+echo $tpl->render( array("tabLangues"=>$tabLangues,"titre"=>$titre,"titrecentre"=>$titrecentre) );
 ?>
