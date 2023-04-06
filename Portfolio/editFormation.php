@@ -1,6 +1,6 @@
 <?php
 
-include "../common/formation.inc.php";
+include "../common/CV/formation.inc.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -17,9 +17,9 @@ $titrecentre = "Formations";
 
 $tpl = $twig->loadTemplate( "templateEditFormations.tpl" );
 
-$tabFormations = array( new Formation(0, "Ecole de la Paix", "Paris", "Licence", "Droit", "09-2010", "06-2013"),
-                        new Formation(1, "Iut du Havre", "Havre", "BUT", "Informatique", "09-2010", "06-2013"),
-                        new Formation(2, "Ecole de la Paix", "Paris", "Licence", "Droit", "09-2010", "06-2013")
+$tabFormations = array( new Formation(0, "Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
+                        new Formation(1, "Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
+                        new Formation(2, "Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
                       );
 
 
