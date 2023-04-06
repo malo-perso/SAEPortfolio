@@ -1,6 +1,6 @@
 <?php
 
-include "../common/experience.inc.php";
+include "../common/CV/experience.inc.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
