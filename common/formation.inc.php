@@ -3,15 +3,17 @@
 
 class Formation {
 
+    private $idFormation;
     private $nomEtablissement;
     private $villeEtablissement;
     private $diplome;
     private $domaine;
     private $dateDebut;
     private $dateFin;
-   
 
-    public function __construct($n="",$v="", $di="", $do="", $dd="", $df="") {
+
+    public function __construct($id=-1,$n="",$v="", $di="", $do="", $dd="", $df="") {
+        $this->idFormation = $id;
         $this->nomEtablissement = $n;
         $this->villeEtablissement = $v;
         $this->diplome = $di;
@@ -20,6 +22,7 @@ class Formation {
         $this->dateFin = $df;
     }
 
+    public function getIdFormation        () { return $this->idFormation; }
     public function getNomEtablissement   () { return $this->nomEtablissement; }
     public function getVilleEtablissement () { return $this->villeEtablissement; }
     public function getDiplome            () { return $this->diplome; }
@@ -28,7 +31,8 @@ class Formation {
     public function getDateFin            () { return $this->dateFin; }
 
     public function __toString() {
-        $res = "nomEtablissement:".$this->nomEtablissement."\n";
+        $res = "idFormation:".$this->idFormation."\n";
+        $res = $res ."noEtablissement:".$this->nomEtablissement."\n";
         $res = $res ."villeEtablissement:".$this->villeEtablissement."\n";
         $res = $res ."diplome:".$this->diplome."\n";
         $res = $res ."domaine:".$this->domaine."\n";
