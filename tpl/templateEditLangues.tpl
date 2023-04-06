@@ -29,10 +29,10 @@
                 <div class="row profile-row" style="width: 865.2px;margin-right: -265px;padding-right: 48px;margin-left: -1px;">
                     <div class="col-md-8">
                         <div class="row" style="margin-top: -14px;" id="langues">
-                            {% for langue in langues %}
+                            {% for langue in tabLangues %}
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group mb-3" style="padding-top: 0px;"><label class="form-label form-label form-label">Langue</label>
-                                    <input class="form-control form-control form-control" type="text" name="niveau" placeholder="ex : Anglais" id="nomLangue" value={{ langue.getNomLangue() }}></div>
+                                    <input class="form-control form-control form-control" type="text" name="niveau" placeholder="ex : Anglais" id="nomLangue" value={{ langue.getNomLangue() }} ></div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group mb-3"><label class="form-label form-label form-label">Niveau</label>
