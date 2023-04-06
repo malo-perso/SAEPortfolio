@@ -12,6 +12,22 @@
 <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1.css">
 <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
 <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/bs-init.js"></script>
+<script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
+<script src="../assets/js/Profile-Edit-Form-profile.js"></script>
+<script src="../assets/js/getNav.js"></script>
+
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() 
+    {
+        var result = getNav("CVCompetence.php");
+        var id = document.getElementById("nav");
+        id.innerHTML = result;
+    });
+</script>
 
 <div style="margin-left:15%; width:85%;">
 
@@ -24,8 +40,4 @@
     {% endfor %}
 </div>
 
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/js/bs-init.js"></script>
-<script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
-<script src="../assets/js/Profile-Edit-Form-profile.js"></script>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends "templateBase.tpl" %}
 
 {% block contenu %}
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
@@ -12,6 +13,22 @@
 <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1.css">
 <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
 <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/bs-init.js"></script>
+<script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
+<script src="../assets/js/Profile-Edit-Form-profile.js"></script>
+<script src="../assets/js/getNav.js"></script>
+
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() 
+    {
+        var result = getNav("CVCompetence.php");
+        var id = document.getElementById("nav");
+        id.innerHTML = result;
+    });
+</script>
 
 <div style="margin-left:15%; width:85%;">
 
@@ -24,20 +41,16 @@
     {% endfor %}
 
     <div class="d-xl-flex justify-content-xl-center" style="border: 1px none var(--color-brown);">
-    <form style="border: 1px solid var(--color-brown);padding: 15px;">
-        <div class="row">
-            <div class="col-xl-6"><label class="form-label form-label">Nom contact : </label><input class="form-control form-control" type="text" /></div>
-            <div class="col-xl-6"><label class="form-label form-label">Lien / numéro / mail : </label><input class="form-control form-control" type="text" /></div>
-        </div>
-        <div class="row">
-            <div class="col d-xl-flex justify-content-xl-center"><button class="btn btn-primary" type="submit" style="background: var(--color-brown);border-color: var(--color-brown); margin:3%;">Ajouter contact</button></div>
-        </div>
-    </form>
+        <form style="border: 1px solid var(--color-brown);padding: 15px;">
+            <div class="row">
+                <div class="col-xl-6"><label class="form-label form-label">Nom contact : </label><input class="form-control form-control" type="text" /></div>
+                <div class="col-xl-6"><label class="form-label form-label">Lien / numéro / mail : </label><input class="form-control form-control" type="text" /></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center"><button class="btn btn-primary" type="submit" style="background: var(--color-brown);border-color: var(--color-brown); margin:3%;">Ajouter contact</button></div>
+            </div>
+        </form>
     </div>
 </div>
 
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/js/bs-init.js"></script>
-<script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
-<script src="../assets/js/Profile-Edit-Form-profile.js"></script>
 {% endblock %}
