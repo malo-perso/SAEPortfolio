@@ -16,16 +16,21 @@
     <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <script src="../assets/js/getNav.js"></script>
 </head>
 
 <body>
-    <?php  
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
 
-        include '../common/nav.inc.php';
+<script>
+            window.addEventListener('DOMContentLoaded', function() 
+            {
+                var result = getNav("CVExperience.php");
+                var id = document.getElementById("nav");
+                id.innerHTML = result;
+            });
 
-        getNav("CVExperience.php");
-
-    ?>
+        </script>
     
     <section class="text-start" style="margin-left:15%; width:85%;">
 

@@ -14,17 +14,22 @@
     <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <script src="../assets/js/getNav.js"></script>
 </head>
 
 <body>
     <div class="text-start">
-    <?php  
+    <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
 
-        include '../common/nav.inc.php';
+    <script>
+            window.addEventListener('DOMContentLoaded', function() 
+            {
+                var result = getNav("CVCoordonnees.php");
+                var id = document.getElementById("nav");
+                id.innerHTML = result;
+            });
 
-        getNav("CVCoordonnees.php");
-
-    ?>
+        </script>
         <section class="text-start" style="margin-left:15%; width:85%;">
             <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Coordonnées</h2>
             <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 70%;height: 40%;border: 1px solid; margin-top:5%;">

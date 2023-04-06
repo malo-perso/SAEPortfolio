@@ -14,17 +14,22 @@
     <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <script src="../assets/js/getNav.js"></script>
 </head>
 
 <body>
     <div class="text-start">
-    <?php  
+    <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
 
-        include '../common/nav.inc.php';
+    <script>
+            window.addEventListener('DOMContentLoaded', function() 
+            {
+                var result = getNav("CVFormation.php");
+                var id = document.getElementById("nav");
+                id.innerHTML = result;
+            });
 
-        getNav("CVFormation.php");
-
-    ?>
+        </script>
         <section class="text-start" style="margin-left:15%; width:85%">
             <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Formations</h2>
             <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">

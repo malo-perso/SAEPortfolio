@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+    <script src="../assets/js/getNav.js"></script>
     <style>
         .ce-block__content, 
         .ce-toolbar__content { 
@@ -27,16 +28,20 @@
 <body>
     <div class="text-start">
 
-        <?php  
-
-            include '../common/nav.inc.php';
-
-            getNav("Accueil.php");
-
-        ?>
-        
         
 
+        <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', function() 
+            {
+                var result = getNav("Accueil.php");
+                var id = document.getElementById("nav");
+                id.innerHTML = result;
+            });
+
+        </script>
+        
         <div style="margin-left:15%; width:85%;">
 
             <h1 class="text-center" style="padding-top:5%;">Page d'Accueil</h1>
