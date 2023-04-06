@@ -1,4 +1,4 @@
-#cv {
+#cv-t1 {
     width: 21cm;
     height: 29.7cm;
     border: 1px #D3D3D3 solid;
@@ -6,7 +6,7 @@
 }
 
 
-#div-gauche {
+#div-gauche-t1 {
     float: left;
     width: 30%;
     height: 100%;
@@ -16,39 +16,39 @@
     color: #D3D3D3;
 }
 
-#resume {
+#resume-t1 {
     text-align: justify;
 }
 
-#div-haut {
+#div-haut-t1 {
     padding-left: 35%;
     width: auto;
     height: 20%;
     margin-bottom: -10%;
 }
 
-#div-milieu {
+#div-milieu-t1 {
     padding-left: 35%;
     width: auto;
     height: 85%;
     background-color: #ffffff;
 }
 
-span {
+.span-t1 {
     font-weight: bold;
     color: rgb(12, 40, 64);
 }
 
-.cadre {
+.cadre-t1 {
     font-size: 1.5em;
     background-color: rgb(212, 230, 242);
 }
 
-.tab {
+.tab-t1 {
     padding-left: 2%
 }
 
-#footer {
+#footer-t1 {
     font-style: italic;
     font-size: 0.8em;
     vertical-align: bottom;

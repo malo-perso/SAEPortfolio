@@ -1,4 +1,4 @@
-#cv {
+#cv-t2 {
     width: 21cm;
     height: 29.7cm;
     border: 1px #D3D3D3 solid;
@@ -6,14 +6,14 @@
     position: relative;
 }
 
-#div-nom {
+#div-nom-t2 {
     width: auto;
     height: 20%;
     font-size: larger;
     text-align: center;
 }
 
-#div-gauche {
+#div-gauche-t2 {
     float: left;
     width: 30%;
     height: 85.5%;
@@ -23,11 +23,11 @@
     background-color: #BED66F;
 }
 
-#resume {
+#resume-t2 {
     text-align: justify;
 }
 
-#div-milieu {
+#div-milieu-t2 {
     padding-left: 35%;
     width: auto;
     height: 88.5%;
@@ -35,22 +35,22 @@
     background-color: #ffffff;
 }
 
-h4{
+.h4-t2{
     padding: 2%;
     background-color: #9DBB59;
 }
 
-.cadre {
+.cadre-t2 {
     font-size: 1.5em;
     background-color: #ffffff;
 }
 
-span {
+.span-t2 {
     font-weight: bold;
     color: #9DBB59;
 }
 
-#footer {
+#footer-t2 {
     font-style: italic;
     font-size: 0.8em;
     vertical-align: bottom;
