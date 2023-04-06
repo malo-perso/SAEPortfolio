@@ -8,11 +8,11 @@ require_once( "../Twig/lib/Twig/Autoloader.php" );
 Twig_Autoloader::register();
 $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-$titre = "Édition des compétences";
+$titre = "Consultation des compétences";
 
 $titrecentre = "Compétences";
 
-$tpl = $twig->loadTemplate( "templateEditCompetences.tpl" );
+$tpl = $twig->loadTemplate( "templateConsultCompetences.tpl" );
 
 $softSkills = array( new Competence("Anglais"),
                      new Competence("Espagnol"),
@@ -25,5 +25,5 @@ $hardSkills = array( new Competence("Java"),
                    );
 
 
-echo $tpl->render( array("softSkills"=>$softSkills,"hardSkills"=>$hardSkills,"titre"=>$titre) );
+echo $tpl->render( array("softSkills"=>$softSkills,"hardSkills"=>$hardSkills,"titre"=>$titre));
 ?>

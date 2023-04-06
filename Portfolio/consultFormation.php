@@ -8,11 +8,11 @@ require_once( "../Twig/lib/Twig/Autoloader.php" );
 Twig_Autoloader::register();
 $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-$titre = "Édition des formations";
+$titre = "Consultation des formations";
 
 $titrecentre = "Formations";
 
-$tpl = $twig->loadTemplate( "templateEditFormations.tpl" );
+$tpl = $twig->loadTemplate( "templateConsultFormations.tpl" );
 
 $tabFormations = array( new Formation(0, "Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
                         new Formation(1, "Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),

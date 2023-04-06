@@ -8,11 +8,11 @@ require_once( "../Twig/lib/Twig/Autoloader.php" );
 Twig_Autoloader::register();
 $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-$titre = "Édition des langues";
+$titre = "Consultation des langues";
 
 $titrecentre = "Langues";
 
-$tpl = $twig->loadTemplate( "templateEditLangues.tpl" );
+$tpl = $twig->loadTemplate( "templateConsultLangues.tpl" );
 
 $tabLangues = array( new Langue(0, "Anglais", "Intermédiaire (B2)"),
                      new Langue(1, "Espagnol", "Intermédiaire (B2)"),
