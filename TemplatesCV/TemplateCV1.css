@@ -2,7 +2,6 @@
     width: 21cm;
     height: 29.7cm;
     border: 1px #D3D3D3 solid;
-    /*background-color: rgb(212, 230, 242);*/
 }
 
 
@@ -22,7 +21,7 @@
 
 #div-haut {
     padding-left: 40%;
-    width: 100%;
+    width: auto;
     height: 20%;
     margin-bottom: -10%;
 }
@@ -36,10 +35,12 @@
 
 span {
     font-weight: bold;
+    color: rgb(12, 40, 64);
 }
 
-h4 {
+.cadre {
     font-size: 1.5em;
+    background-color: rgb(212, 230, 242);
 }
 
 hr {
