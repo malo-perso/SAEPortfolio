@@ -129,9 +129,11 @@
                     </div>
                 </form>
             </div>
-        </section>
+        
         <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVCoordonnees.php" style="color: var(--color-brown)">Précédent (coordonnées)</a></button>
-    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-top: 40px;margin-right: 27px;background: rgba(255,255,255,0.5);color: var(--color-brown);border-style: solid;border-color: var(--color-brown);"><a href="CVExperience.php" style="color: var(--color-brown)">Suivant (expérience)</a></button>
+        <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-top: 40px;margin-right: 27px;background: rgba(255,255,255,0.5);color: var(--color-brown);border-style: solid;border-color: var(--color-brown);"><a href="CVExperience.php" style="color: var(--color-brown)">Suivant (expérience)</a></button>
+
+    </section>
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
