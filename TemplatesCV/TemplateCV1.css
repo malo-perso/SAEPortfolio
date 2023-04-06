@@ -2,6 +2,7 @@
     width: 21cm;
     height: 29.7cm;
     border: 1px #D3D3D3 solid;
+    position: relative;
 }
 
 
@@ -20,14 +21,14 @@
 }
 
 #div-haut {
-    padding-left: 40%;
+    padding-left: 35%;
     width: auto;
     height: 20%;
     margin-bottom: -10%;
 }
 
 #div-milieu {
-    padding-left: 40%;
+    padding-left: 35%;
     width: auto;
     height: 85%;
     background-color: #ffffff;
@@ -55,5 +56,9 @@ hr {
 }
 
 #footer {
-    padding-bottom: 10px;
+    font-style: italic;
+    font-size: 0.8em;
+    vertical-align: bottom;
+    position: absolute;
+    bottom:0;
 }

@@ -3,6 +3,7 @@
     height: 29.7cm;
     border: 1px #D3D3D3 solid;
     background-color: #9DBB59;
+    position: relative;
 }
 
 #div-nom {
@@ -16,9 +17,45 @@
 #div-gauche {
     float: left;
     width: 30%;
-    height: 88.5%;
+    height: 85.5%;
     padding-right: 10px;
     padding-left: 10px;
-    margin-top: -15%;
+    margin-top: -11%;
     background-color: #BED66F;
+}
+
+#resume {
+    text-align: justify;
+}
+
+#div-milieu {
+    padding-left: 35%;
+    width: auto;
+    height: 88.5%;
+    margin-top: -15%;
+    background-color: #ffffff;
+}
+
+h4{
+    padding: 2%;
+    background-color: #9DBB59;
+}
+
+.cadre {
+    font-size: 1.5em;
+    background-color: #ffffff;
+}
+
+span {
+    font-weight: bold;
+    color: #9DBB59;
+}
+
+#footer {
+    font-style: italic;
+    font-size: 0.8em;
+    vertical-align: bottom;
+    position: absolute;
+    bottom:0;
+    
 }
