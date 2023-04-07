@@ -1,13 +1,51 @@
 <?php
 session_start();
 
-if(isset($_SESSION["nom_utilisateur"])){
-    echo "Bonjour " .$_SESSION["nom_utilisateur"]. ", bienvenue sur notre site !\n";
+require ("./common/DB.inc.php");
+include "./common/fctAux.inc.php";
+
+
+enTete();
+contenu();
+pied();
+
+function contenu() {
+    echo "<div class=\"cardSlider\">\n";
+
+    /*script insersion card Portfolio */
+    cardPortfolio();
+
+    echo "</div>\n";   
 }
 
-// Affiche les données stockées dans la session
-echo "Votre nom est : " . $_SESSION['nom_utilisateur'] . "<br>";
-echo "Votre prenom est : " . $_SESSION['prenom_utilisateur'] . "<br>";
-echo "Votre email est : " . $_SESSION['email'] . "<br>";
+function cardPortfolio() {
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else {
+        try {
+            //interroge la base de données et récupère tous les portfolio d'un utilisateur
+            $Portfolio = $db->getPortfolioByUser($_SESSION['id_utilisateur']);
+            foreach($Portfolio as $row) {
+                echo '
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <a href="">
+                            <img src="./images/user.png" class="card-img-top" alt="Image 2">
+                            <div class="card-body">
+                                <p class="card-text">'.$row['nomPortfolio'].'-'.$row['estPublic'].'</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>';
+            }
 
+        } //fin try
+        catch (Exception $e) {
+            echo $e->getMessage();
+        }  
+        $db->close();
+} //fin du else connexion reussie
+}
 ?>
