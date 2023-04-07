@@ -5,6 +5,7 @@
 DROP TABLE IF EXISTS utilisateur CASCADE;
 DROP TABLE IF EXISTS portfolio CASCADE;
 DROP TABLE IF EXISTS page CASCADE;
+DROP TABLE IF EXISTS CV CASCADE;
 
 CREATE TABLE utilisateur(
     idUser SERIAL PRIMARY KEY,
@@ -25,5 +26,15 @@ CREATE TABLE page(
     idPage SERIAL PRIMARY KEY,
     nomPage VARCHAR(25) NOT NULL,
     contenu JSON,
+    idPortfolio INTEGER REFERENCES portfolio(idPortfolio)
+);
+
+Create table CV(
+    idCV SERIAL PRIMARY KEY,
+    coordonnées JSON,
+    formations JSON,
+    experiences JSON,
+    competences JSON,
+    langue JSON,
     idPortfolio INTEGER REFERENCES portfolio(idPortfolio)
 );

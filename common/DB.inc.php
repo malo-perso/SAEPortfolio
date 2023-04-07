@@ -3,9 +3,7 @@
 require ('user.inc.php');
 require ('page.inc.php');
 require ('Portfolio.inc.php');
-require ('./CV/CV.inc.php');
-require ('CV/langue.inc.php');
-
+require ('CV/CV.inc.php');
 
 class DB {
     private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
@@ -311,6 +309,15 @@ class DB {
         } else {
             return true;
         }
+    }
+
+    public function updateCVCompetence($idPortfolio, $softSkills, $hardSkills)
+    {
+        
+        $requete = 'UPDATE CV SET softSkills = ? AND hardSkills where idPortfolio = ?';
+        $tparam = array($softSkills, $hardSkills, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
+      
     }
 
     //récupérer le mot de passe d'un utilisateur par son mail ou son pseudo

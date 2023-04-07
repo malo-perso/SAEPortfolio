@@ -1,7 +1,7 @@
 <?php
 
 
-class Competence implements \JsonSerializable {
+class Competence  {
 
     private $nomComp;
 
@@ -17,11 +17,11 @@ class Competence implements \JsonSerializable {
 	    return $res;
     }
 
-    public function jsonSerialize()
+    /*public function jsonSerialize()
     {
         $vars = get_object_vars($this);
         return $vars;
-    }
+    }*/
 }
 
 //test
