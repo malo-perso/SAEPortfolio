@@ -1,6 +1,6 @@
 <?php
 
-class Page implements \JsonSerializable{
+class Page implements JsonSerializable{
 
     private $idPage;
     private $nomPage;
@@ -27,7 +27,7 @@ class Page implements \JsonSerializable{
         return $res;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array 
     {
         $vars = get_object_vars($this);
         return $vars;

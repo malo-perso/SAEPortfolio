@@ -94,7 +94,7 @@
                     if ($db == null) {echo "Impossible de se connecter à la base de donnees !";}
                     else
                     {
-                        
+                        echo "Connexion à la base de donnees reussie !";
                     }
 
                     

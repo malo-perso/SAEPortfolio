@@ -311,6 +311,14 @@ class DB {
         }
     }
 
+    public function updateCVCoordonnees($idPortfolio, $coordonnees)
+    {
+            
+        $requete = 'UPDATE CV SET coordonnees = ? where idPortfolio = ?';
+        $tparam = array($coordonnees, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
+    }
+
     public function updateCVCompetence($idPortfolio, $softSkills, $hardSkills)
     {
         
@@ -319,6 +327,35 @@ class DB {
         return $this->execMaj($requete, $tparam);
       
     }
+
+    public function updateCVExperience($idPortfolio, $experience)
+    {
+        
+        $requete = 'UPDATE CV SET experience = ? where idPortfolio = ?';
+        $tparam = array($experience, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
+      
+    }
+
+    public function updateCVFormation($idPortfolio, $formation)
+    {
+        
+        $requete = 'UPDATE CV SET formation = ? where idPortfolio = ?';
+        $tparam = array($formation, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
+      
+    }
+
+    public function updateCVLangue($idPortfolio, $langue)
+    {
+        
+        $requete = 'UPDATE CV SET langue = ? where idPortfolio = ?';
+        $tparam = array($langue, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
+      
+    }
+
+
 
     //récupérer le mot de passe d'un utilisateur par son mail ou son pseudo
 
