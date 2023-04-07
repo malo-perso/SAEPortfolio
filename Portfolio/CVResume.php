@@ -80,21 +80,29 @@
 
             //get the div
             var div = document.getElementById("templates");
-            div.style.display = "block";
+            if(div.style.display === "none")
+            {
+                div.style.display = "block";
 
-            tmpl1.addEventListener("click", function() {
-                console.log("Template 1");
-                tmpl1.style.border = "2px solid var(--color-brown)";
-                tmpl2.style.border = "none";
-            });
+                tmpl1.addEventListener("click", function() {
+                    console.log("Template 1");
+                    tmpl1.style.border = "2px solid var(--color-brown)";
+                    tmpl2.style.border = "none";
+                });
 
-            tmpl2.addEventListener("click", function() {
-                console.log("Template 2");
-                tmpl2.style.border = "2px solid var(--color-brown)";
-                tmpl1.style.border = "none";
-            });
-                     
-            console.log("Choisissez une template");
+                tmpl2.addEventListener("click", function() {
+                    console.log("Template 2");
+                    tmpl2.style.border = "2px solid var(--color-brown)";
+                    tmpl1.style.border = "none";
+                });
+                        
+                console.log("Choisissez une template");
+            }
+            else
+            {
+                div.style.display = "none";
+                console.log("Cacher");
+            }
         });
     </script>
 
