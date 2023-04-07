@@ -30,7 +30,7 @@
                 id.innerHTML = result;
             });
 
-        </script>
+</script>
     
     <section class="text-start" style="margin-left:15%; width:85%;">
 
@@ -50,28 +50,39 @@
 
 
         <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
-            <form style=width:70%;>
+            <form method="POST" style=width:70%;>
                 <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3" style="padding-top: 0px;"><label class="form-label form-label form-label">Intitulé du poste</label><input class="form-control form-control form-control" type="text" name="firstname" placeholder="ex : Vendeur"></div>
+                                <div class="form-group mb-3" style="padding-top: 0px;">
+                                <label class="form-label form-label form-label">Intitulé du poste</label>
+                                <input class="form-control form-control form-control" type="text" name="intitulePoste" placeholder="ex : Vendeur">
+                            </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label form-label form-label">Ville</label><input class="form-control form-control form-control" type="text" name="lastname" placeholder="ex: Le Havre"></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label form-label form-label">Ville</label>
+                                    <input class="form-control form-control form-control" type="text" name="ville" placeholder="ex: Le Havre">
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div><label class="form-label form-label form-label">Employeur</label><input class="form-control form-control form-control" type="text" placeholder="ex : Auchan"></div>
+                                <div><label class="form-label form-label form-label">Employeur</label>
+                                <input class="form-control form-control form-control" name="employeur" type="text" placeholder="ex : Auchan">
+                            </div>
                             </div>
                             <div class="col">
-                                <div><label class="form-label form-label form-label">Type de contrat</label><input class="form-control form-control form-control" type="text" placeholder="ex : CDD"></div>
+                                <div><label class="form-label form-label form-label">Type de contrat</label>
+                                <input class="form-control form-control form-control" name="contrat" type="text" placeholder="ex : CDD">
+                            </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-6"><label class="form-label form-label form-label form-label">Date début</label>
-                                <div class="d-lg-flex align-items-lg-center form-group mb-3"><select class="form-select form-select form-select" style="width: 123.4px;">
+                                <div class="d-lg-flex align-items-lg-center form-group mb-3">
+                                    <select name="moisDeb" class="form-select form-select form-select" style="width: 123.4px;">
                                         <optgroup label="Mois">
                                             <option value="" selected="">Mois</option>
                                             <option value="1">Janvier</option>
@@ -90,7 +101,8 @@
                                     </select><input class="form-control" type="number" min="1958" max="2033" value="2000" name="anneeDeb"></div>
                             </div>
                             <div class="col-sm-12 col-md-6"><label class="form-label form-label form-label form-label">Date fin</label>
-                                <div class="d-lg-flex align-items-lg-center form-group mb-3"><select class="form-select form-select form-select" style="width: 123.4px;">
+                                <div class="d-lg-flex align-items-lg-center form-group mb-3">
+                                    <select name="moisFin" class="form-select form-select form-select" style="width: 123.4px;">
                                         <optgroup label="Mois">
                                             <option value="" selected="">Mois</option>
                                             <option value="1">Janvier</option>
@@ -106,18 +118,48 @@
                                             <option value="11">Novembre</option>
                                             <option value="12">Décembre</option>
                                         </optgroup>
-                                    </select><input class="form-control" type="number" min="1958" max="2033" value="2000" name="anneeDeb"></div>
+                                    </select>
+                                    <input class="form-control" type="number" min="1958" max="2033" value="2000" name="anneeFin"></div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12" style="margin-bottom: 17px;"><label class="form-label form-label">Description</label><textarea class="form-control form-control" style="width: 530px;height: 90px;" placeholder="Description des missions effectuer"></textarea></div>
+                            <div class="col-lg-12" style="margin-bottom: 17px;">
+                                <label class="form-label form-label">Description</label>
+                                <textarea class="form-control form-control" name="description" style="width: 530px;height: 90px;" placeholder="Description des missions effectuer"></textarea>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 17px;margin-top: 0px;"><button class="btn btn-primary d-lg-flex" data-bss-hover-animate="pulse" type="button" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;padding-top: 6px;margin-top: 8px;">Ajouter expérience</button></div>
+                            <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 17px;margin-top: 0px;">
+                                <button class="btn btn-primary d-lg-flex" data-bss-hover-animate="pulse" type="submit" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;padding-top: 6px;margin-top: 8px;">Ajouter expérience</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
+            <?php
+                if(isset($_POST['intitulePoste']) && isset($_POST['ville']) && isset($_POST['employeur']) && isset($_POST['contrat']) && isset($_POST['moisDeb']) && isset($_POST['anneeDeb']) && isset($_POST['moisFin']) && isset($_POST['anneeFin']) && isset($_POST['description'])){
+                    $intitulePoste = $_POST['intitulePoste'];
+                    $ville = $_POST['ville'];
+                    $employeur = $_POST['employeur'];
+                    $contrat = $_POST['contrat'];
+                    $moisDeb = $_POST['moisDeb'];
+                    $anneeDeb = $_POST['anneeDeb'];
+                    $moisFin = $_POST['moisFin'];
+                    $anneeFin = $_POST['anneeFin'];
+                    $description = $_POST['description'];
+                    
+                    echo $intitulePoste."<br>";
+                    echo $ville."<br>";
+                    echo $employeur."<br>";
+                    echo $contrat."<br>";
+                    echo $moisDeb."<br>";
+                    echo $anneeDeb."<br>";
+                    echo $moisFin."<br>";
+                    echo $anneeFin."<br>";
+                    echo $description."<br>";
+                    
+                }
+            ?>
         </div>
     
         <div style="display:flex; justify-content: center;">
