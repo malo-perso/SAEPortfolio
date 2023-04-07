@@ -120,9 +120,14 @@
             </form>
         </div>
     
-        <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-top: 2%;margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-bottom: 45px;"><a href="CVFormation.php" style="color: var(--color-brown)">Précédent (Formations)</a></button>
-        <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="margin-top: 2%;margin-left: 14px;margin-bottom: 44px;border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);margin-right: 201px;"><a href="CVCompetence.php" style="color: var(--color-brown)">Suivant (Compétences)</a></button>
-
+        <div style="display:flex; justify-content: center;">
+            <div class="btn-group" role="group" style="width:55%">
+                <a href="CVFormation.php" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (formations)</button></a>
+                <a href="#" style="margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Enregistrer</button></a>
+                <a href="CVCompetence.php" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (compétences)</button></a>
+        
+            </div>
+        </div>
     </section>
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
