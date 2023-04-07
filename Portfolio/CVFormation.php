@@ -29,7 +29,7 @@
                 id.innerHTML = result;
             });
 
-        </script>
+    </script>
         <section class="text-start" style="margin-left:15%; width:85%">
 
             <h2 class="text-center" style="color: var(--bs-body-color);padding-top: 5%;">Formations</h2>

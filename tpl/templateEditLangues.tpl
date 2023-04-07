@@ -19,36 +19,40 @@
 <script src="../assets/js/Profile-Edit-Form-profile.js"></script>
 <script src="../assets/js/getNav.js"></script>
 
-<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+<div id="nav" style="width: 15%;background: #e7e4df;border: 3px var(--color-brown) solid;position: fixed;height: 100%; margin-top:-0.5%;"> </div>
 
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVCompetence.php");
+        var result = getNav("CVLangue.php");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
 </script>
 
-<div style="border-color: var(--color-brown);">
-    <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
-        <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Langues</h2>
-        {% for langue in tabLangues %}
-            <div style="display:flex; justify-content:center;">
-                <p class="text-center" style="width:35%; border: 1px solid var(--color-blue);border-radius:3%; justify-content: center;margin:3%;"> {{ langue.getNomLangue() }} -&nbsp;{{ langue.getNiveauLangue() }} </p>
+<section class="text-start" style="margin-left:15%; width:85%">
+        <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Langues</h2>
+            <div name="langues" style="display:grid; justify-content:center; border: 1px solid var(--color-blue);border-radius:3%;">
+                {% for langue in tabLangues %}
+                    
+                    <p class="text-center" style="width:100%;  justify-content: center;margin:1%;"> {{ langue.getNomLangue() }} -&nbsp;{{ langue.getNiveauLangue() }} </p>
+                   
+                {% endfor %}
             </div>
-        {% endfor %}
-        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 850px;border-style: solid;padding-right: 0px;margin-right: 26px;margin-top: 0px;padding-top: 0px;padding-left: 0px;margin-left: 159px;">
-            <form>
-                <div class="row profile-row" style="width: 865.2px;margin-right: -265px;padding-right: 48px;margin-left: -1px;">
+        
+        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
+            <form method="POST" style=width:70%;>
+                <div class="row profile-row" style="margin-right: -60%;padding-right: 10%;">
                     <div class="col-md-8">
-                        <div class="row" style="margin-top: -14px;" id="langues">
+                        <div class="row" id="langues">
+                               <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label form-label form-label">Langue</label>
+                                        <input class="form-control form-control form-control" type="text" name="langue" placeholder="ex : Anglais" id="nomLangue"></div>
+                                    </div>
                                 <div class="col-sm-12 col-md-6">
-                                    <div class="form-group mb-3" style="padding-top: 0px;"><label class="form-label form-label form-label">Langue</label>
-                                    <input class="form-control form-control form-control" type="text" name="langue" placeholder="ex : Anglais" id="nomLangue"></div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="form-group mb-3"><label class="form-label form-label form-label">Niveau</label>
+                                    <div class="form-group mb-3">
+                                        <label class="form-label form-label form-label">Niveau</label>
                                         <select class="form-select form-select" name="niveau" style="width: 190px;" id="niveauLangue">
                                             <option value="">Débutant (A1)</option>
                                             <option value="">Elémentaire (A2)</option>
@@ -63,19 +67,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row profile-row" style="width: 865.2px;margin-right: -265px;padding-right: 48px;margin-left: -1px;margin-top: -1px;">
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col d-flex justify-content-center"><button class="btn btn-primary" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;" id="btnAjoutLangue">Ajouter langue</button></div>
-                        </div>
-                    </div>
+                <div style="display: flex;justify-content: center; margin:2%;">
+                <button class="btn btn-primary" data-bss-hover-animate="pulse" style="background: var(--color-brown);border-color: var(--color-brown);">Ajouter langue</button>
                 </div>
             </form>
         </div>
+        <a href="editCompetence.php" style="color: var(--color-brown)"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;">Précédent (compétences)</button></a>
     </section>
-    <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVCompetence.php" style="color: var(--color-brown)">Précédent (compétences)</a></button>
-    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="submit" style="border-style: solid;border-color: var(--color-brown);background: var(--color-brown);color: var(--bs-body-bg);margin-top: 45px;margin-left: 0px;margin-right: 21px;">Enregistrer</button>
-
+    
     <script src="../assets/js/edit.js"></script>
     <script>
         window.addEventListener("load", function () {

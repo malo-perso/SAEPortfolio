@@ -16,12 +16,26 @@ function ajouterFormation() {
     }
     else {
         formations.innerHTML += "<section style=\"margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;\"> \n" +
-                                "<p class=\"index_nom_ville\">" + nomEtablissement + " " + villeEtablissement + "</p> \n" +
+                                "<p class=\"index_nom_ville\">" + nomEtablissement + " - " + villeEtablissement + "</p> \n" +
                                 "<p class=\"diplome_domaine_dates\">" + diplome + "-" + domaine + " " + dateDebut + " " + dateFin + "</p> \n" +
                                 "</section> \n";
     }
 }
 
 function ajouterLangue() {
-    // TODO
+
+    var langue = document.getElementById("langue").value;
+    var niveau = document.getElementById("niveau").value;
+
+    var langues = document.getElementById("langues");
+
+    if (langue == "" || niveau == ""){
+        window.alert("Veuillez remplir correctement tous les champs");
+    }
+    else {
+        console.log(langue);
+        console.log(niveau);
+    }
+
+    
 }

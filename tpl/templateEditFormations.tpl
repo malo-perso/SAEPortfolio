@@ -18,21 +18,21 @@
 <script src="../assets/js/Profile-Edit-Form-profile.js"></script>
 <script src="../assets/js/getNav.js"></script>
 
-<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%; margin-top:-0.5%;"> </div>
 
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVCompetence.php");
+        var result = getNav("CVFormation.php");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
 </script>
 
 <div class="text-start">
-    <section class="text-start" style="text-align: left;padding-top: 60px;padding-left: 186px;padding-right: 30px;">
-        <h2 class="text-start d-xxl-flex align-items-center" style="color: var(--bs-body-color);margin-top: 0px;padding-top: 0px;padding-left: 0px;width: 253px;margin-left: 160px;">Formations</h2>
-        <div id="formations">
+    <section class="text-start" style="margin-left:15%; width:85%">
+        <h2 class="text-center" style="color: var(--bs-body-color);padding-top: 5%;">Formations</h2>
+        <div id="formations" style="display:grid; justify-content:center; margin-left:-10%;">
             {% for formation in tabFormations %}
                 <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
                     <p class="index_nom_ville">{{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
@@ -40,21 +40,28 @@
                 </section>
             {% endfor %}
         </div>
-        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 788px;height: 504.25px;border-style: solid;padding-left: 11px;padding-right: 0px;margin-right: 26px;margin-left: 156px;">
-            <form style="height: 405px;width: 817.6px;">
-                <div class="row profile-row" style="height: 327px;width: 880.6px;margin-right: -116px;margin-top: 6px;margin-left: 103px;">
+        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
+            <form method="POST" style="width:70%;">
+                <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label form-label form-label">Nom de l'établissement</label><input class="form-control form-control form-control" type="text" name="etablissement" id="nomEtablissement"></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label form-label form-label">Nom de l'établissement</label>
+                                    <input class="form-control form-control form-control" type="text" name="etablissement" id="nomEtablissement">
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label form-label form-label">Ville</label><input class="form-control form-control form-control" type="text" name="ville" id="villeEtablissement"></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label form-label form-label">Ville</label>
+                                    <input class="form-control form-control form-control" type="text" name="ville" id="villeEtablissement">
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div><label class="form-label form-label form-label">Diplome</label><select class="form-select" id="diplome">
+                                <div><label class="form-label form-label form-label">Diplome</label>
+                                    <select name="diplome" class="form-select" id="diplome">
                                         <optgroup label="Sélectionner">
                                             <option value="cap">CAP</option>
                                             <option value="bep">BEP</option>
@@ -83,12 +90,18 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div><label class="form-label form-label form-label">Domaine d'étude</label><input class="form-control form-control form-control" type="text" id="domaine"></div>
+                                <div>
+                                    <label class="form-label form-label form-label">Domaine d'étude</label>
+                                    <input class="form-control form-control form-control" type="text" id="domaine">
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label form-label form-label">Mention</label><input class="form-control" type="text" id="mention"></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label form-label form-label">Mention</label>
+                                    <input class="form-control" type="text" id="mention">
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-6"></div>
                         </div>
@@ -112,7 +125,7 @@
                                         <option value="12">Décembre</option>
                                     </optgroup>
                                 </select>
-                                <input class="form-control" type="number" min="1958" max="2033" name="anneeDeb" style="width: 123px;" id="anneeDeb"></div>
+                                <input class="form-control" type="number" min="1958" max="2033" value="2000" name="anneeDeb" style="width: 123px;" id="anneeDeb"></div>
                             </div>
                             <div class="col-sm-12 col-md-6"><label class="form-label form-label form-label form-label">Date fin</label>
                                 <div class="d-lg-flex align-items-lg-center form-group mb-3">
@@ -133,15 +146,24 @@
                                         <option value="12">Décembre</option>
                                     </optgroup>
                                 </select>
-                                <input class="form-control" type="number" min="1958" max="2033" name="anneeFin" style="width: 123px;" id="anneeFin"></div>
+                                <input class="form-control" type="number" min="1958" max="2033" value="2000" name="anneeFin" style="width: 123px;" id="anneeFin"></div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col d-flex justify-content-center"><button id="btnAjoutFormation" class="btn btn-primary float-none d-lg-flex" data-bss-hover-animate="pulse" type="button" style="margin-right: 15px;margin-left: 15px;margin-bottom: 15px;width: 194.5px;text-align: center;margin-top: 22px;color: var(--bs-body-bg);border-color: var(--color-brown);background: var(--color-brown);">Ajouter votre formation</button></div>
-                        </div>
+                            <div class="col d-flex justify-content-center">
+                                <button class="btn btn-primary float-none d-lg-flex" data-bss-hover-animate="pulse" type="submit" style="margin-right: 15px;margin-left: 15px;margin-bottom: 15px;width: 194.5px;text-align: center;margin-top: 22px;color: var(--bs-body-bg);border-color: var(--color-brown);background: var(--color-brown);">Ajouter votre formation</button>
+                            </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
+        </div>
+        <div style="display:flex; justify-content: center;">
+            <div class="btn-group" role="group" style="width:35%">
+                <a href="CVCoordonnees.php" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (coordonnées)</button></a>
+                <a href="CVExperience.php" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (expérience)</button></a>
+        
+            </div>
         </div>
     </section>
 </div>
