@@ -65,11 +65,14 @@
                                 <img src="../images/template2.png" id="img2" alt="Template 2" style="width:40%; ">
                             </div>
                         </div>
+                        <div id="couleur" class="col-4" style="margin-left: 45%;">
+                            <h3>Couleur</h3>
+                            <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+                        </div>
                     </div>
             </div>
     </div>
-   
-   
+    
     <script>
         
         tmpl1 = document.getElementById("img1");
@@ -101,12 +104,12 @@
             else
             {
                 div.style.display = "none";
+                coul = document.getElementById("favcolor");
+                console.log(coul.value);
                 console.log("Cacher");
             }
         });
     </script>
-
-
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
