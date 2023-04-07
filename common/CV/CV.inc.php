@@ -1,10 +1,10 @@
 <?php
 
-require ('./competence.inc.php');
-require ('./coordonnees.inc.php');
-require ('./experience.inc.php');
-require ('./formation.inc.php');
-require ('./langue.inc.php');
+require ('competence.inc.php');
+require ('coordonnees.inc.php');
+require ('experience.inc.php');
+require ('formation.inc.php');
+require ('langue.inc.php');
 
 class CV 
 {
