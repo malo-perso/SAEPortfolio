@@ -255,24 +255,15 @@ class DB {
         $requete = "SELECT idUser FROM utilisateur WHERE mail = ?";
         $tparam = array($login);
         $resultats = $this->execQuery($requete,$tparam,'user');
-        $row = $resultats[0];
         if (!$resultats) {
-            //Erreur lors de l'exécution de la requête
             //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
             return null;
         } elseif (empty($resultats)) {
-            //Aucun utilisateur trouvé
             //echo "Aucun utilisateur trouvé";
             return null;
         } else {
-            if (null !==$row->getIdUser()) {
-                //L'objet est valide, on peut accéder à sa propriété "idUser"
-                return $row->getIdUser();
-            } else {
-                //La propriété "idUser" n'existe pas dans l'objet
-                //echo "La propriété idUser n'existe pas dans l'objet";
-                return null;
-            }
+            //echo count($resultats) . " utilisateurs trouvés";
+            return $resultats;
         }
     }
 
@@ -292,6 +283,7 @@ class DB {
         } else {
             if (null !==$row->getIdPortfolio()) {
                 //L'objet est valide, on peut accéder à sa propriété "idPortfolio"
+                echo "L'objet est valide, on peut accéder à sa propriété idPortfolio";
                 return $row->getIdPortfolio();
             } else {
                 //La propriété "idPortfolio" n'existe pas dans l'objet

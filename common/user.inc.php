@@ -3,24 +3,28 @@
 /*classe permettant de representer les tuples de la table User */
 class User {
       /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
+    private $idUser;
     private $nom;
     private $prenom;
     private $mail;
     private $mdp;  
       
-    public function __construct($n="",$p="",$ma="",$md="") {
+    public function __construct($i="",$n="",$p="",$ma="",$md="") {
+        $this->idUser = $i;
         $this->nom = $n;
         $this->prenom = $p;
         $this->mail = $ma;
         $this->mdp = $md;
     }
 
+    public function getIdUser() { $this->idUser = $i; }
     public function getNom() { return $this->nom; }
     public function getPrenom() { return $this->prenom;}
     public function getMail() { return $this->mail; }
     public function getMdp() { return $this->mdp; }
 
     public function __toString() {
+        $res = "idUser:".$this->idUser."\n";
         $res = "nom:".$this->nom."\n";
         $res = $res ."prenom:".$this->prenom."\n";
         $res = $res ."mail:".$this->mail."\n";
