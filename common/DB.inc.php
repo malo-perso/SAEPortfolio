@@ -3,6 +3,7 @@
 require ('user.inc.php');
 require ('page.inc.php');
 require ('Portfolio.inc.php');
+require ('./CV/CV.inc.php');
 
 class DB {
     private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
