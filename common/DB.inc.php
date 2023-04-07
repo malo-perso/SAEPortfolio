@@ -256,23 +256,8 @@ class DB {
         $requete = "SELECT idUser FROM utilisateur WHERE mail = ?";
         $tparam = array($login);
         $resultats = $this->execQuery($requete,$tparam,'user');
-        if (!$resultats) {
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
-            return null;
-        } elseif (empty($resultats)) {
-            //echo "Aucun utilisateur trouvé";
-            return null;
-        } else {
-            //echo count($resultats) . " utilisateurs trouvés";
-            return $resultats;
-        }
-    }
-
-    public function getPortfolioByUser($idUser){
-        $requete = "SELECT nomPortfolio,estPublic FROM portfolio WHERE idUser = ?";
-        $tparam = array($idUser);
-        $resultats = $this->execQuery($requete,$tparam,'portfolio');
         $row = $resultats[0];
+        //echo $row->getPrenom();
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
@@ -282,15 +267,30 @@ class DB {
             //echo "Aucun utilisateur trouvé";
             return null;
         } else {
-            if (null !==$row->getIdPortfolio()) {
-                //L'objet est valide, on peut accéder à sa propriété "idPortfolio"
-                echo "L'objet est valide, on peut accéder à sa propriété idPortfolio";
-                return $row->getIdPortfolio();
+            if (null !==$row->getIdUser()) {
+                //L'objet est valide, on peut accéder à sa propriété "prenom"
+                return $row->getIdUser();
             } else {
-                //La propriété "idPortfolio" n'existe pas dans l'objet
-                //echo "La propriété idPortfolio n'existe pas dans l'objet";
+                //La propriété "prenom" n'existe pas dans l'objet
+                //echo "La propriété prenom n'existe pas dans l'objet";
                 return null;
             }
+        }
+    }
+
+    public function getPortfolioByUser($idUser){
+        $requete = "SELECT * FROM portfolio WHERE idUser = 1";
+        $tparam = $idUser;
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        if (!$resultats) {
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return null;
+        } elseif (empty($resultats)) {
+            //echo "Aucun portfolio trouvé";
+            return null;
+        } else {
+            //echo count($resultats) . " portfolio trouvés";
+            return $resultats;
         }
     }
 
@@ -298,18 +298,6 @@ class DB {
     //  Fonctions setters 
     /*****************************/
 
-    public function UpadateContenu($contenu, $idPortfolio){
-        $requete = "UPDATE portfolio SET contenu = ? WHERE idPortfolio = ?";
-        $tparam = array($contenu, $idPortfolio);
-        $resultats = $this->execMaj($requete,$tparam);
-        if (!$resultats) {
-            return false;
-        } elseif (empty($resultats)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     public function updateCVCoordonnees($idPortfolio, $coordonnees)
     {
