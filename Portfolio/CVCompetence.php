@@ -40,8 +40,8 @@
                 <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-lg-12" style="margin-bottom: 40px;"><label class="form-label form-label">Soft skills</label><textarea class="form-control form-control" style="width: 530px;height: 90px;" placeholder="Rédiger une ligne par soft skills"></textarea></div>
-                            <div class="col-lg-12" style="margin-bottom: 40px;"><label class="form-label form-label">Hard skills</label><textarea class="form-control form-control" style="width: 530px;height: 90px;" placeholder="Rédiger une ligne par hard skills"></textarea></div>
+                            <div class="col-lg-12" style="margin-bottom: 1%;"><label class="form-label form-label">Soft skills</label><textarea class="form-control form-control" style="margin-bottom:2%;" placeholder="Rédiger une ligne par soft skills"></textarea></div>
+                            <div class="col-lg-12" style="margin-bottom: 1%;"><label class="form-label form-label">Hard skills</label><textarea class="form-control form-control" style="margin-bottom:2%;" placeholder="Rédiger une ligne par hard skills"></textarea></div>
                         </div>
                     </div>
                 </div>
