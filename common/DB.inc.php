@@ -3,7 +3,11 @@
 require ('user.inc.php');
 require ('page.inc.php');
 require ('Portfolio.inc.php');
+<<<<<<< Updated upstream
 require ('./CV/CV.inc.php');
+=======
+require ('CV/langue.inc.php');
+>>>>>>> Stashed changes
 
 class DB {
     private static $instance = null; //mémorisation de l'instance de DB pour appliquer le pattern Singleton
@@ -43,8 +47,8 @@ class DB {
     
 
     /************************************************************************/
-    //	Methode permettant d'obtenir un objet instance de DB
-    //	NB : cet objet est unique pour l'exécution d'un même script PHP
+    //	Methode péermettant d'obtenir un objet instance de DB
+    //	NB : cet objet est unique pour l'excution d'un même script PHP
     //	NB2: c'est une methode de classe.
     /************************************************************************/
     public static function getInstance() {
