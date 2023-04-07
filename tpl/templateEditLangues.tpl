@@ -1,5 +1,4 @@
 {% extends "templateBase.tpl" %}
-
 {%block contenu %}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -46,11 +45,11 @@
                         <div class="row" style="margin-top: -14px;" id="langues">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group mb-3" style="padding-top: 0px;"><label class="form-label form-label form-label">Langue</label>
-                                    <input class="form-control form-control form-control" type="text" name="niveau" placeholder="ex : Anglais" id="nomLangue"></div>
+                                    <input class="form-control form-control form-control" type="text" name="langue" placeholder="ex : Anglais" id="nomLangue"></div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group mb-3"><label class="form-label form-label form-label">Niveau</label>
-                                        <select class="form-select form-select" style="width: 190px;" id="niveauLangue">
+                                        <select class="form-select form-select" name="niveau" style="width: 190px;" id="niveauLangue">
                                             <option value="">Débutant (A1)</option>
                                             <option value="">Elémentaire (A2)</option>
                                             <option value="">Intermédiare (B1)</option>
@@ -75,7 +74,7 @@
         </div>
     </section>
     <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVCompetence.php" style="color: var(--color-brown)">Précédent (compétences)</a></button>
-    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="border-style: solid;border-color: var(--color-brown);background: var(--color-brown);color: var(--bs-body-bg);margin-top: 45px;margin-left: 0px;margin-right: 21px;">Enregistrer</button>
+    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="submit" style="border-style: solid;border-color: var(--color-brown);background: var(--color-brown);color: var(--bs-body-bg);margin-top: 45px;margin-left: 0px;margin-right: 21px;">Enregistrer</button>
 
     <script src="../assets/js/edit.js"></script>
     <script>
