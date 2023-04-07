@@ -29,39 +29,43 @@
             });
 
         </script>
+
             <div class="text-start" style="margin-left:15%; width:85%">
-                <h3 style="text-align: center; padding-top:1%; margin-bottom:2%;">Résumé du CV :</h3>
-                <div class="container" style="height: 679px;width: 579.6px;color: var(--bs-body-color);border-style: solid;border-color: var(--bs-body-color);"></div>
-                <div class="row">
-                    <div class="col d-flex justify-content-center" style="margin-top: 16px;margin-bottom: 32px;">
-                        <div class="btn-group align-items-center" role="group">
-                            <a href="CVCoordonnees.php" style="color: var(--color-brown)">
-                                <button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">
-                                    Modifier le CV</button>
-                            </a>
-                                <button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
-                                <button id="choixTemplate" class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button>
+            
+                    <h3 style="text-align: center; padding-top:1%; margin-bottom:2%;">Résumé du CV :</h3>
+
+                    <div class="container" style="height: 679px;width: 579.6px;color: var(--bs-body-color);border-style: solid;border-color: var(--bs-body-color);"></div>
+
+                    <div class="row">
+                        <div class="col d-flex justify-content-center" style="margin-top: 16px;margin-bottom: 32px;">
+                            <div class="btn-group align-items-center" role="group">
+                                <a href="CVCoordonnees.php" style="color: var(--color-brown)">
+                                    <button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">
+                                        Modifier le CV</button>
+                                </a>
+                                    <button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
+                                    <button id="choixTemplate" class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div id="templates" style="border:1px var(--color-brown) solid; display:none;">
+                
+                    <div id="templates" style="border:1px var(--color-brown) solid; display:none;">
 
-                <div
-                    style="background-color: var(--color-brown); color: var(--color-white); padding: 1%;">
-                    <h3 style="text-align: center;">Choisissez une template</h3>
-                </div>
+                        <div style="background-color: var(--color-brown); color: var(--color-white);">
+                            <h3 style="text-align: center; padding:1%; margin-bottom:2%;">Choisissez une template </h3>
+                        </div>
 
-                <div  class="row" style="margin-left:20%; margin-bottom:2%">
-                    <div id="tmpl1" class="col-8"  style="width:auto; ">
-                        <h3>Template 1</h3>
-                        <img src="../images/template1.png" id="img1" alt="Template 1" style="width:40%; ">
+                        <div class="row" style="margin-left:20%; margin-bottom:2%">
+                            <div id="tmpl1" class="col-6">
+                                <h3>Template 1</h3>
+                                <img src="../images/template1.png" id="img1" alt="Template 1" style="width:40%; ">
+                            </div>
+                            <div id="tmpl2" class="col-6">
+                                <h3>Template 2</h3>
+                                <img src="../images/template2.png" id="img2" alt="Template 2" style="width:40%; ">
+                            </div>
+                        </div>
                     </div>
-                    <div id="tmpl2" class="col-8" style="width:auto; ">
-                        <h3>Template 2</h3>
-                        <img src="../images/template2.png" id="img2" alt="Template 2" style="width:40%; ">
-                    </div>
-                </div>
             </div>
     </div>
    
