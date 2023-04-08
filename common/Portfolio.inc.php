@@ -1,28 +1,28 @@
 <?php
 class portfolio {
 
-    private $idPortfolio;
-    private $nomPortfolio;
-    private $estPublic;
-    private $idUser;
+    private $idportfolio;
+    private $nomportfolio;
+    private $estpublic;
+    private $iduser;
       
-    public function __construct($i="",$n="",$e="", $u="") {
-        $this->idPortfolio = $i;
-        $this->nomPortfolio = $n;
-        $this->estPublic = $e;
-        $this->idUser = $u;
+    public function __construct($idportfolio="",$nomportfolio="",$estpublic="", $iduser="") {
+        $this->idportfolio = $idportfolio;
+        $this->nomportfolio = $nomportfolio;
+        $this->estpublic = $estpublic;
+        $this->iduser = $iduser;
     }
 
-    public function getIdPortfolio() { return $this->idPortfolio; }
-    public function getNomPortfolio() { return $this->nomPortfolio;}
-    public function getEstPublic() { return $this->estPublic; }
-    public function getIdUser() { return $this->idUser; }
+    public function getidportfolio() { return $this->idportfolio; }
+    public function getnomportfolio() { return $this->nomportfolio;}
+    public function getestpublic() { return $this->estpublic; }
+    public function getiduser() { return $this->iduser; }
 
     public function __toString() {
-        $res = "idPortfolio:".$this->idPortfolio."\n";
-        $res = $res ."nomPortfolio:".$this->nomPortfolio."\n";
-        $res = $res ."estPublic:".$this->estPublic."\n";
-        $res = $res ."idUser:".$this->idUser."\n";
+        $res = "idportfolio:".$this->idportfolio."\n";
+        $res = $res ."nomportfolio:".$this->nomportfolio."\n";
+        $res = $res ."estpublic:".$this->estpublic."\n";
+        $res = $res ."iduser:".$this->iduser."\n";
         return $res;
     }
 }

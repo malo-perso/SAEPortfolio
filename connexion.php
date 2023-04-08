@@ -118,7 +118,7 @@ else {
                          $_SESSION['nom_utilisateur'] = $nom;
                          $_SESSION['prenom_utilisateur'] = $prenom;
                          $_SESSION['email'] = $login;
-                         header('Location: index.php');
+                         header('Location: accueilSite.php');
                     }
                     else{
                          echo "Login ou mot de passe incorrect";

@@ -255,24 +255,26 @@ class DB {
     public function getUserID($login){
         $requete = "SELECT idUser FROM utilisateur WHERE mail = ?";
         $tparam = array($login);
+        //echo $tparam;
         $resultats = $this->execQuery($requete,$tparam,'user');
         $row = $resultats[0];
         //echo $row->getPrenom();
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
-            //echo "Aucun utilisateur trouvé";
+            echo "Aucun utilisateur trouvé";
             return null;
         } else {
             if (null !==$row->getIdUser()) {
                 //L'objet est valide, on peut accéder à sa propriété "prenom"
+                echo "L'objet est valide, on peut accéder à sa propriété idUser :".$row->getIdUser();
                 return $row->getIdUser();
             } else {
                 //La propriété "prenom" n'existe pas dans l'objet
-                //echo "La propriété prenom n'existe pas dans l'objet";
+                echo "La propriété prenom n'existe pas dans l'objet";
                 return null;
             }
         }
@@ -283,10 +285,10 @@ class DB {
         $tparam = $idUser;
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
             return null;
         } elseif (empty($resultats)) {
-            //echo "Aucun portfolio trouvé";
+            echo "Aucun portfolio trouvé";
             return null;
         } else {
             //echo count($resultats) . " portfolio trouvés";
