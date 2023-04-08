@@ -25,7 +25,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVCompetence.php");
+        var result = getNav("ConsultCompetence.php", "consult");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
@@ -44,14 +44,7 @@
         {% endfor %}
     </div>
     <button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;"><a href="CVCompetence.php" style="color: var(--color-brown)">Précédent (compétences)</a></button>
-    <button class="btn btn-primary float-end" data-bss-hover-animate="pulse" type="button" style="border-style: solid;border-color: var(--color-brown);background: var(--color-brown);color: var(--bs-body-bg);margin-top: 45px;margin-left: 0px;margin-right: 21px;">Enregistrer</button>
 
-    <script src="../assets/js/edit.js"></script>
-    <script>
-        window.addEventListener("load", function () {
-            this.document.getElementById("btnAjoutLangue").addEventListener("click", ajouterLangue);
-        });
-    </script>
 </div>
 
 {% endblock %}

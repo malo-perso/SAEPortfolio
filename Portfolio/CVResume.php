@@ -23,7 +23,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("CVResume.php");
+                var result = getNav("CVResume.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

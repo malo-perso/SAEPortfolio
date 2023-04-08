@@ -25,7 +25,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVExperience.php");
+        var result = getNav("EditExperience.php", "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
@@ -37,7 +37,7 @@
     {% for exp in tabExperiences %}
         <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
             <p class="index_nom_ville"> {{ exp.getIdExperience() }} :&nbsp;{{ exp.getIntitulePoste() }} -&nbsp;{{ exp.getNomEmployeur() }} ,&nbsp;{{ exp.getVilleEmployeur() }} </p>
-            <p class="diplome_domaine_dates"> {{ exp.getTypeContrat() }} ;&nbsp;{{ exp.getDateDebut() }} |&nbsp;{{ exp.getDateFin() }} </p>
+            <p class="diplome_domaine_dates"> {{ exp.getTypeContrat() }} :&nbsp;{{ exp.getDateDebut() }} |&nbsp;{{ exp.getDateFin() }} </p>
         </section>
     {% endfor %}
     </div>

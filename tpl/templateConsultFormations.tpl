@@ -23,7 +23,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVCompetence.php");
+        var result = getNav("ConsultCompetence.php", "consult");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
@@ -42,12 +42,5 @@
         </div>
     </section>
 </div>
-
-<script src="../assets/js/edit.js"></script>
-<script>
-    window.addEventListener("load", function () {
-        this.document.getElementById("btnAjoutFormation").addEventListener("click", ajouterFormation);
-    });
-</script>
 
 {% endblock %}

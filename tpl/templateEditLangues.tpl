@@ -24,7 +24,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVLangue.php");
+        var result = getNav("EditLangue.php", "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

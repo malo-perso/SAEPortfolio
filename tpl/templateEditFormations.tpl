@@ -1,6 +1,6 @@
 {% extends "templateBase.tpl" %}
 
-{%block contenu %}
+{% block contenu %}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("CVFormation.php");
+        var result = getNav("EditFormation.php", "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

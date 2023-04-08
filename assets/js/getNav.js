@@ -1,7 +1,17 @@
-function getNav(pageEnCours) 
+function getNav(pageEnCours, typePage) 
 {
-    var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "CVCoordonnees.php", "CVFormation.php", "CVExperience.php", "CVCompetence.php", "CVLangue.php", "Competence.php", "Projets.php", "Contact.php"];
+    if (typePage == "CV") {
+        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "CVCoordonnees.php", "CVFormation.php", "CVExperience.php", "CVCompetence.php", "CVLangue.php", "Competence.php", "Projets.php", "Contact.php"];
+    }
+    else if (typePage == "edit") {
+        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "editCoordonnees.php", "editFormation.php", "editExperience.php", "editCompetence.php", "editLangue.php", "Competence.php", "Projets.php", "editContact.php"];
+    }
+    else if (typePage == "consult") {
+        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "consultCoordonnees.php", "consultFormation.php", "consultExperience.php", "consultCompetence.php", "consultLangue.php", "Competence.php", "Projets.php", "consultContact.php"];
+    }
+    
     var arrayNom = ["", "Accueil", "CV", "Coordonnées", "Formation", "Expérience", "Compétences", "Langues", "Compétences", "Projets", "Contact"];
+
 
     let navHtml = "\n" +
                     "<ul class=\"nav nav-tabs flex-column\" style=\"border-style: none;\">";

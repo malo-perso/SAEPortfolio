@@ -29,7 +29,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("CVCompetence.php");
+                var result = getNav("CVCompetence.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

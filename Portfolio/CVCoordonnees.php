@@ -24,7 +24,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("CVCoordonnees.php");
+                var result = getNav("CVCoordonnees.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

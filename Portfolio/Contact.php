@@ -25,7 +25,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("Contact.php");
+                var result = getNav("Contact.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

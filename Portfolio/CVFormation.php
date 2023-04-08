@@ -24,7 +24,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("CVFormation.php");
+                var result = getNav("CVFormation.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });
