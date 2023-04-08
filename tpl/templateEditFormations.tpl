@@ -18,9 +18,11 @@
         <h2 class="text-center" style="color: var(--bs-body-color);padding-top: 5%;">Formations</h2>
         <div id="formations" style="display:grid; justify-content:center; margin-left:-10%;">
             {% for formation in tabFormations %}
-                <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
+                <section id="formation-{{ formation.getIdFormation() }}" style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
                     <p class="index_nom_ville">{{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
                     <p class="diplome_domaine_dates">{{ formation.getDiplome() }} -&nbsp;{{ formation.getDomaine() }} -&nbsp;{{ formation.getDateDebut() }} |&nbsp;{{ formation.getDateFin() }}</p>
+                    <button class="supprimer" onclick="(() => {supprimerFormation('{{ formation.getIdFormation() }}');})();">Supprimer</button>
+
                 </section>
             {% endfor %}
         </div>

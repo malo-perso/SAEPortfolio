@@ -29,14 +29,13 @@ function cardPortfolio() {
         try {
             //interroge la base de données et récupère tous les portfolio d'un utilisateur
             $resultats = $db->getPortfolioByUser($_SESSION['id_utilisateur']);
-            var_dump($resultats);
             if (!empty($resultats)) {
-                echo count($resultats) . " portfolio(s) trouvé(s) : <br/>\n";
+                echo "<p style=\"color: white;\">" .count($resultats) . " portfolio(s) trouvé(s) : </p>\n";
                 foreach($resultats as $row) {
                     echo '
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card">
-                            <a href="">
+                            <a href="./Portfolio/Accueil.php?idPortfolio='.$row->getidportfolio().'">
                                 <img src="./images/user.png" class="card-img-top" alt="Image 2">
                                 <div class="card-body">
                                     <h5 class="card-title">'.$row->getnomportfolio().'-'.$row->getestpublic().'</h5>
@@ -44,8 +43,6 @@ function cardPortfolio() {
                             </a>
                         </div>
                     </div>';
-                    $IdUser = $db->getUserID($login);
-                    echo "idUser : $IdUser";
                 }
             } else {
                 echo "Aucun portfolio trouvé";

@@ -110,11 +110,12 @@ else {
                if(emailValide($login) && motDePasseValide($mdp)){
                     if($db->isemailOK($login) && $db->isMotDePasseOK($login,$mdp)){
                          //remplir les informations de l'utilisateur dans la session
-                         $IdUser = $db->getUserID($login);
+                         $IdUser = $db->getUserID($_SESSION['email']);
+                         $id = $IdUser->getIdUser();
                          echo "Login et mot de passe correct";
                          $nom = $db->getNom($login);
                          $prenom = $db->getPrenom($login);
-                         $_SESSION['id_utilisateur'] = $IdUser;
+                         $_SESSION['id_utilisateur'] = $id;
                          $_SESSION['nom_utilisateur'] = $nom;
                          $_SESSION['prenom_utilisateur'] = $prenom;
                          $_SESSION['email'] = $login;

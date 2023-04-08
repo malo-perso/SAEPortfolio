@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
     <script src="../assets/js/getNav.js"></script>
     <style>
-        .ce-block__content, 
-        .ce-toolbar__content { 
+        .ce-block__content,
+        .ce-toolbar__content {
             max-width: calc(100% - 100px) !important; 
-        } 
-        .cdx-block { 
+        }
+        .cdx-block {
             max-width: 100% !important;
         }
     </style>
@@ -32,7 +32,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("Projets.php");
+                var result = getNav("Projets.php", "edit");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

@@ -255,10 +255,10 @@ class DB {
     public function getUserID($login){
         $requete = "SELECT idUser FROM utilisateur WHERE mail = ?";
         $tparam = array($login);
-        //echo $tparam;
+        //var_dump($tparam);
         $resultats = $this->execQuery($requete,$tparam,'user');
+        //var_dump($resultats);
         $row = $resultats[0];
-        //echo $row->getPrenom();
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
@@ -268,21 +268,14 @@ class DB {
             echo "Aucun utilisateur trouvé";
             return null;
         } else {
-            if (null !==$row->getIdUser()) {
-                //L'objet est valide, on peut accéder à sa propriété "prenom"
-                echo "L'objet est valide, on peut accéder à sa propriété idUser :".$row->getIdUser();
-                return $row->getIdUser();
-            } else {
-                //La propriété "prenom" n'existe pas dans l'objet
-                echo "La propriété prenom n'existe pas dans l'objet";
-                return null;
-            }
+            return $resultats[0];
+
         }
     }
 
     public function getPortfolioByUser($idUser){
-        $requete = "SELECT * FROM portfolio WHERE idUser = 1";
-        $tparam = $idUser;
+        $requete = "SELECT * FROM portfolio WHERE idUser = ?";
+        $tparam = array($idUser);
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
             echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
@@ -343,6 +336,13 @@ class DB {
         $tparam = array($langue, $idPortfolio);
         return $this->execMaj($requete, $tparam);
       
+    }
+
+    public function setVisible($idPortfolio, $visible)
+    {
+        $requete = 'UPDATE portfolio SET visible = ? where idPortfolio = ?';
+        $tparam = array($visible, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
     }
 
 

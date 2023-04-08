@@ -24,7 +24,6 @@ class CV
         $this->experiences = $experiences;
         $this->formations = $formations;
         $this->langues = $langues;
-        
     }
 
     // Accesseurs
