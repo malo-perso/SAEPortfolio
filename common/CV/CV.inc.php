@@ -6,14 +6,14 @@ require ('experience.inc.php');
 require ('formation.inc.php');
 require ('langue.inc.php');
 
-class CV 
+class CV implements \JsonSerializable
 {
     // Attributs (tableau de compétences, tableau d'expériences, tableau de formations, tableau de langues, coordonnées)
     private $coordonnees;
-    private $competences;
-    private $experiences;
-    private $formations;
-    private $langues;
+    private $competences = array();
+    private $experiences = array();
+    private $formations = array();
+    private $langues = array();
     
 
     // Constructeur
@@ -22,8 +22,8 @@ class CV
         $this->coordonnees = $coordonnees;
         $this->competences = $competences;
         $this->experiences = $experiences;
-        $this->formations = $formations;
-        $this->langues = $langues;
+        $this->formations  = $formations;
+        $this->langues     = $langues;
     }
 
     // Accesseurs
@@ -57,6 +57,71 @@ class CV
         }
         return $res;
         
+    }
+
+
+    public function ajouterFormation($formation)
+    {
+        array_push($this->formations, $formation);
+    }
+
+    public function ajouterExperience($experience)
+    {
+        array_push($this->experiences, $experience);
+    }
+
+    public function ajouterCompetence($competence)
+    {
+        array_push($this->competences, $competence);
+    }
+
+    public function ajouterLangue($langue)
+    {
+        array_push($this->langues, $langue);
+    }
+
+
+    public function supprimerFormation($idFormation) {
+        for ($i=0; $i < count($this->formations); $i++) { 
+            if ($this->formations[$i]->getIdFormation() == $idFormation) {
+                unset($this->formations[$i]);
+            }
+        }
+    }
+
+    public function supprimerExperience($idExperience) {
+        for ($i=0; $i < count($this->experiences); $i++) { 
+            if ($this->experiences[$i]->getIdExperience() == $idExperience) {
+                unset($this->experiences[$i]);
+            }
+        }
+    }
+
+    public function supprimerCompetence($idCompetence) {
+        for ($i=0; $i < count($this->competences); $i++) { 
+            if ($this->competences[$i]->getIdCompetence() == $idCompetence) {
+                unset($this->competences[$i]);
+            }
+        }
+    }
+
+    public function supprimerLangue($idLangue) {
+        for ($i=0; $i < count($this->langues); $i++) { 
+            if ($this->langues[$i]->getIdLangue() == $idLangue) {
+                unset($this->langues[$i]);
+            }
+        }
+    }
+
+    public function modifierCoordonnees($coordonnees) {
+        $this->coordonnees = $coordonnees;
+    }
+
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

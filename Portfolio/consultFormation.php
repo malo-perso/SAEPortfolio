@@ -14,9 +14,9 @@ $titrecentre = "Formations";
 
 $tpl = $twig->loadTemplate( "templateConsultFormations.tpl" );
 
-$tabFormations = array( new Formation(0, "Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
-                        new Formation(1, "Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
-                        new Formation(2, "Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
+$tabFormations = array( new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
+                        new Formation("Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
+                        new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
                       );
 
 

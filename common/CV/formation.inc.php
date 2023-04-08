@@ -1,7 +1,7 @@
 <?php
 
 
-class Formation implements JsonSerializable {
+class Formation {
 
     private static $numFormation = 0;
     private $idFormation;
@@ -16,7 +16,6 @@ class Formation implements JsonSerializable {
     public function __construct($n="",$v="", $di="", $do="", $dd="", $df="") 
     {
         $this->idFormation = ++self::$numFormation;
-        $this->idFormation = $id;
         $this->nomEtablissement = $n;
         $this->villeEtablissement = $v;
         $this->diplome = $di;

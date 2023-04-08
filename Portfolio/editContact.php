@@ -14,9 +14,9 @@ $titrecentre = "Contacts";
 
 $tpl = $twig->loadTemplate( "templateEditContacts.tpl" );
 
-$tabContacts = array( new Contact(0, "téléphone", "06 06 06 06 06"),
-                      new Contact(1, "email", "toto@gmail.com"),
-                      new Contact(2, "linkedin", "toto")
+$tabContacts = array( new Contact("téléphone", "06 06 06 06 06"),
+                      new Contact("email", "toto@gmail.com"),
+                      new Contact("linkedin", "toto")
                     );
 
 

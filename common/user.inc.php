@@ -2,14 +2,14 @@
 
 /*classe permettant de representer les tuples de la table User */
 class User {
-      /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
+    /*avec PDO, il faut que les noms attributs soient les mêmes que ceux de la table*/
     private $iduser;
     private $nom;
     private $prenom;
     private $mail;
     private $mdp;  
-      
-    public function __construct($iduser="",$nom="",$prenom="",$mail="",$mdp="") {
+
+    public function __construct($iduser=-1,$nom="",$prenom="",$mail="",$mdp="") {
         $this->iduser = $iduser;
         $this->nom = $nom;
         $this->prenom = $prenom;

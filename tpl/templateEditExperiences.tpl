@@ -16,12 +16,16 @@
 <section class="text-start" style="margin-left:15%; width:85%;">
     <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Expériences</h2>
     <div style="display:grid; justify-content:center; margin-left:-10%;">
-    {% for exp in tabExperiences %}
-        <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
-            <p class="index_nom_ville"> {{ exp.getIdExperience() }} :&nbsp;{{ exp.getIntitulePoste() }} -&nbsp;{{ exp.getNomEmployeur() }} ,&nbsp;{{ exp.getVilleEmployeur() }} </p>
-            <p class="diplome_domaine_dates"> {{ exp.getTypeContrat() }} :&nbsp;{{ exp.getDateDebut() }} |&nbsp;{{ exp.getDateFin() }} </p>
-        </section>
-    {% endfor %}
+    <form method="POST" action="editExperience.php">
+        {% for exp in tabExperiences %}
+            <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
+                <p class="index_nom_ville"> {{ exp.getIntitulePoste() }} -&nbsp;{{ exp.getNomEmployeur() }} ,&nbsp;{{ exp.getVilleEmployeur() }} </p>
+                <p class="diplome_domaine_dates"> {{ exp.getTypeContrat() }} :&nbsp;{{ exp.getDateDebut() }} |&nbsp;{{ exp.getDateFin() }} </p>
+
+                <button type="submit" value="{{ formation.getIdExperience() }}" name="supprimer" class="btn btn-primary float-none d-lg-flex" data-bss-hover-animate="pulse" style="margin-bottom: 15px;width: 23%;text-align: center;margin-top: 22px;color: var(--bs-body-bg);border-color: var(--color-brown);background: var(--color-brown);">Supprimer</button>
+            </section>
+        {% endfor %}
+    </form>
     </div>
     <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
         <form method="POST" style=width:70%;>

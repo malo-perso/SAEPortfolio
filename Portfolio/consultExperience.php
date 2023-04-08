@@ -14,9 +14,9 @@ $titrecentre = "Expériences";
 
 $tpl = $twig->loadTemplate( "templateConsultExperiences.tpl" );
 
-$tabExperiences = array( new Experience(0, "Développeur", "Sopra Steria", "Paris", "CDI", "01-01-2015", "01-01-2016"),
-                         new Experience(1, "Chaudronnier", "SCPM", "Le Havre", "CDD", "01-01-2015", "01-01-2016"),
-                         new Experience(2, "Chevalier", "Le Roi Arthur", "Camelot", "CDI", "01-01-490", "01-01-515")
+$tabExperiences = array( new Experience("Développeur", "Sopra Steria", "Paris", "CDI", "01-01-2015", "01-01-2016"),
+                         new Experience("Chaudronnier", "SCPM", "Le Havre", "CDD", "01-01-2015", "01-01-2016"),
+                         new Experience("Chevalier", "Le Roi Arthur", "Camelot", "CDI", "01-01-490", "01-01-515")
                        );
 
 

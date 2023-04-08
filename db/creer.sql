@@ -24,17 +24,7 @@ CREATE TABLE portfolio(
 
 CREATE TABLE page(
     idPage SERIAL PRIMARY KEY,
-    nomPage VARCHAR(25) NOT NULL,
+    nomPage VARCHAR(25) NOT NULL CHECK (nomPage IN ('CV', 'Competences', 'Projets', 'Contact', 'Accueil')),
     contenu JSON,
-    idPortfolio INTEGER REFERENCES portfolio(idPortfolio)
-);
-
-Create table CV(
-    idCV SERIAL PRIMARY KEY,
-    coordonnées JSON,
-    formations JSON,
-    experiences JSON,
-    competences JSON,
-    langue JSON,
     idPortfolio INTEGER REFERENCES portfolio(idPortfolio)
 );

@@ -14,7 +14,7 @@ $titrecentre = "Coordonnées";
 
 $tpl = $twig->loadTemplate( "templateEditCoordonnees.tpl" );
 
-$coordonnees = new Coordonnees(0, "../images/logo.png","Malet", "Riho", "Développeur Web", "25 rue des Camélias", "75000", "Paris", "06 06 06 06 06", "malet.riho@gmail.com", "Carpe Diem.");
+$coordonnees = new Coordonnees("../images/logo.png","Malet", "Riho", "Développeur Web", "25 rue des Camélias", "75000", "Paris", "06 06 06 06 06", "malet.riho@gmail.com", "Carpe Diem.");
 
 echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
 ?>

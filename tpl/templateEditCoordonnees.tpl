@@ -8,7 +8,7 @@
     <script>
         window.addEventListener('DOMContentLoaded', function() 
         {
-            var result = getNav("CVCoordonnees.php", "CV");
+            var result = getNav("editCoordonnee.php", "edit");
             var id = document.getElementById("nav");
             id.innerHTML = result;
         });
@@ -29,13 +29,13 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label form-label">Prénom</label>
-                                    <input class="form-control form-control" type="text" name="prenom" value={{ coordonnees.getPrenom() }}>
+                                    <input class="form-control form-control" type="text" name="prenom" value="{{ coordonnees.getPrenom() }}">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label form-label">Nom</label>
-                                    <input class="form-control form-control" type="text" name="nom" value={{ coordonnees.getNom() }}>
+                                    <input class="form-control form-control" type="text" name="nom" value="{{ coordonnees.getNom() }}">
                                 </div>
                             </div>
                         </div>
@@ -43,13 +43,13 @@
                             <div class="col">
                                 <div>
                                     <label class="form-label form-label">Intitulé du Poste</label>
-                                    <input class="form-control form-control" name="intitulePoste" type="text" value={{ coordonnees.getNomPoste() }}>
+                                    <input class="form-control form-control" name="intitulePoste" type="text" value="{{ coordonnees.getNomPoste() }}">
                                 </div>
                             </div>
                             <div class="col">
                                 <div>
                                     <label class="form-label form-label">Adresse</label>
-                                    <input class="form-control form-control" name="adr" type="text" value={{ coordonnees.getAdresse() }}>
+                                    <input class="form-control form-control" name="adr" type="text" value="{{ coordonnees.getAdresse() }}">
                                 </div>
                             </div>
                         </div>
@@ -57,13 +57,13 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label form-label">Code Postal</label>
-                                    <input class="form-control form-control" name="codePostal" type="number" value={{ coordonnees.getCodePostal() }}>
+                                    <input class="form-control form-control" name="codePostal" type="number" value="{{ coordonnees.getCodePostal() }}">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label form-label">Ville</label>
-                                    <input class="form-control form-control" name="ville" type="text" value={{ coordonnees.getVille() }}>
+                                    <input class="form-control form-control" name="ville" type="text" value="{{ coordonnees.getVille() }}">
                                 </div>
                             </div>
                         </div>
@@ -71,13 +71,13 @@
                             <div class="col">
                                 <div>
                                     <label class="form-label form-label">Téléphone</label>
-                                    <input class="form-control form-control" name="tel" type="tel" value={{ coordonnees.getTelephone() }}>
+                                    <input class="form-control form-control" name="tel" type="tel" value="{{ coordonnees.getTelephone() }}">
                                 </div>
                             </div>
                             <div class="col">
                                 <div>
                                     <label class="form-label form-label">Adresse e-mail</label>
-                                    <input class="form-control form-control" name="mail" type="email" value={{ coordonnees.getEmail() }}>
+                                    <input class="form-control form-control" name="mail" type="email" value="{{ coordonnees.getEmail() }}">
                                 </div>
                             </div>
                         </div>
