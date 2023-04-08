@@ -2,7 +2,6 @@
 
 class Coordonnees
 {
-    private $idCoordonnees;
     private $image;
     private $prenom;
     private $nom;
@@ -14,9 +13,8 @@ class Coordonnees
     private $email;
     private $phraseAccroche;
 
-    public function __construct($idC = 0, $img = "", $p = "", $n = "", $nPoste = "", $adr = "", $cp = "", $v = "", $tel = "", $mail = "", $pAccroche = "")
+    public function __construct($img = "", $p = "", $n = "", $nPoste = "", $adr = "", $cp = "", $v = "", $tel = "", $mail = "", $pAccroche = "")
     {
-        $this->idCoordonnees    = $idC;
         $this->image            = $img;
         $this->prenom           = $p;
         $this->nom              = $n;
@@ -29,7 +27,6 @@ class Coordonnees
         $this->phraseAccroche   = $pAccroche;
     }
 
-    public function getIdCoordonnees() { return $this->idCoordonnees;  }
     public function getImage        () { return $this->image;          }
     public function getPrenom       () { return $this->prenom;         }
     public function getNom          () { return $this->nom;            }
@@ -43,8 +40,7 @@ class Coordonnees
 
     public function __toString()
     {
-        $res = "idCoordonnees:" . $this->idCoordonnees . "\n";
-        $res = $res . "image:" . $this->image . "\n";
+        $res = "image:" . $this->image . "\n";
         $res = $res . "prenom:" . $this->prenom . "\n";
         $res = $res . "nom:" . $this->nom . "\n";
         $res = $res . "nomPoste:" . $this->nomPoste . "\n";

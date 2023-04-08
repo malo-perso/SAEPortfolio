@@ -3,6 +3,8 @@
 
 class Experience {
 
+    private static $compteur = 0;
+
     private $idExperience;
     private $intitulePoste;
     private $nomEmployeur;
@@ -12,8 +14,9 @@ class Experience {
     private $dateFin;
 
 
-    public function __construct($i=-1,$ip="",$ne="",$ve="",$tc="",$dd="",$df="") {
-      	$this->idExperience = $i;
+    public function __construct($ip="",$ne="",$ve="",$tc="",$dd="",$df="") 
+    {
+        $this->idExperience = ++self::$compteur;    	
         $this->intitulePoste = $ip;
         $this->nomEmployeur = $ne;
         $this->villeEmployeur = $ve;

@@ -1,13 +1,14 @@
 <?php
 
-class Projet implements \JsonSerializable {
-
+class Projet implements \JsonSerializable 
+{
+    private static $compteur = 0;
     private $idProjet;
     private $nomProjet;
     private $descProjet;
       
-    public function __construct($i=-1,$n="",$d="") {
-      	$this->id = $i;
+    public function __construct($n="",$d="") {
+      	$this->idProjet = ++self::$compteur;
         $this->nomProjet = $n;
         $this->descProjet = $d;
     }

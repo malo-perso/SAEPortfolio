@@ -3,12 +3,15 @@
 
 class Langue {
 
+    private static $numLangue = 0;
+
     private $idLangue;
     private $nomLangue;
     private $niveauLangue;
 
-    public function __construct($i=-1, $n="", $nl="") {
-        $this->idLangue = $i;
+    public function __construct($n="", $nl="") 
+    {
+        $this->idLangue = ++self::$numLangue;
         $this->nomLangue = $n;
         $this->niveauLangue = $nl;
     }

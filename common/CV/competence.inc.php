@@ -1,12 +1,17 @@
 <?php
 
 
-class Competence  {
+class Competence implements JsonSerializable 
+{
+    private static $compteur = 0;
 
+    private $idComp;
     private $nomComp;
 
-    public function __construct($n="") {
-	    $this->nomComp = $n;
+    public function __construct($n="") 
+    {
+        $this->idComp = ++self::$compteur;
+        $this->nomComp = $n;
     }
 
     public function getNomComp() { return $this->nomComp; }
@@ -17,11 +22,11 @@ class Competence  {
 	    return $res;
     }
 
-    /*public function jsonSerialize()
+    public function jsonSerialize()
     {
         $vars = get_object_vars($this);
         return $vars;
-    }*/
+    }
 }
 
 //test
