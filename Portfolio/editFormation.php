@@ -4,7 +4,7 @@ include "../common/CV/CV.inc.php";
 
 session_start();
 
-if(! isset($_SESSION['utilisateur'])) {
+if(!isset($_SESSION['id_utilisateur'])) {
     header('Location: ..\connexion.php');
 }
 else {
