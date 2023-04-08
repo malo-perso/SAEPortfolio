@@ -5,13 +5,13 @@
                 <div class="footer" style="color : white; background : #0a1428">
                     <div class="footer-menu" style="text-align : center">
                         <ul style="display : inline; list-style : none">
-                            <li style="display : inline; margin : 10%"><a href="index.php">Accueil</a></li>
+                            <li style="display : inline; margin : 10%"><a href="..\index.php">Accueil</a></li>
                             <li style="display : inline; margin : 10%"><a href="about.php">A propos de nous</a></li>
                             <li style="display : inline; margin : 10%"><a href="contact.php">Contactez-nous</a></li>
                         </ul>
                     </div>
                     <div class="footer-text"  style="text-align : center">
-                        <p>© 2023 Tous droits réservés. Design par <a href="https://f4.bcbits.com/img/a3930372955_10.jpg" target="_blank">moi.</a></p>
+                        <p style="margin-bottom : 0">© 2023 Tous droits réservés.</p>
                     </div>
                 </div>
             </div>

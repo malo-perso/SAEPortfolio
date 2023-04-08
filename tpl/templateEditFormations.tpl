@@ -2,22 +2,6 @@
 
 {% block contenu %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-<link rel="stylesheet" href="../assets/css/animate.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
-<link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
-<link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/js/bs-init.js"></script>
-<script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
-<script src="../assets/js/Profile-Edit-Form-profile.js"></script>
-<script src="../assets/js/getNav.js"></script>
-
 <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%; margin-top:-0.5%;"> </div>
 
 <script>

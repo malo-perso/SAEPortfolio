@@ -1,8 +1,29 @@
  <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
   <title>{{titre}}</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/animate.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/Form-Select---Full-Date---Month-Day-Year.css">
+  <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
+  <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1.css">
+  <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
+  <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
+
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bs-init.js"></script>
+  <script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
+  <script src="../assets/js/Profile-Edit-Form-profile.js"></script>
+  <script src="../assets/js/getNav.js"></script>
+
 </head>
 <body>
 
