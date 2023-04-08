@@ -17,7 +17,7 @@ class User {
         $this->mdp = $md;
     }
 
-    public function getIdUser() { $this->idUser = $i; }
+    public function getIdUser() { $this->idUser; }
     public function getNom() { return $this->nom; }
     public function getPrenom() { return $this->prenom;}
     public function getMail() { return $this->mail; }
