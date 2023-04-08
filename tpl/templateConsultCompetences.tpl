@@ -19,7 +19,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("ConsultCompetence.php", "consult");
+        var result = getNav("consultCompetence.php", "consult");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

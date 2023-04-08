@@ -23,7 +23,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("EditFormation.php", "edit");
+        var result = getNav("editFormation.php", "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

@@ -24,7 +24,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("EditCompetence.php", "edit");
+        var result = getNav("editCompetence.php", "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
