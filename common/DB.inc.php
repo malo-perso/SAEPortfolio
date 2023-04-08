@@ -322,11 +322,9 @@ class DB {
 
     public function updateCVFormation($idPortfolio, $formation)
     {
-        
-        $requete = 'UPDATE CV SET formation = ? where idPortfolio = ?';
+        $requete = 'UPDATE page SET formation = formation + ? where idPortfolio = ?';
         $tparam = array($formation, $idPortfolio);
         return $this->execMaj($requete, $tparam);
-      
     }
 
     public function updateCVLangue($idPortfolio, $langue)
