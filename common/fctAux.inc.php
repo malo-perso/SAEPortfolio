@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 session_start();
 
 function isUserConnected() {
@@ -154,8 +155,7 @@ function gestionAcces(){
     }
     else{
         //pas d'idPortfolio rediriger vers page d'accueil
-        header("location: ./index.php");
-
+        header("location: ../indexx.php");
     }
 }
 

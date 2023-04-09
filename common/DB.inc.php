@@ -159,7 +159,7 @@ class DB {
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            //echo "Erreur lors de l'exécution de la requête :".$requete."</br>";
             return false;
         } elseif (empty($resultats)) {
             //Aucun portfolio trouvé
@@ -171,21 +171,21 @@ class DB {
         }
     }
 
-    public function isProprietaire($idPortfolio, $idUser){
+    public function isProprietaire($idPortfolio, $idUser){//marche ter/mais marche pas
         //vérifier si un portfolio appartient à un utilisateur en fonction de son id
         $requete = "SELECT * FROM portfolio WHERE idPortfolio = ? AND idUser = ?";
         $tparam = array($idPortfolio, $idUser);
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            //echo "Erreur lors de l'exécution de la requête :".$requete."</br>";
             return false;
         } elseif (empty($resultats)) {
             //Aucun portfolio trouvé
             //echo "Aucun portfolio trouvé";
             return false;
         } else {
-            //echo portfolio appartient à l'utilisateur
+            //echo "portfolio appartient à l'utilisateur";
             return true;
         }
     }
@@ -197,14 +197,14 @@ class DB {
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            //echo "Erreur lors de l'exécution de la requête :".$requete."</br>";
             return false;
         } elseif (empty($resultats)) {
             //Aucun portfolio trouvé
             //echo "Aucun portfolio trouvé";
             return false;
         } else {
-            //echo portfolio est public
+            //echo "portfolio est public";
             return true;
         }
 
