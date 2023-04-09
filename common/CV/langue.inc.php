@@ -9,8 +9,8 @@ class Langue implements JsonSerializable{
     private $nomLangue;
     private $niveauLangue;
 
-    public function __construct($n="", $nl="") 
-    {
+
+    public function __construct($n="", $nl="") {
         $this->idLangue = ++self::$numLangue;
         $this->nomLangue = $n;
         $this->niveauLangue = $nl;
@@ -28,8 +28,7 @@ class Langue implements JsonSerializable{
 	    return $res;
     }
 
-    public function jsonSerialize() : array
-    {
+    public function jsonSerialize() : array {
         $vars = get_object_vars($this);
         return $vars;
     }
