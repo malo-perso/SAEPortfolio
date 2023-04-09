@@ -45,7 +45,14 @@ else {
             {
                 echo "Formation ajoutée";
                 //mise à jour bd CV
-                updatePage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV", $CV);
+                if (updatePage($CV,"CV", $_SESSION['id_portfolio']))
+                {
+                    echo "CV mis à jour";
+                }
+                else
+                {
+                    echo "Erreur lors de la mise à jour du CV";
+                }
             }
             else
             {

@@ -292,15 +292,12 @@ class DB {
     //  Fonctions setters 
     /*****************************/
 
-
-    public function updatePage($idPortfolio, $coordonnees)
+    public function updatePage($contenu, $nomPage, $idPortfolio)
     {
-            
-        $requete = 'UPDATE CV SET coordonnees = ? where idPortfolio = ?';
-        $tparam = array($coordonnees, $idPortfolio);
+        $requete = 'UPDATE page SET contenu = ? WHERE nomPage = ? AND idPortfolio = ?';
+        $tparam = array($contenu, $nomPage, $idPortfolio);
         return $this->execMaj($requete, $tparam);
     }
-
 
     public function setVisible($idPortfolio, $visible)
     {
