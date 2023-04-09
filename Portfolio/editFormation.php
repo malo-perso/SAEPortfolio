@@ -23,6 +23,8 @@ else {
 
     if ($_SERVER["RESQUEST_METHOD"] == "POST")
     {
+        echo "POST";
+        
         if(isset($_POST['nomEtat']) && isset($_POST['ville']) && isset($_POST['diplome']) && isset($_POST['domaine']) && isset($_POST['mention']) && isset($_POST['moisDeb']) && isset($_POST['anneeDeb']) && isset($_POST['moisFin']) && isset($_POST['anneeFin']))
         {
             $nometat = $_POST['nomEtat'];
@@ -37,7 +39,7 @@ else {
 
             $formation = new Formation($nometat, $ville, $diplome, $domaine, $mention, $moisDeb."-".$anneeDeb, $moisFin."-".$anneeFin);
 
-            //echo "Formation : ".$formation->getNomEtat()." ".$formation->getVille()." ".$formation->getDiplome()." ".$formation->getDomaine()." ".$formation->getMention()." ".$formation->getMoisDeb()." ".$formation->getAnneeDeb()." ".$formation->getMoisFin()." ".$formation->getAnneeFin();
+            echo "Formation : ".$formation->getNomEtat()." ".$formation->getVille()." ".$formation->getDiplome()." ".$formation->getDomaine()." ".$formation->getMention()." ".$formation->getMoisDeb()." ".$formation->getAnneeDeb()." ".$formation->getMoisFin()." ".$formation->getAnneeFin();
 
             ajouterFormation($formation);        
         }
