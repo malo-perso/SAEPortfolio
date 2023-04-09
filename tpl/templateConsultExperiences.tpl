@@ -7,7 +7,8 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("consultCompetence.php", "consult");
+        var para = window.location.search;
+        var result = getNav("consultCompetence.php"+ para, "consult");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
