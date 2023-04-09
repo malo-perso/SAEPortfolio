@@ -1,17 +1,74 @@
 <?php
 
-include "../common/page.inc.php";
+require ("../common/DB.inc.php");
 
-require_once( "../Twig/lib/Twig/Autoloader.php" );
+session_start();
 
-Twig_Autoloader::register();
-$twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
+if(! isset($_SESSION['id_utilisateur'])) 
+{
+    header('Location: ..\connexion.php');
+}
+else 
+{
+    require_once( "../Twig/lib/Twig/Autoloader.php" );
 
-$titre = "Édition de la page Accueil";
+    Twig_Autoloader::register();
+    $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-$titrecentre = "Accueil";
+    $titre = "Édition de la page Accueil";
 
-$tpl = $twig->loadTemplate( "templateEditAccueil.tpl" );
+    $titrecentre = "Accueil";
 
+    $tpl = $twig->loadTemplate( "templateEditAccueil.tpl" );
+
+    $db = DB::getInstance();
+    $accueil = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Accueil");
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        if (isset($_POST['contenu']))
+        {
+            $contenu = $_POST['contenu'];
+
+            $pageAccueil = new Page ($accueil->getIdPage(),$accueil->getNomPage(), $contenu, $accueil->getIdPortfolio());
+
+            if (majAccueil($pageAccueil))
+            {
+                echo "Accueil ajouté";
+                //mise à jour bd Accueil
+
+                if ($db == null) {
+                    echo "Impossible de se connecter à la base de données !\n";
+                }
+                else {
+
+                    if ($db->updatePage($pageAccueil,"Accueil", $_GET['id_portfolio']))
+                    {
+                        echo "Accueil mis à jour";
+                    }
+                    else
+                    {
+                        echo "Erreur lors de la mise à jour de l'accueil";
+                    }
+                }
+            }
+            else
+            {
+                echo "Erreur lors de l'ajout de l'accueil";
+            }
+        }
+
+        if ($db == null) {
+            echo "Impossible de se connecter à la base de données !\n";
+        }
+        else {
+            $accueil = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Accueil");
+        }
+
+
+    }
+
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $accueil->getContenu() ) );
+}
 ?>
 

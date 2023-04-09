@@ -2,6 +2,8 @@
 
 {%block contenu %}
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%;  margin-top:55px;"> </div>
 
         <script>
@@ -103,17 +105,21 @@
             //enregistrement du contenu de l'éditeur dans la base de données
             document.getElementById('save').addEventListener('click', function() 
             {
-                editor.save().then((outputData) => 
-                {
-                    console.log('Article data: ', outputData);
-                    var data = JSON.stringify(outputData);
-                    console.log(data);
+                editor.save().then((output) => {
 
+                    var contenu = JSON.stringify(output.blocks);
+                    $.ajax({
+                        type : 'POST',
+                        url : 'editAccueil.php',
+                        data : {contenu: contenu},
+                        success: function(response) {
+                            alert(response);
+                        }
+                    });
                 }).catch((error) => {
-                    console.log('Saving failed: ', error);
+                    console.log('Saving failed: ', error)
                 });
             });
-
 
 
         </script>
