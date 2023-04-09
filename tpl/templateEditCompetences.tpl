@@ -4,23 +4,24 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%;  margin-top:55px;"> </div>
 
-        <script>
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+
+    <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("Accueil.php","edit");
+                var result = getNav("Competence.php", "edit");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });
 
         </script>
-        
-        <div style="margin-left:15%; width:85%;">
+    
+    <div style="margin-left:15%; width:85%;">
 
-            <h1 class="text-center" style="padding-top:5%;">Page d'Accueil</h1>
+            <h1 class="text-center" style="padding-top: 5%;">Page de Compétences</h1>
 
-            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ accueil.getContenu() }}</div>
+            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;"></div>
 
             <!-- bouton au milieu de la page -->
             <div style="display:flex; justify-content:center">
@@ -110,7 +111,7 @@
                     var contenu = JSON.stringify(output.blocks);
                     $.ajax({
                         type : 'POST',
-                        url : 'editAccueil.php',
+                        url : 'editCompetence.php',
                         data : {contenu: contenu},
                         success: function(response) {
                             alert(response);
@@ -122,7 +123,6 @@
             });
 
 
+
         </script>
     </div>
-
-    {% endblock %}

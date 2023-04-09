@@ -22,7 +22,7 @@ else
     $tpl = $twig->loadTemplate( "templateEditCVCompetences.tpl" );
 
     $db = DB::getInstance();
-    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+    $CV = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "CV");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -44,7 +44,7 @@ else
                 }
                 else {
                     
-                    if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
+                    if ($db->updatePage($CV,"CV", $_GET['id_portfolio']))
                     {
                         echo "CV mis à jour";
                     }
@@ -68,7 +68,7 @@ else
             echo "Impossible de se connecter à la base de données !\n";
         }
         else {
-            $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+            $CV = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "CV");
             
         }
 
