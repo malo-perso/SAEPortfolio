@@ -45,13 +45,19 @@ else {
             {
                 echo "Formation ajoutée";
                 //mise à jour bd CV
-                if (updatePage($CV,"CV", $_SESSION['id_portfolio']))
-                {
-                    echo "CV mis à jour";
+                $db = DB::getInstance();
+                if ($db == null) {
+                    echo "Impossible de se connecter à la base de données !\n";
                 }
-                else
-                {
-                    echo "Erreur lors de la mise à jour du CV";
+                else {
+                    if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
+                    {
+                        echo "CV mis à jour";
+                    }
+                    else
+                    {
+                        echo "Erreur lors de la mise à jour du CV";
+                    }
                 }
             }
             else
@@ -65,11 +71,19 @@ else {
 
     if ($_SERVER["RESQUEST_METHOD"] == "POST" && isset($_POST['supprimer']))
     {
-        echo($_POST['supprimer']);
+        echo($_POST['supprimer']);//récupéré la valeur du bouton supprimer
+        //supprimer la formation de CV
+        //mise à jour bd CV
     }
 //CV serialisé ou pas 
-    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
-    $tabFormations = $CV->getFormations();
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else {
+        $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+        $tabFormations = $CV->getFormations();
+    } 
 
 /*
     $tabFormations = array( new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
