@@ -13,7 +13,7 @@ VALUES ('Password1!', 'user1@mail.com', 'Nom1', 'Prenom1'),
 -- Création d'un portfolio pour chaque utilisateur
 INSERT INTO portfolio (nomPortfolio, estPublic, idUser)
 VALUES ('Portfolio1', true, 1),
-       ('Portfolio2', false, 2),
+       ('Portfolio2', false, 1),
        ('Portfolio3', true, 3),
        ('Portfolio4', true, 4),
        ('Portfolio5', false, 5),
@@ -21,18 +21,17 @@ VALUES ('Portfolio1', true, 1),
 
 -- Création de deux pages pour chaque portfolio
 INSERT INTO page (nomPage, contenu, idPortfolio)
-VALUES ('Page1', null, 1),
-       ('Page2', null, 1),
-       ('Page1', null, 2),
-       ('Page2', null, 2),
-       ('Page1', null, 3),
-       ('Page2', null, 3),
-       ('Page1', null, 4),
-       ('Page2', null, 4),
-       ('Page1', null, 5),
-       ('Page2', null, 5),
-       ('Page1', null, 6),
-       ('Page2', null, 6);
+VALUES ('Competences', null, 1),
+       ('Competences', null, 1),
+       ('Competences', null, 2),
+       ('Competences', null, 2),
+       ('Competences', null, 3),
+       ('Competences', null, 3),
+       ('Competences', null, 4),
+       ('Competences', null, 4),
+       ('Competences', null, 5),
+       ('Competences', null, 5),
+       ('Competences', null, 6),
+       ('Competences', null, 6);
 
 /**************************************************/
-

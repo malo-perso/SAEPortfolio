@@ -35,7 +35,7 @@
         <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("Accueil.php");
+                var result = getNav("Accueil.php","edit");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });
