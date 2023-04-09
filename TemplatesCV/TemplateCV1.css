@@ -10,7 +10,7 @@
     float: left;
     width: 30%;
     height: 100%;
-    background-color: rgb(12, 40, 64);
+    /*background-color: rgb(12, 40, 64);*/
     padding-right: 2%;
     padding-left: 2%;
     color: #D3D3D3;
@@ -36,12 +36,12 @@
 
 .span-t1 {
     font-weight: bold;
-    color: rgb(12, 40, 64);
+    /*color: rgb(12, 40, 64);*/
 }
 
 .cadre-t1 {
     font-size: 1.5em;
-    background-color: rgb(212, 230, 242);
+    filter: brightness(0.8);
 }
 
 .tab-t1 {

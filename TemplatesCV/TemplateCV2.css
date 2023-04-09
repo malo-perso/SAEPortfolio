@@ -2,7 +2,7 @@
     width: 21cm;
     height: 29.7cm;
     border: 1px #D3D3D3 solid;
-    background-color: #9DBB59;
+    /*background-color: #9DBB59;*/
     position: relative;
 }
 
@@ -20,8 +20,8 @@
     padding-right: 2%;
     padding-left: 2%;
     margin-top: -11%;
-    /*background-color: #BED66F;*/
-    filter: brightness(85%);
+    /*background-color: #9DBB59;*/
+    filter: brightness(0.8);
 }
 
 #resume-t2 {
@@ -38,17 +38,17 @@
 
 .h4-t2{
     padding: 2%;
-    background-color: #9DBB59;
+    /*background-color: #9DBB59;*/
+    filter: brightness(0.8);
 }
 
 .cadre-t2 {
     font-size: 1.5em;
-    background-color: #ffffff;
 }
 
 .span-t2 {
     font-weight: bold;
-    color: #9DBB59;
+    /*color: #9DBB59;*/
 }
 
 #footer-t2 {
