@@ -1,7 +1,7 @@
 <?php
 
 
-class Langue {
+class Langue implements JsonSerializable{
 
     private static $numLangue = 0;
 
@@ -26,6 +26,12 @@ class Langue {
         $res = $res ."niveauLangue:".$this->niveauLangue."\n";
         $res = $res ."<br/>";
 	    return $res;
+    }
+
+    public function jsonSerialize() : array
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

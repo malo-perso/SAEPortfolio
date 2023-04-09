@@ -1,7 +1,7 @@
 <?php
 
 
-class Experience {
+class Experience implements \JsonSerializable {
 
     private static $compteur = 0;
 
@@ -10,40 +10,44 @@ class Experience {
     private $nomEmployeur;
     private $villeEmployeur;
     private $typeContrat;
-    private $dateDebut;
-    private $dateFin;
+    private $dateDebutMois;
+    private $dateDebutAnnee;
+    private $dateFinMois;
+    private $dateFinAnnee;
 
 
-    public function __construct($ip="",$ne="",$ve="",$tc="",$dd="",$df="") 
-    {
-        $this->idExperience = ++self::$compteur;    	
-        $this->intitulePoste = $ip;
-        $this->nomEmployeur = $ne;
-        $this->villeEmployeur = $ve;
-        $this->typeContrat = $tc;
-        $this->dateDebut = $dd;
-        $this->dateFin = $df;
+    public function __construct($idExp = "", $intitule = "", $nomEmp = "", $villeEmp = "", $typeContrat = "", $dateDebutMois = "", $dateDebutAnnee = "", $dateFinMois = "", $dateFinAnnee = "") {
+        $this->idExperience = $idExp;
+        $this->intitulePoste = $intitule;
+        $this->nomEmployeur = $nomEmp;
+        $this->villeEmployeur = $villeEmp;
+        $this->typeContrat = $typeContrat;
+        $this->dateDebutMois = $dateDebutMois;
+        $this->dateDebutAnnee = $dateDebutAnnee;
+        $this->dateFinMois = $dateFinMois;
+        $this->dateFinAnnee = $dateFinAnnee;
     }
 
-    public function getIdExperience  () { return $this->idExperience; }
-    public function getIntitulePoste () { return $this->intitulePoste; }
-    public function getNomEmployeur  () { return $this->nomEmployeur; }
-    public function getVilleEmployeur() { return $this->villeEmployeur; }
-    public function getTypeContrat   () { return $this->typeContrat; }
-    public function getDateDebut     () { return $this->dateDebut; }
-    public function getDateFin       () { return $this->dateFin; }
-    
-
     public function __toString() {
-      	$res = "idExperience:".$this->idExperience."\n";
-        $res = $res ."intitulePoste:".$this->intitulePoste."\n";
-        $res = $res ."nomEmployeur:".$this->nomEmployeur."\n";
-        $res = $res ."villeEmployeur:".$this->villeEmployeur."\n";
-        $res = $res ."typeContrat:".$this->typeContrat."\n";
-        $res = $res ."dateDebut:".$this->dateDebut."\n";
-        $res = $res ."dateFin:".$this->dateFin."\n";
+        $res = "Intitulé du poste : ".$this->intitulePoste."\n";
         $res = $res ."<br/>";
-	    return $res;
+        $res = $res . "Nom de l'employeur : ".$this->nomEmployeur."\n";
+        $res = $res ."<br/>";
+        $res = $res . "Ville de l'employeur : ".$this->villeEmployeur."\n";
+        $res = $res ."<br/>";
+        $res = $res . "Type de contrat : ".$this->typeContrat."\n";
+        $res = $res ."<br/>";
+        $res = $res . "Date de début : ".$this->dateDebutMois."/".$this->dateDebutAnnee."\n";
+        $res = $res ."<br/>";
+        $res = $res . "Date de fin : ".$this->dateFinMois."/".$this->dateFinAnnee."\n";
+        $res = $res ."<br/>";
+        return $res;
+    }
+
+    public function jsonSerialize() : array
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

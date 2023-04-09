@@ -1,6 +1,6 @@
 <?php
 
-class Coordonnees
+class Coordonnees implements JsonSerializable
 {
     private $image;
     private $prenom;
@@ -52,6 +52,12 @@ class Coordonnees
         $res = $res . "phraseAccroche:" . $this->phraseAccroche . "\n";
         $res = $res . "<br/>";
         return $res;
+    }
+
+    public function jsonSerialize() : array
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 
 

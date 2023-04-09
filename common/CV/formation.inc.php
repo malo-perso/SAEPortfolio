@@ -1,7 +1,7 @@
 <?php
 
 
-class Formation {
+class Formation implements JsonSerializable{
 
     private static $numFormation = 0;
     private $idFormation;
@@ -42,6 +42,12 @@ class Formation {
         $res = $res ."dateFin:".$this->dateFin."\n";
         $res = $res ."<br/>";
 	    return $res;
+    }
+
+    public function jsonSerialize() : array
+    {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 
