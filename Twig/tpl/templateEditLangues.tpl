@@ -1,7 +1,7 @@
 {% extends "templateBase.tpl" %}
 {%block contenu %}
 
-<div id="nav" style="width: 15%;background: #e7e4df;border: 3px var(--color-brown) solid;position: fixed;height: 100%;  margin-top:55px;"> </div>
+<div id="nav" style="width: 15%;background: #e7e4df;border: 3px var(--color-brown) solid;position: fixed;height: 100%; margin-top:-0.5%;"> </div>
 
 <script>
     window.addEventListener('DOMContentLoaded', function() 

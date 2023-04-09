@@ -2,7 +2,7 @@
 
 {% block contenu %}
 
-<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%;  margin-top:55px;"> </div>
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%; margin-top:-0.5%;"> </div>
 
 <script>
     window.addEventListener('DOMContentLoaded', function() 
@@ -29,7 +29,7 @@
             </form>
         </div>
         <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
-            <form method="POST" action="editFormation.php" style="width:70%;">
+            <form method="POST" style="width:70%;">
                 <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">

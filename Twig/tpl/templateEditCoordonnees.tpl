@@ -3,7 +3,7 @@
 {% block contenu %}
 
 <div class="text-start">
-    <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%; margin-top:55px"> </div> 
+    <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
 
     <script>
         window.addEventListener('DOMContentLoaded', function() 
@@ -21,8 +21,8 @@
                 <div class="row profile-row">
                     <div class="col-md-4 relative">
                         <div class="avatar">
-                            <div class="avatar-bg center" id="avatar" style="width: 150px;height: 150px;"></div>
-                        </div><input class="form-control form-control form-control" type="file" id="selectAvatar" name="avatar-file" style="margin-top: 8px;">
+                            <div class="avatar-bg center" style="width: 150px;height: 150px;"></div>
+                        </div><input class="form-control form-control form-control" type="file" name="avatar-file" style="margin-top: 8px;">
                     </div>
                     <div class="col-md-8">
                         <div class="row">
@@ -91,22 +91,6 @@
         <div style="width: 50%;height: 60%;border: 1px solid;margin-left:25%; margin-right:25%; margin-bottom:5%;">
             <textarea name="accroche" class="form-control">{{ coordonnees.getPhraseAccroche() }}</textarea> 
         </div>
-
-        <script>
-            sel = document.getElementById("selectAvatar");
-            sel.addEventListener("change", function(e) {
-                var file = sel.files[0];
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var data = e.target.result;
-                    var avatar = document.getElementById("avatar");
-                    avatar.style.backgroundImage = "url(" + data + ")";
-                    console.log(data); 
-                };
-                reader.readAsDataURL(file);
-            });
-
-        </script>
         
         <div style="display:flex; justify-content: center;">
             <div class="btn-group" role="group" style="width:50%">
