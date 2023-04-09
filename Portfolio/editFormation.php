@@ -1,6 +1,7 @@
 <?php
 
 include "../common/CV/CV.inc.php";
+require "../common/DB.inc.php";
 
 session_start();
 
