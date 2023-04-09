@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         }
             
     }
+}
 
     $db = DB::getInstance();
 
@@ -63,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
         
     }
-}
+
 
 $softSkills = $CV->getCompetences()->getSoftSkills();
 $hardSkills = $CV->getCompetences()->getHardSkills();
