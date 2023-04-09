@@ -20,7 +20,8 @@
     padding-right: 2%;
     padding-left: 2%;
     margin-top: -11%;
-    background-color: #BED66F;
+    /*background-color: #BED66F;*/
+    filter: brightness(85%);
 }
 
 #resume-t2 {
