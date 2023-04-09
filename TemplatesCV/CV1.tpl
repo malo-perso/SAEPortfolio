@@ -5,10 +5,19 @@
         <meta charset="utf-8">
         <title>CV {{coordonnees.getPrenom()}}&nbsp;{{coordonnees.getNom()}} </title>
         <link rel="stylesheet" href="TemplateCV1.css">
+        <style>
+            .cadre-t1{
+                color: {{couleur}};
+            }
+
+            .span-t1{
+                color: {{couleur}};
+            }
+        </style>
     </head>
     <body>
         <div id="cv-t1">
-            <div id="div-gauche-t1">
+            <div id="div-gauche-t1" style="background-color: {{couleur}};">
                 <div id="div-photo-t1">
                     <img src={{coordonnees.getPhoto()}}>
                 </div>

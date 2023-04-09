@@ -5,6 +5,15 @@
         <meta charset="utf-8">
         <title>CV {{coordonnees.getPrenom()}}&nbsp;{{coordonnees.getNom()}}</title>
         <link rel="stylesheet" href="TemplateCV2.css">
+        <style>
+            .h4-t2{
+                color: {{couleur}};
+            }
+
+            .span-t2{
+                color: {{couleur}};
+            }
+        </style>
     </head>
     <body>
         <div id="cv-t2" style="background-color: {{couleur}};">

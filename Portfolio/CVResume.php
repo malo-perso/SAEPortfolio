@@ -78,6 +78,7 @@
         tmpl1 = document.getElementById("img1");
         tmpl2 = document.getElementById("img2");
         resume = document.getElementById("resume");
+        var coul = "#ffffff";
         //event listener for the button
         document.getElementById("choixTemplate").addEventListener("click", function() {
 
