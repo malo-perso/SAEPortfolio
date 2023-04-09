@@ -1,11 +1,15 @@
 <?php
 ini_set('display_errors', 1);
 require ("../common/DB.inc.php");
-include("../common/ftcAux.inc.php");
+include("../common/fctAux.inc.php");
 
 session_start();
-gestionAcces()
-else {
+
+
+if(!gestionAcces()) {
+    echo "Accès refusé errorrrrrr";
+}
+if(true){
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -35,10 +39,11 @@ else {
             $moisFin = $_POST['moisFin'];
             $anneeFin = $_POST['anneeFin'];
 
-            $formation = new Formation($nometat, $ville, $diplome, $domaine, $mention, $moisDeb."-".$anneeDeb, $moisFin."-".$anneeFin);
+            //$formation = new Formation($nometat, $ville, $diplome, $domaine, $mention, $moisDeb."-".$anneeDeb, $moisFin."-".$anneeFin);
 
             echo "Formation : ".$formation->getNomEtat()." ".$formation->getVille()." ".$formation->getDiplome()." ".$formation->getDomaine()." ".$formation->getMention()." ".$formation->getMoisDeb()." ".$formation->getAnneeDeb()." ".$formation->getMoisFin()." ".$formation->getAnneeFin();
 
+            /*
             if(ajouterFormation($formation))
             {
                 echo "Formation ajoutée";
@@ -62,18 +67,21 @@ else {
             {
                 echo "Erreur lors de l'ajout de la formation";
             }
+            */
             
             
         }
     }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer']))
+    
+    if (isset($_POST['supprimer']))
     {
         echo($_POST['supprimer']);//récupéré la valeur du bouton supprimer
         //supprimer la formation de CV
         //mise à jour bd CV
     }
 //CV serialisé ou pas 
+    
+    /*
     $db = DB::getInstance();
     if ($db == null) {
         echo "Impossible de se connecter à la base de données !\n";
@@ -83,14 +91,15 @@ else {
         //$CV = $db->getPage("CV",$_SESSION['id_portfolio']);
         $CV = $db->getPage("CV",3);
         $tabFormations = $CV->getFormations();
-    } 
+    }
+    */
 
-/*
+
     $tabFormations = array( new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
                             new Formation("Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
                             new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
                           );
-*/
+
     echo $tpl->render( array("tabFormations"=>$tabFormations,"titre"=>$titre) );
 }
 ?>

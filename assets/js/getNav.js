@@ -1,5 +1,7 @@
 function getNav(pageEnCours, typePage) 
 {
+    var arrayNom = ["", "Accueil", "CV", "Coordonnées", "Formation", "Expérience", "Compétences", "Langues", "Compétences", "Projets", "Contact"];
+
     if (typePage == "CV") {
         var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "CVCoordonnees.php", "CVFormation.php", "CVExperience.php", "CVCompetence.php", "CVLangue.php", "Competence.php", "Projets.php", "Contact.php"];
     }
@@ -7,11 +9,11 @@ function getNav(pageEnCours, typePage)
         var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "editCoordonnee.php", "editFormation.php", "editExperience.php", "editCVCompetence.php", "editLangue.php", "Competence.php", "Projets.php", "editContact.php"];
     }
     else if (typePage == "consult") {
-        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "consultCoordonnee.php", "consultFormation.php", "consultExperience.php", "consultCompetence.php", "consultLangue.php", "Competence.php", "Projets.php", "consultContact.php"];
+        var array = ["accueilSite.php", "Accueil.php", "consulCV.php", "Competence.php", "Projets.php", "consultContact.php"];
+        var arrayNom = ["", "Accueil", "CV", "Compétences", "Projets", "Contact"];
     }
     
-    var arrayNom = ["", "Accueil", "CV", "Coordonnées", "Formation", "Expérience", "Compétences", "Langues", "Compétences", "Projets", "Contact"];
-
+    
 
     let navHtml = "\n" +
                     "<ul class=\"nav nav-tabs flex-column\" style=\"border-style: none;\">";
