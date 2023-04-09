@@ -3,13 +3,15 @@
 
 class Contact implements \JsonSerializable {
 
+    private static $numLangue = 0;
+  
     private $idContact;
     private $nomContact;
     private $descContact;
 
 
-    public function __construct($i=-1,$n="",$d="") {
-      	$this->idContact = $i;
+    public function __construct($n="",$d="") {
+      	$this->idContact = ++self::$numLangue;
 	      $this->nomContact = $n;
 	      $this->descContact = $d;
     }
@@ -26,10 +28,9 @@ class Contact implements \JsonSerializable {
 	      return $res;
     }
 
-    public function jsonSerialize()
-    {
-      $vars = get_object_vars($this);
-      return $vars;
+    public function jsonSerialize() : array {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
 

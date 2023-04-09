@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 require ('user.inc.php');
 require ('page.inc.php');
 require ('Portfolio.inc.php');
@@ -149,6 +150,66 @@ class DB {
             return true;
         }
     }
+
+
+    public function isExiste($idPortfolio){
+        //vérifier si un portfolio existe dans la base de données en fonction de son id
+        $requete = "SELECT * FROM portfolio WHERE idPortfolio = ?";
+        $tparam = array($idPortfolio);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return false;
+        } elseif (empty($resultats)) {
+            //Aucun portfolio trouvé
+            //echo "Aucun portfolio trouvé";
+            return false;
+        } else {
+            //echo count($resultats) . " portfolios trouvés";
+            return true;
+        }
+    }
+
+    public function isProprietaire($idPortfolio, $idUser){
+        //vérifier si un portfolio appartient à un utilisateur en fonction de son id
+        $requete = "SELECT * FROM portfolio WHERE idPortfolio = ? AND idUser = ?";
+        $tparam = array($idPortfolio, $idUser);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return false;
+        } elseif (empty($resultats)) {
+            //Aucun portfolio trouvé
+            //echo "Aucun portfolio trouvé";
+            return false;
+        } else {
+            //echo portfolio appartient à l'utilisateur
+            return true;
+        }
+    }
+
+    public function isPublic($idPortfolio){
+        //vérifier si un portfolio est public en fonction de son id
+        $requete = "SELECT * FROM portfolio WHERE idPortfolio = ? AND estPublic = true";
+        $tparam = array($idPortfolio);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return false;
+        } elseif (empty($resultats)) {
+            //Aucun portfolio trouvé
+            //echo "Aucun portfolio trouvé";
+            return false;
+        } else {
+            //echo portfolio est public
+            return true;
+        }
+
+    }
+
     /*****************************/
     //  Fonctions getters 
     /*****************************/
@@ -322,6 +383,96 @@ class DB {
         $tparam = array($visible, $idPortfolio);
         return $this->execMaj($requete, $tparam);
     }
+
+/*****************************/
+    //  Fonctions add 
+    /*****************************/
+    public function addUser($mail, $prenom, $nom,$mdp)
+    {
+        $requete = "INSERT INTO utilisateur (mail, prenom, nom,mdp) VALUES (?, ?, ?, ?);";
+        $tparam = array($mail, $prenom, $nom,$mdp);
+        return $this->execMaj($requete, $tparam);
+    }
+
+
+    public function addPortfolio($idPortfolio)
+    {   
+        $requete = "INSERT INTO portfolio (nomPortfolio, estPublic, idUser) VALUES ('NewPortfolio', false, ?);";
+        $tparam = array($idPortfolio);
+        if ($this->execMaj($requete,$tparam)){
+            $requete = "SELECT idPortfolio FROM portfolio WHERE idUser = ? ORDER BY idPortfolio DESC LIMIT 1";
+            $tparam = array($idPortfolio);
+            $id = $this->execQuery($requete,$tparam,'portfolio');
+            $row = $id[0];
+            if (!$id) {
+                //Erreur lors de l'exécution de la requête
+                //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+                return null;
+            } elseif (empty($id)) {
+                //Aucun utilisateur trouvé
+                //echo "Aucun utilisateur trouvé";
+                return null;
+            } else {
+                if (null !==$row->getidportfolio()) {
+                    //L'objet est valide, on peut accéder à sa propriété "contenu"
+                    echo $row->getidportfolio();
+                    //return true;
+                    // création des pages en même temps que le portfolio
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('CV',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Competences',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Projets',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Contact',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Accueil',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                } else {
+                    //La propriété "contenu" n'existe pas dans l'objet
+                    //echo "La propriété contenu n'existe pas dans l'objet";
+                    return null;
+                }
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    /*****************************/
+    //  Fonctions remove 
+    /*****************************/
+    public function removePortfolio($idPortfolio)
+    {   
+        if ($this->removePage($idPortfolio)) { // appeler removePage avant le retour true
+            $requete = 'DELETE FROM portfolio WHERE idPortfolio = ?';
+            $tparam = array($idPortfolio);
+            return $this->execMaj($requete, $tparam);
+        } else {
+            echo "Erreur lors de l'exécution de la requête : ";
+            return false;
+        }
+    }
+    
+    public function removePage($idPortfolio)
+    {
+        $requete = 'DELETE FROM page WHERE idPortfolio = ?';
+        $tparam = array($idPortfolio);
+        if ($this->execMaj($requete, $tparam))
+        {
+            return true;
+        } else {
+            echo "Erreur lors de l'exécution de la requête : ";
+            return false;
+        }
+    }
+    
 
 
 

@@ -26,8 +26,8 @@
     <div class="d-xl-flex justify-content-xl-center" style="border: 1px none var(--color-brown);">
         <form style="border: 1px solid var(--color-brown);padding: 15px;">
             <div class="row">
-                <div class="col-xl-6"><label class="form-label form-label">Nom contact : </label><input class="form-control form-control" type="text" /></div>
-                <div class="col-xl-6"><label class="form-label form-label">Lien / numéro / mail : </label><input class="form-control form-control" type="text" /></div>
+                <div class="col-xl-6"><label class="form-label form-label">Nom contact : </label><input class="form-control form-control" type="text" name="nom"/></div>
+                <div class="col-xl-6"><label class="form-label form-label">Lien / numéro / mail : </label><input class="form-control form-control" type="text" name"type" /></div>
             </div>
             <div class="row">
                 <div class="col d-xl-flex justify-content-xl-center"><button class="btn btn-primary" type="submit" style="background: var(--color-brown);border-color: var(--color-brown); margin:3%;">Ajouter contact</button></div>

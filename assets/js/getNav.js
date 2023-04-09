@@ -4,7 +4,7 @@ function getNav(pageEnCours, typePage)
         var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "CVCoordonnees.php", "CVFormation.php", "CVExperience.php", "CVCompetence.php", "CVLangue.php", "Competence.php", "Projets.php", "Contact.php"];
     }
     else if (typePage == "edit") {
-        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "editCoordonnee.php", "editFormation.php", "editExperience.php", "editCompetence.php", "editLangue.php", "Competence.php", "Projets.php", "editContact.php"];
+        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "editCoordonnee.php", "editFormation.php", "editExperience.php", "editCVCompetence.php", "editLangue.php", "Competence.php", "Projets.php", "editContact.php"];
     }
     else if (typePage == "consult") {
         var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "consultCoordonnee.php", "consultFormation.php", "consultExperience.php", "consultCompetence.php", "consultLangue.php", "Competence.php", "Projets.php", "consultContact.php"];
