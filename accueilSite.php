@@ -93,6 +93,23 @@ function cardPortfolio() {
                                         </button>
                                     </form>
                                 </div>
+                                <div class="card-footer">
+                                    <a href="./Portfolio/Accueil.php?idPortfolio='.$row->getidportfolio().'&action=edit""><img class="card-footer-img" id="edit" src="./images/edit.png" alt="editPortfolio"></a>
+                                    <form method="get" action="./accueilSite.php">';
+                                        if ($row->getestpublic() == 1) {
+                                        echo '<input type="hidden" name="idPortfolio" value="'.$row->getidportfolio().'">
+                                              <input type="hidden" name="visibility" value="true">
+                                              <button type="submit" style="none" href="./accueilSite.php">';
+                                            echo '<img class="card-footer-img" src="./images/visibiliteTrue.png" alt="visibilite True">';
+                                        } else {
+                                        echo '<input type="hidden" name="idPortfolio" value="'.$row->getidportfolio().'">
+                                              <input type="hidden" name="visibility" value="false">
+                                              <button type="submit" style="none" href="./accueilSite.php">';
+                                            echo '<img class="card-footer-img" src="./images/visibiliteFalse.png" alt="visibilite False">';
+                                        }
+                    echo '              </button>
+                                    </form>
+                                </div>
                             </a>
                         </div>
                     </div>';
