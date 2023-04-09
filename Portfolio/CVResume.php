@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col d-flex justify-content-center" style="margin-top: 16px;margin-bottom: 32px;">
                             <div class="btn-group align-items-center" role="group">
-                                <a href="CVCoordonnees.php" style="color: var(--color-brown)">
+                                <a href="editCoordonnee.php" style="color: var(--color-brown)">
                                     <button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">
                                         Modifier le CV</button>
                                 </a>
