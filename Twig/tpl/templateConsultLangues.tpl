@@ -2,7 +2,7 @@
 
 {%block contenu %}
 
-<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%;  margin-top:55px"> </div>
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
 
 <script>
     window.addEventListener('DOMContentLoaded', function() 
