@@ -7,7 +7,8 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("editContact.php", "edit");
+        var para = window.location.search;
+        var result = getNav("editContact.php"+para, "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
