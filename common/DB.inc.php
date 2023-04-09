@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);
 require ('user.inc.php');
 require ('page.inc.php');
 require ('Portfolio.inc.php');
