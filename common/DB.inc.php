@@ -348,29 +348,24 @@ class DB {
     /*****************************/
     //  Fonctions remove 
     /*****************************/
-
     public function removePortfolio($idPortfolio)
     {   
-        if(removePage($idPortfolio))
-        {
-            return true;
+        if ($this->removePage($idPortfolio)) { // appeler removePage avant le retour true
             $requete = 'DELETE FROM portfolio WHERE idPortfolio = ?';
             $tparam = array($idPortfolio);
             return $this->execMaj($requete, $tparam);
-        }
-        else
-        {
+        } else {
             return false;
         }
-
     }
-
+    
     public function removePage($idPortfolio)
     {
         $requete = 'DELETE FROM page WHERE idPortfolio = ?';
         $tparam = array($idPortfolio);
         return $this->execMaj($requete, $tparam);
     }
+    
 
 
 
