@@ -22,7 +22,7 @@ class Competence implements JsonSerializable
 	    return $res;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $vars = get_object_vars($this);
         return $vars;

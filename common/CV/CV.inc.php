@@ -118,7 +118,7 @@ class CV implements \JsonSerializable
     }
 
 
-    public function jsonSerialize()
+    public function jsonSerialize() : array
     {
         $vars = get_object_vars($this);
         return $vars;
