@@ -19,7 +19,7 @@
 
             <h1 class="text-center" style="padding-top: 30px;">Page de Projets</h1>
 
-            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;"></div>
+            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ projets.getContenu() }}</div>
 
             <!-- bouton au milieu de la page -->
             <div style="display:flex; justify-content:center">

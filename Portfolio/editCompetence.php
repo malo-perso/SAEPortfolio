@@ -15,7 +15,7 @@ else
     Twig_Autoloader::register();
     $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-    $titre = "Édition de la page Accueil";
+    $titre = "Édition de la page Competences";
 
     $titrecentre = "Competences";
 
@@ -30,12 +30,12 @@ else
         {
             $contenu = $_POST['contenu'];
 
-            $pageCompetence = new Page ($accueil->getIdPage(),$pageCompetence->getNomPage(), $contenu, $pageCompetence->getIdPortfolio());
+            $pageCompetence = new Page ($competence->getIdPage(),$competence->getNomPage(), $contenu, $competence->getIdPortfolio());
 
-            if (majAccueil($pageCompetence))
+            if (majCompetence($pageCompetence))
             {
-                echo "Accueil ajouté";
-                //mise à jour bd Accueil
+                echo "competence ajouté";
+                //mise à jour bd competence
 
                 if ($db == null) {
                     echo "Impossible de se connecter à la base de données !\n";
@@ -62,13 +62,13 @@ else
             echo "Impossible de se connecter à la base de données !\n";
         }
         else {
-            $pageCompetence = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Competences");
+            $competence = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Competences");
         }
 
 
     }
 
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'competence' => $pageCompetence->getContenu() ) );
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'competence' => $competence ) );
 }
 ?>
 
