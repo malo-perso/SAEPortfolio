@@ -14,9 +14,10 @@ class Experience implements \JsonSerializable {
     private $dateDebutAnnee;
     private $dateFinMois;
     private $dateFinAnnee;
+    private $mission;
 
 
-    public function __construct($idExp = "", $intitule = "", $nomEmp = "", $villeEmp = "", $typeContrat = "", $dateDebutMois = "", $dateDebutAnnee = "", $dateFinMois = "", $dateFinAnnee = "") {
+    public function __construct($idExp = "", $intitule = "", $nomEmp = "", $villeEmp = "", $typeContrat = "", $dateDebutMois = "", $dateDebutAnnee = "", $dateFinMois = "", $dateFinAnnee = "", $mission = "") {
         $this->idExperience = $idExp;
         $this->intitulePoste = $intitule;
         $this->nomEmployeur = $nomEmp;
@@ -26,7 +27,41 @@ class Experience implements \JsonSerializable {
         $this->dateDebutAnnee = $dateDebutAnnee;
         $this->dateFinMois = $dateFinMois;
         $this->dateFinAnnee = $dateFinAnnee;
+        $this->mission = $mission;
     }
+
+    public function getIdExperience() {
+        return $this->idExperience;
+    }
+    public function getIntitulePoste() {
+        return $this->intitulePoste;
+    }
+    public function getNomEmployeur() {
+        return $this->nomEmployeur;
+    }
+    public function getVilleEmployeur() {
+        return $this->villeEmployeur;
+    }
+    public function getTypeContrat() {
+        return $this->typeContrat;
+    }
+    public function getDateDebutMois() {
+        return $this->dateDebutMois;
+    }
+    public function getDateDebutAnnee() {
+        return $this->dateDebutAnnee;
+    }
+    public function getDateFinMois() {
+        return $this->dateFinMois;
+    }
+    public function getDateFinAnnee() {
+        return $this->dateFinAnnee;
+    }
+    public function getMission() {
+        return $this->mission;
+    }
+    
+
 
     public function __toString() {
         $res = "Intitulé du poste : ".$this->intitulePoste."\n";

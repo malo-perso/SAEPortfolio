@@ -1,36 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "templateBase.tpl" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Page Compétences</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-    <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/Form-Select---Full-Date---Month-Day-Year.css">
-    <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.css">
-    <link rel="stylesheet" href="../assets/css/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1.css">
-    <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
-    <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
-    <script src="../assets/js/getNav.js"></script>
-    <style>
-        .ce-block__content, 
-        .ce-toolbar__content { 
-            max-width: calc(100% - 100px) !important; 
-        } 
-        .cdx-block { 
-            max-width: 100% !important;
-        }
-    </style>
-    <script src="competence.js"></script>
-</head>
+{%block contenu %}
 
-<body>
-    <div class="text-start">
-    <div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
 
     <script>
             window.addEventListener('DOMContentLoaded', function() 
@@ -131,14 +106,19 @@
             //enregistrement du contenu de l'éditeur dans la base de données
             document.getElementById('save').addEventListener('click', function() 
             {
-                editor.save().then((outputData) => 
-                {
-                    console.log('Article data: ', outputData);
-                    var data = JSON.stringify(outputData);
-                    console.log(data);
+                editor.save().then((output) => {
 
+                    var contenu = JSON.stringify(output.blocks);
+                    $.ajax({
+                        type : 'POST',
+                        url : 'editCompetence.php',
+                        data : {contenu: contenu},
+                        success: function(response) {
+                            alert(response);
+                        }
+                    });
                 }).catch((error) => {
-                    console.log('Saving failed: ', error);
+                    console.log('Saving failed: ', error)
                 });
             });
 
@@ -146,10 +126,3 @@
 
         </script>
     </div>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bs-init.js"></script>
-    <script src="../assets/js/Pop-Out-Vertical-Nav-w-Footer--Social-Links--1-Vertical-Nav.js"></script>
-    <script src="../assets/js/Profile-Edit-Form-profile.js"></script>
-</body>
-
-</html>
