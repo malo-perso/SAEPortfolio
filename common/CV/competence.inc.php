@@ -1,24 +1,38 @@
 <?php
 
-class Competence
+class Competences implements JsonSerializable
 {
     private static $compteur = 0;
 
     private $idComp;
-    private $nomComp;
+    private $softSkills = array();
+    private $hardSkills = array();
 
-    public function __construct($n="") 
+    public function __construct($softSkills, $hardSkills)
     {
         $this->idComp = ++self::$compteur;
-        $this->nomComp = $n;
+        $this->softSkills = $softSkills;
+        $this->hardSkills = $hardSkills;
     }
 
-    public function getNomComp() { return $this->nomComp; }
+    public function getIdComp()
+    {
+        return $this->idComp;
+    }
+
+    public function getSoftSkills()
+    {
+        return $this->softSkills;
+    }
+
+    public function getHardSkills()
+    {
+        return $this->hardSkills;
+    }
+
 
     public function __toString() {
-	    $res = "nomComp:".$this->nomComp."\n";
-        $res = $res ."<br/>";
-	    return $res;
+        return "idComp : " . $this->idComp . " softSkills : " . $this->softSkills . " hardSkills : " . $this->hardSkills;
     }
 
     public function jsonSerialize() : array
@@ -28,7 +42,5 @@ class Competence
     }
 }
 
-//test
-//$uneComp = new Competence('Planter les choux');
-//echo $uneComp;
+
 ?>

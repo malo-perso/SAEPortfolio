@@ -1,7 +1,5 @@
 <?php
 
-include "../common/CV/competence.inc.php";
-include "../common/CV/CV.inc.php";
 require "../common/DB.inc.php";
 
 
@@ -16,6 +14,9 @@ $titrecentre = "Compétences";
 
 $tpl = $twig->loadTemplate( "templateEditCompetences.tpl" );
 
+$db = DB::getInstance();
+$CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if(isset($_POST['softSkills']) && isset($_POST['hardSkills']))
@@ -23,28 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         $softSkills = $_POST['softSkills'];
         $hardSkills = $_POST['hardSkills'];
-        $competences = array();
-        
-        for ($i = 0; $i < count($softSkills); $i++)
-        {
-            $competences[$i] = new Competence($softSkills[$i]);
-        }
 
-        for ($i = count($softSkills); $i < count($softSkills) + count($hardSkills); $i++)
-        {
-            $competences[$i] = new Competence($hardSkills[$i - count($softSkills)]);
-        }
+        $competences = new Competences($softSkills, $hardSkills);
 
         if(ajouterCompetence($competences))
         {
-            echo "Formation ajoutée";
+            echo "Compétence ajoutée";
             //mise à jour bd CV
-            $db = DB::getInstance();
+           
             if ($db == null) {
                 echo "Impossible de se connecter à la base de données !\n";
             }
             else {
-                $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+                
                 if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
                 {
                     echo "CV mis à jour";
@@ -60,23 +52,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             echo "Erreur lors de l'ajout des compétences";
         }
             
-            
-        
     }
 
-    $db:: DB::getInstance();
+    $db = DB::getInstance();
+
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else {
+        $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+        
+    }
 }
 
-/*$softSkills = array( new Competence("Anglais"),
-                     new Competence("Espagnol"),
-                     new Competence("Allemand")
-                   );
-
-$hardSkills = array( new Competence("Java"),
-                     new Competence("C++"),
-                     new Competence("C#")
-                   );*/
+$softSkills = $CV->getCompetences()->getSoftSkills();
+$hardSkills = $CV->getCompetences()->getHardSkills();
 
 
 echo $tpl->render( array("softSkills"=>$softSkills,"hardSkills"=>$hardSkills,"titre"=>$titre) );
+
 ?>
