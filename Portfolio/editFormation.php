@@ -1,12 +1,10 @@
 <?php
-
+ini_set('display_errors', 1);
 require ("../common/DB.inc.php");
+include("../common/ftcAux.inc.php");
 
 session_start();
-
-if(! isset($_SESSION['id_utilisateur'])) {
-    header('Location: ..\connexion.php');
-}
+gestionAcces()
 else {
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
@@ -49,10 +47,8 @@ else {
                 if ($db == null) {
                     echo "Impossible de se connecter à la base de données !\n";
                 }
-                else 
-                {
-                    $CV = $db->getPage("CV",$_SESSION['id_portfolio']);
-                    if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
+                else {
+                    if ($db->updatePage(null,"CV", $_SESSION['id_portfolio']))
                     {
                         echo "CV mis à jour";
                     }

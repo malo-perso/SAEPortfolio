@@ -86,4 +86,77 @@ function emailValide($email) {
     return preg_match($patterne, $email);
 }
 
+function gestionAcces(){
+
+    if(isset($_GET["idPortfolio"])){
+        //récupération de l'id du portfolio
+        $idPortfolio = $_GET["idPortfolio"];
+
+        $db = DB::getInstance();
+        if ($db == null) {
+            echo "Impossible de se connecter à la base de données !\n";
+        }
+        else {
+            if($db->isExiste($idPortfolio)){
+                //portfolio existe dans db
+                if(isset($_GET["mode"]) && $_GET["mode"] == "edit"){
+                    // Mode modification
+                    if(isset($_SESSION["email"]) && $_SESSION["id_utilisateur"]){
+                        // Utilisateur connecté
+                        if ($db->isProprietaire($idPortfolio, $_SESSION["id_utilisateur"])){
+                            // Utilisateur propriétaire du portfolio
+                            return true;
+                        }
+                        else{
+                            // Utilisateur non propriétaire du portfolio => redirection page d'accueil utiliateur 
+                            return false;
+                        }
+                    }
+                    else{
+                        // utilisateur non connecté => redirection page connexion
+                            // possible de refaire revenir ici après connexion avec $_SESSION["redirect"] = $_SERVER["REQUEST_URI"]; 
+                        header("Location: ./connexion.php");
+                        return false;
+                    }
+                }
+                else{
+                    // Mode consultation
+                    // Vérifier si le portfolio est public
+                    if($db->isPublic($idPortfolio)){
+                        //portfolio public
+                        return true; // Accès autorisé
+                    }
+                    else {
+                        //portfolio privé
+                        if(isset($_SESSION["email"]) && $_SESSION["id_utilisateur"]){
+                            // Utilisateur connecté
+                            if ($db->isProprietaire($idPortfolio, $_SESSION["id_utilisateur"])){
+                                // Utilisateur propriétaire du portfolio
+                                return true;
+                            }
+                            else{
+                                // Utilisateur non propriétaire du portfolio => redirection page d'accueil utiliateur 
+                                return false;
+                            }
+                        }else{
+                            // utilisateur non connecté => redirection page connexion
+                                // possible de refaire revenir ici après connexion avec $_SESSION["redirect"] = $_SERVER["REQUEST_URI"]; 
+                            header("Location: ./connexion.php");
+                            return false;
+                        }
+                    }
+                }
+            }
+            else{
+                //portfolio n'existe pas dans db
+            }
+        }
+    }
+    else{
+        //pas d'idPortfolio rediriger vers page d'accueil
+        header("location: ./index.php");
+
+    }
+}
+
 ?>
