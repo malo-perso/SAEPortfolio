@@ -46,10 +46,11 @@ h1{
     margin-top: 10%;
 }
 
-.card img {
+/*.card img {
   max-width: 100%;
   max-height: 100%;
 }
+*/
 .card {
   margin: 0 0.5em;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
@@ -63,6 +64,15 @@ h1{
   }
 }
 
+.card-footer{
+  text-align: right;
+}
+
+.card-footer-img {
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+}
 
 .form-white.input-group>.form-control:focus {
     border-color: #fff;
@@ -77,3 +87,4 @@ h1{
   .navbar-dark .navbar-nav .nav-link:focus {
     color: rgba(255, 255, 255, 0.75);
   }
+

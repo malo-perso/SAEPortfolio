@@ -340,8 +340,35 @@ class DB {
 
     public function setVisible($idPortfolio, $visible)
     {
-        $requete = 'UPDATE portfolio SET visible = ? where idPortfolio = ?';
+        $requete = 'UPDATE portfolio SET estpublic = ? where idPortfolio = ?';
         $tparam = array($visible, $idPortfolio);
+        return $this->execMaj($requete, $tparam);
+    }
+
+    /*****************************/
+    //  Fonctions remove 
+    /*****************************/
+
+    public function removePortfolio($idPortfolio)
+    {   
+        if(removePage($idPortfolio))
+        {
+            return true;
+            $requete = 'DELETE FROM portfolio WHERE idPortfolio = ?';
+            $tparam = array($idPortfolio);
+            return $this->execMaj($requete, $tparam);
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    public function removePage($idPortfolio)
+    {
+        $requete = 'DELETE FROM page WHERE idPortfolio = ?';
+        $tparam = array($idPortfolio);
         return $this->execMaj($requete, $tparam);
     }
 
