@@ -30,14 +30,14 @@
                 <h4>Compétences</h4>
                 <p>Soft skills</p>
                 <ul>
-                    {% for competence in softSkills %}
-                        <li>{{ competence.getNomComp() }}</li>
+                    {% for competence in softskills %}
+                        <li>{{ competence }}</li>
                     {% endfor %}
                 </ul>
                 <p>Hard skills</p>
                 <ul>
-                    {% for competence in hardSkills %}
-                        <li>{{ competence.getNomComp() }}</li>
+                    {% for competence in hardskills %}
+                        <li>{{ competence}}</li>
                     {% endfor %}
                 </ul>
                 <h4>Langues</h4>
@@ -59,14 +59,14 @@
             <div id="div-milieu-t1">
                 <div id="formation-t1">
                     <h4 class="cadre-t1">Formation</h4>
-                        {% for formation in tabFormations %}
+                        {% for formation in formations %}
                             <p><span class="span-t1">{{ formation.getDateDebut() }} -&nbsp;{{ formation.getDateFin() }} </span> :{{ formation.getDiplome() }} ,&nbsp; {{ formation.getDomaine() }} ,&nbsp; {{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
                         {% endfor %}
                 </div>
                 
                 <div id="experience-t1">
                     <h4 class="cadre-t1">Expérience professionnelle</h4>
-                        {% for exp in tabExperiences %}
+                        {% for exp in experiences %}
                             <p><span class="span-t1">{{ exp.getDateDebut() }} -&nbsp;{{ exp.getDateFin() }}</span> :{{ exp.getTypeContrat() }}&nbsp;{{ exp.getIntitulePoste() }} -&nbsp;{{ exp.getNomEmployeur() }} ,&nbsp;{{ exp.getVilleEmployeur() }}</p>
                             <p><span class="tab-t1 span-t1">Missions : </span>
                             <ul>
