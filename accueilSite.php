@@ -24,8 +24,8 @@ if (isset($_GET["visibility"])){
         $db->setVisible($idPortfolio, $visibility);
     }
 }
-if (isset($_GET["delete"])){
-    $idPortfolio = $_GET['idPortfolio'];
+if (isset($_GET["deletePortfolio"])){
+    $idPortfolio = $_GET['deletePortfolio'];
     $db = DB::getInstance();
     if ($db == null) {
         echo "Impossible de se connecter à la base de données !\n";
@@ -86,10 +86,21 @@ function cardPortfolio() {
                                             echo '<img class="card-footer-img" src="./images/visibiliteFalse.png" alt="visibilite False">';
                                         }
                     echo '              </button>
-                                        <input type="hidden" name="delete" value="'.$row->getidportfolio().'">
-                                        <button type="submit" style="border: none; href="./accueilSite.php ">
+                                    </form>
+                                    <form method="get" action="./accueilSite.php" style="none">
+                                        <input type="hidden" name="deletePortfolio" value="'.$row->getidportfolio().'">
+                                        <button type="button" style="border: none; href="./accueilSite.php " onclick="confirmDelete('.$row->getidportfolio().')">
                                             <img class="card-footer-img" src="./images/delete.png" alt="delete">
                                         </button>
+
+                                        <script>
+                                            function confirmDelete(id) {
+                                                if (confirm("Êtes-vous sûr de vouloir supprimer ce portfolio ?")) {
+                                                    window.location.href = "accueilSite.php?deletePortfolio=" + id;
+                                                }
+                                            }
+                                        </script>
+
                                     </form>
                                 </div>
                             </a>
