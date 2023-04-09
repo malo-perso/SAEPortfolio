@@ -7,7 +7,7 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("editCompetence.php", "edit");
+        var result = getNav("editCVCompetence.php", "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
@@ -44,9 +44,9 @@
     </div>
     <div style="display:flex; justify-content: center;">
             <div class="btn-group" role="group" style="width:55%">
-                <a href="CVExperience.php" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (expérience)</button></a>
+                <a href=editExperience.php" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (expérience)</button></a>
                 <button id="enregistrer" class="btn btn-secondary" data-bss-hover-animate="pulse" type="submit" style="margin:5%; order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Enregistrer</button>
-                <a href="CVLangue.php" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (langue)</button></a>
+                <a href="editLangue.php" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (langue)</button></a>
             </div>
         </div>
     </form>

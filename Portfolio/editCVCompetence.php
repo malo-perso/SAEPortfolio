@@ -19,7 +19,7 @@ else
 
     $titrecentre = "Compétences";
 
-    $tpl = $twig->loadTemplate( "templateEditCompetences.tpl" );
+    $tpl = $twig->loadTemplate( "templateEditCVCompetences.tpl" );
 
     $db = DB::getInstance();
     $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
