@@ -53,7 +53,7 @@ function login(){
      echo "                             </div>\n";
      echo "                         </div>                              \n";
      echo "                         <div class=\"form-group text-center\">\n";
-     echo "                             <button type=\"submit\" name=\"submit\" class=\"btn btn-primary\">Connexion</button>\n";
+     echo "                             <button type=\"submit\" name=\"login\" class=\"btn btn-primary\">Connexion</button>\n";
      echo "                         </div>\n";
      echo "                     </form>\n";
      echo "                </div>\n";
@@ -67,28 +67,40 @@ function register(){
      echo "         <div id=\"login-row\" class=\"row justify-content-center align-items-center\">\n";
      echo "             <div id=\"login-column\" class=\"col-md-6 col-xs-12\">\n";
      echo "                 <div id=\"login-box\" class=\"col-md-12\">\n";
-     echo "                    <form id=\"login-form\" class=\"form\" action=\"\" method=\"post\">\n";
+     echo "                    <form id=\"register-form\" class=\"form\" action=\"\" method=\"post\">\n";
      echo "                    <h3 class=\"text-center text-info\">Register</h3>\n";
      echo "                    <div class=\"form-group row mb-4\">\n";
-     echo "                         <label for=\"username\" class=\"col-sm-2 col-form-label text-info\">Mail:</label>\n";
+     echo "                         <label for=\"email\" class=\"col-sm-2 col-form-label text-info\">Email:</label>\n";
      echo "                         <div class=\"col-sm-10\">\n";
-     echo "                         <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\">\n";
+     echo "                         <input type=\"email\" name=\"email\" id=\"email\" class=\"form-control\">\n";
      echo "                        </div>\n";
      echo "                   </div>\n";
      echo "                    <div class=\"form-group row mb-4\">\n";
-     echo "                         <label for=\"username\" class=\"col-sm-2 col-form-label text-info\">Username:</label>\n";
+     echo "                         <label for=\"firstname\" class=\"col-sm-2 col-form-label text-info\">First Name:</label>\n";
      echo "                   <div class=\"col-sm-10\">\n";
-     echo "                         <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\">\n";
+     echo "                         <input type=\"text\" name=\"firstname\" id=\"firstname\" class=\"form-control\">\n";
      echo "                         </div>\n";
      echo "                    </div>\n";
      echo "                    <div class=\"form-group row mb-4\">\n";
-     echo "                         <label for=\"username\" class=\"col-sm-2 col-form-label text-info\">Password:</label>\n";
+     echo "                         <label for=\"lastname\" class=\"col-sm-2 col-form-label text-info\">Last Name:</label>\n";
+     echo "                   <div class=\"col-sm-10\">\n";
+     echo "                         <input type=\"text\" name=\"lastname\" id=\"lastname\" class=\"form-control\">\n";
+     echo "                         </div>\n";
+     echo "                    </div>\n";
+     echo "                    <div class=\"form-group row mb-4\">\n";
+     echo "                         <label for=\"password\" class=\"col-sm-2 col-form-label text-info\">Password:</label>\n";
      echo "                         <div class=\"col-sm-10\">\n";
-     echo "                         <input type=\"text\" name=\"username\" id=\"username\" class=\"form-control\">\n";
+     echo "                         <input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\">\n";
+     echo "                         </div>\n";
+     echo "                   </div>\n";
+     echo "                    <div class=\"form-group row mb-4\">\n";
+     echo "                         <label for=\"confirm_password\" class=\"col-sm-2 col-form-label text-info\">Confirm Password:</label>\n";
+     echo "                         <div class=\"col-sm-10\">\n";
+     echo "                         <input type=\"password\" name=\"confirm_password\" id=\"confirm_password\" class=\"form-control\">\n";
      echo "                         </div>\n";
      echo "                   </div>\n";
      echo "                    <div class=\"form-group text-center\">\n";
-     echo "                         <button type=\"submit\" name=\"submit\" class=\"btn btn-primary\">Créer Compte</button>\n";
+     echo "                         <button type=\"submit\" name=\"register\" class=\"btn btn-primary\">Create Account</button>\n";
      echo "                    </div>\n";
      echo "                    </form>\n";
      echo "                </div>\n";
@@ -96,13 +108,14 @@ function register(){
      echo "         </div>\n";
      echo "     </div>\n";
 }
+
 $db = DB::getInstance();
 if ($db == null) {
      echo "Impossible de se connecter à la base de données !\n";
 }
 else {
      try {
-          if(isset($_POST['submit'])){
+          if(isset($_POST['login'])){
                $login = $_POST['username'];
                $mdp = $_POST['password'];
                echo $login." ".$mdp;
@@ -131,6 +144,46 @@ else {
                else{
                     echo "Login ou mot de passe non valide";
                }
+          }
+          if(isset($_POST['register'])){
+               $email = $_POST['email'];
+               $firstname = $_POST['firstname'];
+               $lastname = $_POST['lastname'];
+               $password = $_POST['password'];
+               $confirm_password = $_POST['confirm_password'];
+
+               // Vérifie si tous les champs ont été remplis
+               if (empty($email) || empty($firstname) || empty($lastname) || empty($password) || empty($confirm_password)) {
+                    echo "<p class='error'>Veuillez remplir tous les champs.</p>";
+                    return;
+               }
+
+               if(emailValide($email) && motDePasseValide($password)){
+                    // Vérifie si l'adresse email est déjà utilisée
+                    if ($db->isemailOK($email)) {
+                         echo "<p class='error'>L'adresse email est déjà utilisée.</p>";
+                         return;
+                    }
+                    else{
+                         // Vérifie si les mots de passe sont identiques
+                         if ($password != $confirm_password) {
+                              echo "<p class='error'>Les mots de passe ne sont pas identiques.</p>";
+                              return;
+                         }
+                         else{
+                              $db->addUser($email, $firstname, $lastname, $password);
+                              echo "Utilisateur ajouté";
+
+                              header('Location: connexion.php');
+     
+                         }
+                    }
+               }
+               else{
+                    echo "Login ou mot de passe non valide";
+               }
+
+
           }
      } //fin try
      catch (Exception $e) {
