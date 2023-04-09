@@ -38,6 +38,7 @@
 
 .h4-t2{
     padding: 2%;
+    margin-left: -2%;
     /*background-color: #9DBB59;*/
     filter: brightness(0.8);
 }
