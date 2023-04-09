@@ -68,7 +68,7 @@ else
 
     }
 
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $accueil->getContenu() ) );
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $accueil) );
 }
 ?>
 
