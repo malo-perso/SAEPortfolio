@@ -1,11 +1,6 @@
 <?php
-<<<<<<< Updated upstream
 
-require "../common/DB.inc.php";
-=======
-ini_set('display_errors', 1);
 require ("../common/DB.inc.php");
->>>>>>> Stashed changes
 
 session_start();
 
@@ -54,13 +49,10 @@ else {
                 if ($db == null) {
                     echo "Impossible de se connecter à la base de données !\n";
                 }
-                else {
-<<<<<<< Updated upstream
-                    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+                else 
+                {
+                    $CV = $db->getPage("CV",$_SESSION['id_portfolio']);
                     if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
-=======
-                    if ($db->updatePage(null,"CV", $_SESSION['id_portfolio']))
->>>>>>> Stashed changes
                     {
                         echo "CV mis à jour";
                     }
