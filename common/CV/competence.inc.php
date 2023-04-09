@@ -1,7 +1,6 @@
 <?php
 
-
-class Competence implements JsonSerializable 
+class Competence
 {
     private static $compteur = 0;
 

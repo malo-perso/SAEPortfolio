@@ -1,6 +1,11 @@
 <?php
+<<<<<<< Updated upstream
 
 require "../common/DB.inc.php";
+=======
+ini_set('display_errors', 1);
+require ("../common/DB.inc.php");
+>>>>>>> Stashed changes
 
 session_start();
 
@@ -21,7 +26,7 @@ else {
     $tpl = $twig->loadTemplate( "templateEditFormations.tpl" );
 
 
-    if ($_SERVER["RESQUEST_METHOD"] == "POST")
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         echo "POST";
         
@@ -50,8 +55,12 @@ else {
                     echo "Impossible de se connecter à la base de données !\n";
                 }
                 else {
+<<<<<<< Updated upstream
                     $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
                     if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
+=======
+                    if ($db->updatePage(null,"CV", $_SESSION['id_portfolio']))
+>>>>>>> Stashed changes
                     {
                         echo "CV mis à jour";
                     }
@@ -70,7 +79,7 @@ else {
         }
     }
 
-    if ($_SERVER["RESQUEST_METHOD"] == "POST" && isset($_POST['supprimer']))
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer']))
     {
         echo($_POST['supprimer']);//récupéré la valeur du bouton supprimer
         //supprimer la formation de CV
@@ -82,7 +91,9 @@ else {
         echo "Impossible de se connecter à la base de données !\n";
     }
     else {
-        $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+        echo "récupération du tableau de formations";
+        //$CV = $db->getPage("CV",$_SESSION['id_portfolio']);
+        $CV = $db->getPage("CV",3);
         $tabFormations = $CV->getFormations();
     } 
 
