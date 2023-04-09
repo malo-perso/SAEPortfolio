@@ -50,6 +50,7 @@ else {
                     echo "Impossible de se connecter à la base de données !\n";
                 }
                 else {
+                    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
                     if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
                     {
                         echo "CV mis à jour";
