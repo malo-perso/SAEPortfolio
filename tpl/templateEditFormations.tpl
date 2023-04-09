@@ -17,7 +17,7 @@
     <section class="text-start" style="margin-left:15%; width:85%">
         <h2 class="text-center" style="color: var(--bs-body-color);padding-top: 5%;">Formations</h2>
         <div id="formations" style="display:grid; justify-content:center; margin-left:-10%;">
-            <form method="GET" action="editFormation.php">
+            <form method="POST" action="editFormation.php">
                 {% for formation in tabFormations %}
                     <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
                         <p class="index_nom_ville">{{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
@@ -29,7 +29,7 @@
             </form>
         </div>
         <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
-            <form method="GET" action="editFormation.php" style="width:70%;">
+            <form method="POST" action="editFormation.php" style="width:70%;">
                 <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">

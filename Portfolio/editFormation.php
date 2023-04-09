@@ -41,7 +41,18 @@ else {
 
             echo "Formation : ".$formation->getNomEtat()." ".$formation->getVille()." ".$formation->getDiplome()." ".$formation->getDomaine()." ".$formation->getMention()." ".$formation->getMoisDeb()." ".$formation->getAnneeDeb()." ".$formation->getMoisFin()." ".$formation->getAnneeFin();
 
-            ajouterFormation($formation);        
+            if(ajouterFormation($formation))
+            {
+                echo "Formation ajoutée";
+                //mise à jour bd CV
+                updatePage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV", $CV);
+            }
+            else
+            {
+                echo "Erreur lors de l'ajout de la formation";
+            }
+            
+            
         }
     }
 
@@ -49,18 +60,16 @@ else {
     {
         echo($_POST['supprimer']);
     }
+//CV serialisé ou pas 
+    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+    $tabFormations = $CV->getFormations();
 
-    //$tabFormations = $db->getFormations($user.getIdUser());
-
-    //si dans la méthode post = nom du formulaire alors 
-        //update de la formation dans la DB
-        // recharger la page
-
+/*
     $tabFormations = array( new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
                             new Formation("Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
                             new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
                           );
-
+*/
     echo $tpl->render( array("tabFormations"=>$tabFormations,"titre"=>$titre) );
 }
 ?>

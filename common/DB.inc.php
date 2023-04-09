@@ -293,7 +293,7 @@ class DB {
     /*****************************/
 
 
-    public function updateCVCoordonnees($idPortfolio, $coordonnees)
+    public function updatePage($idPortfolio, $coordonnees)
     {
             
         $requete = 'UPDATE CV SET coordonnees = ? where idPortfolio = ?';
@@ -301,41 +301,6 @@ class DB {
         return $this->execMaj($requete, $tparam);
     }
 
-    public function updateCVCompetence($idPortfolio, $softSkills, $hardSkills)
-    {
-        
-        $requete = 'UPDATE CV SET softSkills = ? AND hardSkills where idPortfolio = ?';
-        $tparam = array($softSkills, $hardSkills, $idPortfolio);
-        return $this->execMaj($requete, $tparam);
-      
-    }
-
-    public function updateCVExperience($idPortfolio, $experience)
-    {
-        
-        $requete = 'UPDATE CV SET experience = ? where idPortfolio = ?';
-        $tparam = array($experience, $idPortfolio);
-        return $this->execMaj($requete, $tparam);
-      
-    }
-
-    public function updateCVFormation($idPortfolio, $formation)
-    {
-        
-        $requete = 'UPDATE CV SET formation = ? where idPortfolio = ?';
-        $tparam = array($formation, $idPortfolio);
-        return $this->execMaj($requete, $tparam);
-      
-    }
-
-    public function updateCVLangue($idPortfolio, $langue)
-    {
-        
-        $requete = 'UPDATE CV SET langue = ? where idPortfolio = ?';
-        $tparam = array($langue, $idPortfolio);
-        return $this->execMaj($requete, $tparam);
-      
-    }
 
     public function setVisible($idPortfolio, $visible)
     {

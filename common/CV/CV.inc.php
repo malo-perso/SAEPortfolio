@@ -59,10 +59,10 @@ class CV implements \JsonSerializable
         
     }
 
-
     public function ajouterFormation($formation)
     {
         array_push($this->formations, $formation);
+        return true;
     }
 
     public function ajouterExperience($experience)
