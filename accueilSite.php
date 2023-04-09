@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 session_start();
 
 require ("./common/DB.inc.php");
@@ -32,6 +33,17 @@ if (isset($_GET["deletePortfolio"])){
     }
     else {
         $db->removePortfolio($idPortfolio);
+    
+    }
+}
+if (isset($_GET["Portfolio"])){
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else {
+        //echo $_SESSION['id_utilisateur'];
+        $db->addPortfolio($_SESSION['id_utilisateur']);
 
     }
 }
@@ -41,7 +53,15 @@ contenu();
 pied();
 
 function contenu() {
-    echo "<div class=\"card\">\n";
+    echo    '<div class=\"new-Portfolio\">;
+                <form method="get" action="./accueilSite.php" style="none">
+                    <input type="hidden" name="Portfolio" value="new">
+                    <button type="submit" style="border: none; href="./accueilSite.php">
+                        Nouveau Portfolio<img class="card-footer-img" src="./images/add.png" alt="visibilite False">
+                    </button>
+                </form>
+            </div>';
+    echo "<div class=\"card\">";
     //$IdUser = $db->getUserID('user1@mail.com');
     //echo "idUser : $IdUser";
 

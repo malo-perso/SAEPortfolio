@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 1);
 require ('user.inc.php');
 require ('page.inc.php');
 require ('Portfolio.inc.php');
@@ -344,6 +344,58 @@ class DB {
         $tparam = array($visible, $idPortfolio);
         return $this->execMaj($requete, $tparam);
     }
+    /*****************************/
+    //  Fonctions add 
+    /*****************************/
+    public function addPortfolio($idPortfolio)
+    {   
+        $requete = "INSERT INTO portfolio (nomPortfolio, estPublic, idUser) VALUES ('NewPortfolio', false, ?);";
+        $tparam = array($idPortfolio);
+        if ($this->execMaj($requete,$tparam)){
+            $requete = "SELECT idPortfolio FROM portfolio WHERE idUser = ? ORDER BY idPortfolio DESC LIMIT 1";
+            $tparam = array($idPortfolio);
+            $id = $this->execQuery($requete,$tparam,'portfolio');
+            $row = $id[0];
+            if (!$id) {
+                //Erreur lors de l'exécution de la requête
+                //echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+                return null;
+            } elseif (empty($id)) {
+                //Aucun utilisateur trouvé
+                //echo "Aucun utilisateur trouvé";
+                return null;
+            } else {
+                if (null !==$row->getidportfolio()) {
+                    //L'objet est valide, on peut accéder à sa propriété "contenu"
+                    echo $row->getidportfolio();
+                    //return true;
+                    // création des pages en même temps que le portfolio
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('CV',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Competences',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Projets',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Contact',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                    $requete = "INSERT INTO page (nomPage, contenu, idPortfolio) VALUES ('Accueil',null,?);";
+                    $tparam = array($row->getidportfolio());
+                    $this->execMaj($requete,$tparam);
+                } else {
+                    //La propriété "contenu" n'existe pas dans l'objet
+                    //echo "La propriété contenu n'existe pas dans l'objet";
+                    return null;
+                }
+            }
+        }
+        else {
+            return false;
+        }
+    }
 
     /*****************************/
     //  Fonctions remove 
@@ -355,6 +407,7 @@ class DB {
             $tparam = array($idPortfolio);
             return $this->execMaj($requete, $tparam);
         } else {
+            echo "Erreur lors de l'exécution de la requête : ";
             return false;
         }
     }
@@ -363,7 +416,13 @@ class DB {
     {
         $requete = 'DELETE FROM page WHERE idPortfolio = ?';
         $tparam = array($idPortfolio);
-        return $this->execMaj($requete, $tparam);
+        if ($this->execMaj($requete, $tparam))
+        {
+            return true;
+        } else {
+            echo "Erreur lors de l'exécution de la requête : ";
+            return false;
+        }
     }
     
 
