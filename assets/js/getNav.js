@@ -1,12 +1,13 @@
 function getNav(pageEnCours, typePage) 
 {
+    console.log("pageEnCours: " + pageEnCours);
     var arrayNom = ["", "Accueil", "CV", "Coordonnées", "Formation", "Expérience", "Compétences", "Langues", "Compétences", "Projets", "Contact"];
 
     if (typePage == "CV") {
         var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "CVCoordonnees.php", "CVFormation.php", "CVExperience.php", "CVCompetence.php", "CVLangue.php", "Competence.php", "Projets.php", "Contact.php"];
     }
     else if (typePage == "edit") {
-        var array = ["accueilSite.php", "Accueil.php", "CVResume.php", "editCoordonnee.php", "editFormation.php", "editExperience.php", "editCVCompetence.php", "editLangue.php", "Competence.php", "Projets.php", "editContact.php"];
+        var array = ["accueilSite.php", "editAccueil.php", "CVResume.php", "editCoordonnee.php", "editFormation.php", "editExperience.php", "editCVCompetence.php", "editLangue.php", "editCompetence.php", "editProjets.php", "editContact.php"];
     }
     else if (typePage == "consult") {
         var array = ["accueilSite.php", "Accueil.php", "consulCV.php", "Competence.php", "Projets.php", "consultContact.php"];
