@@ -20,8 +20,9 @@ function contenu() {
         echo "<div class=\"d-flex justify-content-center mt-2\">\n";
             echo "<a href=\"./accueilSite.php\" class=\"btn btn-primary\">Mes portfolios !</a>\n";
         echo "</div>\n";
-        echo "</form>\n";
+        
     }
+    echo "</form>\n";
     echo "<div class=\"cardSlider\">\n";
 
 /*script insersion card profil */
