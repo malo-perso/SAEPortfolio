@@ -84,6 +84,7 @@ if (isset($_GET['recherche'])) {
 
         if($db->isPublic($idPortfolio)) {
             echo "<script>console.log('portfolio public');</script>";
+            header("Location: ./Portfolio/consultAccueil.php?id=".$idPortfolio);
         }
         else {
             echo "<script>console.log('portfolio prive');</script>";
