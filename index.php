@@ -10,9 +10,9 @@ contenu();
 pied();
 
 function contenu() {
-    echo "<form class=\"my-4\">\n";
+    echo "<form class=\"my-4\" action =\"\" method=\"GET\">\n";
     echo "    <div class=\"input-group\">\n";
-    echo "        <input type=\"text\" class=\"form-control\" placeholder=\"Recherche\">\n";
+    echo "        <input name=\"recherche\" type=\"search\" class=\"form-control\" placeholder=\"Recherche\">\n";
     echo "        <button class=\"btn btn-primary\" type=\"submit\">Rechercher</button>\n";
     echo "    </div>\n";
     if(isset($_SESSION['email'])){
@@ -58,12 +58,37 @@ function cardUser() {
         catch (Exception $e) {
             echo $e->getMessage();
         }  
-        $db->close();
+        //$db->close();
 } //fin du else connexion reussie
 
 
 
 
+}
+
+if (isset($_GET['recherche'])) {
+    $recherche = $_GET['recherche'];
+    $recherche = trim($recherche); 
+    $recherche = strip_tags($recherche);
+
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        echo "<script>console.log('connexion reussie');</script>";
+        $idPortfolio = $db->getIdPortfolio($recherche);
+        echo $idPortfolio;
+
+        if($db->isPublic($idPortfolio)) {
+            echo "<script>console.log('portfolio public');</script>";
+        }
+        else {
+            echo "<script>console.log('portfolio prive');</script>";
+        }
+        
+    }
 }
 
 ?>

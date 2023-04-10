@@ -367,6 +367,25 @@ class DB {
         }
     }
 
+    public function getIdPortfolio($nomPortfolio){
+        $requete = "SELECT idPortfolio FROM portfolio WHERE nomPortfolio = ?";
+        $tparam = array($nomPortfolio);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            echo "Aucun portfolio trouvé";
+            return null;
+        } else {
+            echo "portfolio trouvé \n";
+            return  $row->getIdPortfolio();
+        }
+    }
+
     /*****************************/
     //  Fonctions setters 
     /*****************************/
