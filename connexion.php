@@ -120,7 +120,10 @@ else {
                $mdp = $_POST['password'];
                echo $login." ".$mdp;
 
-               if(emailValide($login) && motDePasseValide($mdp)){
+               if(emailValide($login) && motDePasseValide($mdp))
+               {
+                    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+                    
                     if($db->isemailOK($login) && $db->isMotDePasseOK($login,$mdp)){
                          //remplir les informations de l'utilisateur dans la session
 
@@ -171,7 +174,10 @@ else {
                               return;
                          }
                          else{
-                              $db->addUser($email, $firstname, $lastname, $password);
+
+                              $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                              $db->addUser($email, $firstname, $lastname, $hashed_password);
                               echo "Utilisateur ajouté";
 
                               header('Location: connexion.php');
