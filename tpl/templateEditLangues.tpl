@@ -7,6 +7,8 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
         var para = window.location.search;
+        document.getElementById("precedent").href="editCVCompetence.php"+para;
+        document.getElementById("suivant").href="editCompetence.php"+para;
         var result = getNav("editLangue.php", "edit",para);
         var id = document.getElementById("nav");
         id.innerHTML = result;
@@ -55,7 +57,13 @@
                 </div>
             </form>
         </div>
-        <a href="editCompetence.php" style="color: var(--color-brown)"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;">Précédent (compétences)</button></a>
+        <div style="display:flex; justify-content: center;">
+            <div class="btn-group" role="group" style="width:55%">
+                <a id="precedent" style="color: var(--color-brown)"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;">Précédent (compétences)</button></a>
+                <a id="suivant" style="color: var(--color-brown)"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="margin-left: 189px;border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);margin-top: 45px;">Précédent (compétences)</button></a>
+            </div>
+        </div>
+        
     </section>
     
     <script src="../assets/js/edit.js"></script>
