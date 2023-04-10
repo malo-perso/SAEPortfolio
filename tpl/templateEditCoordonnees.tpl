@@ -22,7 +22,7 @@
                 <div class="row profile-row">
                     <div class="col-md-4 relative">
                         <div class="avatar">
-                            <div class="avatar-bg center" id="avatar" style="width: 150px;height: 150px;"></div>
+                            <div class="avatar-bg center" id="avatar" style="width: 150px;"></div>
                         </div><input class="form-control form-control form-control" type="file" id="selectAvatar" name="avatar-file" style="margin-top: 8px;">
                     </div>
                     <div class="col-md-8">
@@ -89,7 +89,7 @@
 
         <h4 class="text-center" style="margin:2%;" >Ajoutez une phrase d'accroche</h4>
         <!--mettre le textarea dans un div pour pouvoir le centrer-->
-        <div style="width: 50%;height: 60%;border: 1px solid;margin-left:25%; margin-right:25%; margin-bottom:5%;">
+        <div style="width: 50%;border: 1px solid;margin-left:25%; margin-right:25%; margin-bottom:5%;">
             <textarea name="accroche" class="form-control">{{ coordonnees.getPhraseAccroche() }}</textarea> 
         </div>
 

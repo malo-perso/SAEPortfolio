@@ -28,7 +28,7 @@
         {% endfor %}
     </form>
     </div>
-    <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;height: 40%;border: 1px solid; margin-top:5%;">
+    <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;border: 1px solid; margin-top:5%;">
         <form method="POST" style=width:70%;>
             <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                 <div class="col-md-8">
