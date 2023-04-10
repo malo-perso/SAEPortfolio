@@ -10,7 +10,7 @@
             window.addEventListener('DOMContentLoaded', function() 
             {
                 var para = window.location.search;
-                var result = getNav("consultProjets.php"+para, "consult");
+                var result = getNav("consultProjets.php", "consult",para);
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

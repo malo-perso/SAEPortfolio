@@ -1,12 +1,13 @@
 <?php
 
 require ("../common/DB.inc.php");
+include ("../common/fctAux.inc.php");
 
 session_start();
 
-if(! isset($_SESSION['id_utilisateur'])) 
+if(!gestionAcces()) 
 {
-    header('Location: ..\connexion.php');
+    echo "Accès refusé errorrrrrr";
 }
 else 
 {
@@ -23,10 +24,19 @@ else
     $tpl = $twig->loadTemplate( "templateEditContacts.tpl" );
 
     $db = DB::getInstance();
-    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $pageContact = $db->getPage('Contact',$_GET['idPortfolio']);
+        $tabContacts = json_decode($pageContact->getContenu(), false);
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        echo "POST";
+        
         if(isset($_POST['typeContact']) && isset($_POST['contact']))
         {
 
@@ -45,13 +55,13 @@ else
                 }
                 else {
                     
-                    if ($db->updatePage($CV,"CV", $_SESSION['id_portfolio']))
+                    if ($db->updatePage($pageContact,"Contact", $_SESSION['id_portfolio']))
                     {
-                        echo "CV mis à jour";
+                        echo "Contacts mis à jour";
                     }
                     else
                     {
-                        echo "Erreur lors de la mise à jour du CV";
+                        echo "Erreur lors de la mise à jour de la page Contacts";
                     }
                 }
             }
@@ -61,15 +71,6 @@ else
             }
         }
     }
-
-    if ($db == null) {
-        echo "Impossible de se connecter à la base de données !\n";
-    }
-    else {
-        $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
-    }
-
-    $tabContacts = $CV->getContacts();
 
     /*$tabContacts = array( new Contact("téléphone", "06 06 06 06 06"),
                         new Contact("email", "toto@gmail.com"),

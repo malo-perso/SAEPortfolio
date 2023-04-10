@@ -9,7 +9,7 @@
         window.addEventListener('DOMContentLoaded', function() 
         {
             var para = window.location.search;
-            var result = getNav("editCoordonnees.php"+para, "edit");
+            var result = getNav("editCoordonnees.php", "edit",para);
             var id = document.getElementById("nav");
             id.innerHTML = result;
         });
@@ -17,7 +17,7 @@
 
     <section class="text-start" style="margin-left:15%; width:85%;">
         <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Coordonnées</h2>
-        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 70%;height: 40%;border: 1px solid; margin-top:5%;">
+        <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 70%;border: 1px solid; margin-top:5%;">
             <form method="POST" style="padding:5%;">
                 <div class="row profile-row">
                     <div class="col-md-4 relative">

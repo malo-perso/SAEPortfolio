@@ -17,11 +17,11 @@ else{
     Twig_Autoloader::register();
     $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-    $titre = "Consultation de l'accueil";
+    $titre = "Consultation des projets";
 
-    $titrecentre = "Accueil";
+    $titrecentre = "Projets";
 
-    $tpl = $twig->loadTemplate( "templateConsultAccueil.tpl" );
+    $tpl = $twig->loadTemplate( "templateConsultProjets.tpl" );
 
     $db = DB::getInstance();
     if ($db == null) {
@@ -29,13 +29,13 @@ else{
     }
     else
     {
-        $accueil = $db->getPage('Accueil',$_GET['idPortfolio']);
-        if($accueil == null)
+        $projets = $db->getPage('Projets',$_GET['idPortfolio']);
+        if($projets == null)
         {
             $contenu = array();
         }
         else {
-            $contenu = json_decode($accueil->getContenu(), false);
+            $contenu = json_decode($projets->getContenu(), false);
         }
     }
 

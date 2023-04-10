@@ -11,7 +11,7 @@
             window.addEventListener('DOMContentLoaded', function() 
             {
                 var para = window.location.search;
-                var result = getNav("editCompetence.php"+para, "edit");
+                var result = getNav("editCompetence.php", "edit",para);
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

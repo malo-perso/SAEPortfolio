@@ -8,7 +8,7 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
         var para = window.location.search;
-        var result = getNav("editCVCompetence.php"+para, "edit");
+        var result = getNav("editCVCompetence.php", "edit",para);
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

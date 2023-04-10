@@ -19,7 +19,7 @@
 
             <h1 class="text-center" style="padding-top:5%;">Page d'Accueil</h1>
 
-            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ accueil.getContenu() }}</div>
+            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ contenu }}</div>
 
 
         </div>

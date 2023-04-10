@@ -23,8 +23,17 @@
 
     <script>
             window.addEventListener('DOMContentLoaded', function() 
-            {
-                var result = getNav("CVResume.php", "CV");
+            {   
+                var para = window.location.search;
+                if (para.includes("action=edit"))
+                {
+                    var result = getNav("CVResume.php", "edit",para);
+                }
+                else{
+                    var result = getNav("CVResume.php", "consult",para);
+                }
+                
+                //var result = getNav("CVResume.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

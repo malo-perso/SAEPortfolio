@@ -1,20 +1,40 @@
 <?php
 
-include "../common/CV/coordonnees.inc.php";
-
+ini_set('display_errors', 1);
+require ("../common/DB.inc.php");
+include("../common/fctAux.inc.php");
 
 require_once( "../Twig/lib/Twig/Autoloader.php" );
 
-Twig_Autoloader::register();
-$twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
+session_start();
 
-$titre = "Consultation des coordonnées";
+if(!gestionAcces()) {
+    echo "Accès refusé errorrrrrr";
+}
+else{
 
-$titrecentre = "Coordonnées";
+    Twig_Autoloader::register();
+    $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-$tpl = $twig->loadTemplate( "templateConsultCoordonnees.tpl" );
+    $titre = "Consultation des coordonnées";
 
-$coordonnees = new Coordonnees("../images/logo.png","Malet", "Riho", "Développeur Web", "25 rue des Camélias", "75000", "Paris", "06 06 06 06 06", "malet.riho@gmail.com", "Carpe Diem.");
+    $titrecentre = "Coordonnées";
 
-echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
+    $tpl = $twig->loadTemplate( "templateConsultCoordonnees.tpl" );
+
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else
+    {
+        $CV = $db->getPage('CV',$_GET['idPortfolio']);
+        $contenu = json_decode($CV->getContenu(), false);
+        $CV_courant = new CV($contenu);
+    }
+    //$coordonnees = $CV->getCoordonnees();
+    $coordonnees = $CV_courant->__get("coordonnees");
+
+    echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
+}
 ?>

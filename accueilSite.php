@@ -85,13 +85,13 @@ function cardPortfolio() {
                     echo '
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card">
-                            <a href="./Portfolio/Accueil.php?idPortfolio='.$row->getidportfolio().'">
+                            <a href="./Portfolio/consultAccueil.php?idPortfolio='.$row->getidportfolio().'">
                                 <img src="./images/user.png" class="card-img-top" alt="Image 2">
                                 <div class="card-body">
                                     <h5 class="card-title">'.$row->getnomportfolio().'</h5>
                                 </div>
                                 <div class="card-footer d-flex justify-content-end">
-                                    <a href="./Portfolio/Accueil.php?idPortfolio='.$row->getidportfolio().'&action=edit""><img class="card-footer-img" id="edit" src="./images/edit.png" alt="editPortfolio"></a>
+                                    <a href="./Portfolio/editAccueil.php?idPortfolio='.$row->getidportfolio().'&action=edit""><img class="card-footer-img" id="edit" src="./images/edit.png" alt="editPortfolio"></a>
                                     <form method="get" action="./accueilSite.php" style="none">';
                                         if ($row->getestpublic() == 1) {
                                         echo '<input type="hidden" name="idPortfolio" value="'.$row->getidportfolio().'">

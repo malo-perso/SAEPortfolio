@@ -1,29 +1,38 @@
 <?php
 
-include "../common/CV/competence.inc.php";
+require ("../common/DB.inc.php");
+include ("../common/fctAux.inc.php");
 
+session_start();
 
-require_once( "../Twig/lib/Twig/Autoloader.php" );
+if(!gestionAcces()) 
+{
+    echo "Accès refusé errorrrrrr";
+}
+else 
+{
+    require_once( "../Twig/lib/Twig/Autoloader.php" );
 
-Twig_Autoloader::register();
-$twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
+    Twig_Autoloader::register();
+    $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-$titre = "Consultation des compétences";
+    $titre = "Consultation de la page Competences";
 
-$titrecentre = "Compétences";
+    $titrecentre = "Competences";
 
-$tpl = $twig->loadTemplate( "templateConsultCompetences.tpl" );
+    $tpl = $twig->loadTemplate( "templateConsultCompetences.tpl" );
 
-$softSkills = array( new Competence("Anglais"),
-                     new Competence("Espagnol"),
-                     new Competence("Allemand")
-                   );
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else
+    {
+        $Competences = $db->getPage('Competences',$_GET['idPortfolio']);
+        $contenu = json_decode($Competences->getContenu(), false);
+    }
 
-$hardSkills = array( new Competence("Java"),
-                     new Competence("C++"),
-                     new Competence("C#")
-                   );
-
-
-echo $tpl->render( array("softSkills"=>$softSkills,"hardSkills"=>$hardSkills,"titre"=>$titre));
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'contenu' => $contenu ) );
+}
 ?>
+

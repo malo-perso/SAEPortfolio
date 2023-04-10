@@ -10,7 +10,7 @@
             window.addEventListener('DOMContentLoaded', function() 
             {
                 var para = window.location.search;
-                var result = getNav("editAccueil.php"+para,"edit");
+                var result = getNav("editAccueil.php","edit",para);
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });
@@ -21,7 +21,7 @@
 
             <h1 class="text-center" style="padding-top:5%;">Page d'Accueil</h1>
 
-            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ accueil.getContenu() }}</div>
+            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ accueil }}</div>
 
             <!-- bouton au milieu de la page -->
             <div style="display:flex; justify-content:center">

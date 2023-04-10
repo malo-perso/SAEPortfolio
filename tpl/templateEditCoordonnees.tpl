@@ -9,7 +9,7 @@
         window.addEventListener('DOMContentLoaded', function() 
         {
             var para = window.location.search;
-            var result = getNav("editCoordonnee.php"+para, "edit");
+            var result = getNav("editCoordonnee.php", "edit",para);
             var id = document.getElementById("nav");
             id.innerHTML = result;
         });

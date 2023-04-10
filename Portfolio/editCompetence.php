@@ -28,12 +28,9 @@ else
     }
     else 
     {
-        $CV = $db->getPage('CV',$_GET['idPortfolio']);
-        $contenu = json_decode($CV->getContenu(), false);
-        $CV_courant = new CV($contenu);
+        $Competences = $db->getPage('Competences',$_GET['idPortfolio']);
+        $contenu = json_decode($Competences->getContenu(), false);
     }
-
-    $tabCompetences = $CV_courant->__get("competences");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -70,18 +67,9 @@ else
                 echo "Erreur lors de l'ajout de la page Competences";
             }
         }
-
-        if ($db == null) {
-            echo "Impossible de se connecter à la base de données !\n";
-        }
-        else {
-            $pageCompetence = $db->getPage($_SESSION['id_utilisateur'],$_GET['idPortfolio'], "Competences");
-        }
-
-
     }
 
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'competence' => $competence ) );
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'competence' => $contenu ) );
 }
 ?>
 

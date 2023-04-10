@@ -8,7 +8,7 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
         var para = window.location.search;
-        var result = getNav("editExperience.php"+para, "edit");
+        var result = getNav("editExperience.php", "edit" , para);
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

@@ -1,12 +1,13 @@
 <?php
 
 require ("../common/DB.inc.php");
+include ("../common/fctAux.inc.php");
 
 session_start();
 
-if(! isset($_SESSION['id_utilisateur'])) 
+if(!gestionAcces()) 
 {
-    header('Location: ..\connexion.php');
+    echo "Accès refusé errorrrrrr";
 }
 else 
 {
@@ -22,7 +23,21 @@ else
     $tpl = $twig->loadTemplate( "templateEditAccueil.tpl" );
 
     $db = DB::getInstance();
-    $accueil = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Accueil");
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $Accueil = $db->getPage('Accueil',$_GET['idPortfolio']);
+        //$contenu = json_decode($Accueil->getContenu(), false);
+        if($Accueil==null){
+            $contenu = " ";
+        }
+        else{
+            $contenu = json_decode($Accueil->getContenu(), false);
+        }
+    }
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -58,17 +73,8 @@ else
             }
         }
 
-        if ($db == null) {
-            echo "Impossible de se connecter à la base de données !\n";
-        }
-        else {
-            $accueil = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Accueil");
-        }
-
-
     }
-
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $accueil) );
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $contenu) );
 }
 ?>
 
