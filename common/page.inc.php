@@ -3,27 +3,27 @@
 class Page implements JsonSerializable{
 
     private $idpage;
-    private $nomPage;
+    private $nompage;
     private $contenu;
-    private $idPortfolio;
+    private $idportfolio;
       
-    public function __construct($idpage="",$n="",$c="",$idPortfolio="") {
+    public function __construct($idpage="",$nompage="",$contenu="",$idportfolio="") {
         $this->idpage = $idpage;
-        $this->nomPage = $n;
-        $this->contenu = $c;
-        $this->idPortfolio = $idPortfolio;
+        $this->nompage = $nompage;
+        $this->contenu = $contenu;
+        $this->idportfolio = $idportfolio;
     }
 
     public function getIdPage() { return $this->idpage; }
-    public function getNomPage() { return $this->nomPage;}
+    public function getNomPage() { return $this->nompage;}
     public function getContenu() { return $this->contenu; }
-    public function getIdPortfolio() { return $this->idPortfolio; }
+    public function getIdPortfolio() { return $this->idportfolio; }
 
     public function __toString() {
         $res = "idpage:".$this->idpage."\n";
-        $res = $res ."nomPage:".$this->nomPage."\n";
+        $res = $res ."nompage:".$this->nompage."\n";
         $res = $res ."contenu:".$this->contenu."\n";
-        $res = $res ."idPortfolio:".$this->idPortfolio."\n";
+        $res = $res ."idPortfolio:".$this->idportfolio."\n";
         return $res;
     }
 

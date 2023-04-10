@@ -1,15 +1,14 @@
 <?php
-
+ini_set('display_errors', 1);
 require ("../common/DB.inc.php");
+include("../common/fctAux.inc.php");
 
 session_start();
 
-if(! isset($_SESSION['id_utilisateur'])) 
-{
-    header('Location: ..\connexion.php');
+if(!gestionAcces()) {
+    echo "Accès refusé errorrrrrr";
 }
-else 
-{
+else{
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -23,7 +22,17 @@ else
     $tpl = $twig->loadTemplate( "templateEditExperiences.tpl" );
 
     $db = DB::getInstance();
-    $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $CV = $db->getPage('CV',$_GET['idPortfolio']);
+        $contenu = json_decode($CV->getContenu(), false);
+        $CV_courant = new CV($contenu);
+    }
+    //$coordonnees = $CV->getCoordonnees();
+    $tabExperiences = $CV_courant->__get("experience");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -76,16 +85,6 @@ else
         //mise à jour bd CV
     }
 
-    if ($db == null) {
-        echo "Impossible de se connecter à la base de données !\n";
-    }
-    else {
-        $CV = $db->getPage($_SESSION['id_utilisateur'],$_SESSION['id_portfolio'], "CV");
-    }
-
-    $tabExperiences = $CV->getExperiences();
-
     echo $tpl->render( array("tabExperiences"=>$tabExperiences,"titre"=>$titre) );
 }
-
 ?>

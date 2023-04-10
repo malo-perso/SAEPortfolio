@@ -8,7 +8,7 @@ class Competences implements JsonSerializable
     private $softSkills = array();
     private $hardSkills = array();
 
-    public function __construct($softSkills, $hardSkills)
+    public function __construct($softSkills = array("Communiquer"), $hardSkills = array("Java","SQL","CSS"))
     {
         $this->idComp = ++self::$compteur;
         $this->softSkills = $softSkills;

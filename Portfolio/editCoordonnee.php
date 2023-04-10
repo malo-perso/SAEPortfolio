@@ -1,15 +1,14 @@
 <?php
-
+ini_set('display_errors', 1);
 require ("../common/DB.inc.php");
+include("../common/fctAux.inc.php");
 
 session_start();
 
-if(! isset($_SESSION['id_utilisateur'])) 
-{
-    header('Location: ..\connexion.php');
+if(!gestionAcces()) {
+    echo "Accès refusé errorrrrrr";
 }
-else 
-{
+else{
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -23,7 +22,17 @@ else
     $tpl = $twig->loadTemplate( "templateEditCoordonnees.tpl" );
 
     $db = DB::getInstance();
-    $CV = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "CV");
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $CV = $db->getPage('CV',$_GET['idPortfolio']);
+        $contenu = json_decode($CV->getContenu(), false);
+        $CV_courant = new CV($contenu);
+    }
+    //$coordonnees = $CV->getCoordonnees();
+    $coordonnees = $CV_courant->__get("coordonnees");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -59,7 +68,7 @@ else
                 }
                 else {
                     
-                    if ($db->updatePage($CV,"CV", $_GET['id_portfolio']))
+                    if ($db->updatePage($CV,"CV", $_GET['idPortfolio']))
                     {
                         echo "CV mis à jour";
                     }
@@ -77,17 +86,6 @@ else
         }
 
     }
-
-    if ($db == null) {
-        echo "Impossible de se connecter à la base de données !\n";
-    }
-    else 
-    {
-        $CV = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "CV");
-    }
-
-    $coordonnees = $CV->getCoordonnees();
-
 
     echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
 }

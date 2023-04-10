@@ -349,20 +349,21 @@ class DB {
         }
     }
 
-    public function getPage($nomPage,$idPortfolio){
+    public function getPage($nompage,$idportfolio){
         //récupérer une page par son nom et son idPortfolio
         $requete = "SELECT * FROM page WHERE nomPage = ? AND idPortfolio = ?";
-        $tparam = array($nomPage, $idPortfolio);
+        $tparam = array($nompage,$idportfolio);
         $resultats = $this->execQuery($requete,$tparam,'page');
+        //var_dump($resultats);
         if (!$resultats) {
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête : " ;
             return null;
         } elseif (empty($resultats)) {
             echo "Aucune page trouvée";
             return null;
         } else {
             //echo count($resultats) . " pages trouvées";
-            return $resultats;
+            return $resultats[0];
         }
     }
 

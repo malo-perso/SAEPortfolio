@@ -5,11 +5,10 @@ include("../common/fctAux.inc.php");
 
 session_start();
 
-
 if(!gestionAcces()) {
     echo "Accès refusé errorrrrrr";
 }
-if(true){
+else{
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -22,6 +21,18 @@ if(true){
 
     $tpl = $twig->loadTemplate( "templateEditFormations.tpl" );
 
+    $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $CV = $db->getPage('CV',$_GET['idPortfolio']);
+        $contenu = json_decode($CV->getContenu(), false);
+        $CV_courant = new CV($contenu);
+    }
+    //$coordonnees = $CV->getCoordonnees();
+    $tabFormations = $CV_courant->__get("formations");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -43,7 +54,7 @@ if(true){
 
             echo "Formation : ".$formation->getNomEtat()." ".$formation->getVille()." ".$formation->getDiplome()." ".$formation->getDomaine()." ".$formation->getMention()." ".$formation->getMoisDeb()." ".$formation->getAnneeDeb()." ".$formation->getMoisFin()." ".$formation->getAnneeFin();
 
-            /*
+            
             if(ajouterFormation($formation))
             {
                 echo "Formation ajoutée";
@@ -53,7 +64,7 @@ if(true){
                     echo "Impossible de se connecter à la base de données !\n";
                 }
                 else {
-                    if ($db->updatePage(null,"CV", $_SESSION['id_portfolio']))
+                    if ($db->updatePage(null,"CV", $_GET['idPortfolio']))
                     {
                         echo "CV mis à jour";
                     }
@@ -67,9 +78,7 @@ if(true){
             {
                 echo "Erreur lors de l'ajout de la formation";
             }
-            */
-            
-            
+
         }
     }
     
@@ -79,27 +88,14 @@ if(true){
         //supprimer la formation de CV
         //mise à jour bd CV
     }
-//CV serialisé ou pas 
-    
+
     /*
-    $db = DB::getInstance();
-    if ($db == null) {
-        echo "Impossible de se connecter à la base de données !\n";
-    }
-    else {
-        echo "récupération du tableau de formations";
-        //$CV = $db->getPage("CV",$_SESSION['id_portfolio']);
-        $CV = $db->getPage("CV",3);
-        $tabFormations = $CV->getFormations();
-    }
-    */
-
-
     $tabFormations = array( new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
                             new Formation("Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
                             new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
                           );
 
+    */
     echo $tpl->render( array("tabFormations"=>$tabFormations,"titre"=>$titre) );
 }
 ?>

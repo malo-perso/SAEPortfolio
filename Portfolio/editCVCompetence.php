@@ -1,15 +1,15 @@
 <?php
-
+ini_set('display_errors', 1);
 require ("../common/DB.inc.php");
+include("../common/fctAux.inc.php");
 
 session_start();
 
-if(! isset($_SESSION['id_utilisateur'])) 
-{
-    header('Location: ..\connexion.php');
+if(!gestionAcces()) {
+    echo "Accès refusé errorrrrrr";
 }
-else 
-{
+else{
+
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
     Twig_Autoloader::register();
@@ -21,8 +21,20 @@ else
 
     $tpl = $twig->loadTemplate( "templateEditCVCompetences.tpl" );
 
-    $db = DB::getInstance();
-    $CV = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "CV");
+     $db = DB::getInstance();
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $CV = $db->getPage('CV',$_GET['idPortfolio']);
+        $contenu = json_decode($CV->getContenu(), false);
+        $CV_courant = new CV($contenu);
+    }
+    //$coordonnees = $CV->getCoordonnees();
+    $competences = $CV_courant->getCompetences();
+    $softSkills = $competences->getSoftSkills();
+    $hardSkills = $competences->getHardSkills();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -44,7 +56,7 @@ else
                 }
                 else {
                     
-                    if ($db->updatePage($CV,"CV", $_GET['id_portfolio']))
+                    if ($db->updatePage($CV,"CV", $_GET['idPortfolio']))
                     {
                         echo "CV mis à jour";
                     }
@@ -61,23 +73,6 @@ else
                 
         }
     }
-
-        $db = DB::getInstance();
-
-        if ($db == null) {
-            echo "Impossible de se connecter à la base de données !\n";
-        }
-        else {
-            $CV = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "CV");
-            
-        }
-
-
-    $softSkills = $CV->getCompetences()->getSoftSkills();
-    $hardSkills = $CV->getCompetences()->getHardSkills();
-
-
     echo $tpl->render( array("softSkills"=>$softSkills,"hardSkills"=>$hardSkills,"titre"=>$titre) );
 }
-
 ?>

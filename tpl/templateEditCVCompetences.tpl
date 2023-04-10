@@ -7,7 +7,8 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("editCVCompetence.php", "edit");
+        var para = window.location.search;
+        var result = getNav("editCVCompetence.php"+para, "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });
@@ -24,7 +25,7 @@
                             <label class="form-label form-label">Soft skills</label>
                             <textarea class="form-control form-control" style="margin-bottom:2%; placeholder="Utilisez ',','.' ou ';' entre chaque compétence">
                                 {% for soft in softSkills %}
-                                    {{ soft.getNomComp() }};&nbsp;
+                                    {{ soft }};&nbsp;
                                 {% endfor %}
                             </textarea>
                         </div>
@@ -32,7 +33,7 @@
                             <label class="form-label form-label">Hard skills</label>
                             <textarea class="form-control form-control" style="margin-bottom:2%; placeholder="Utilisez ',','.' ou ';' entre chaque compétence">
                                 {% for hard in hardSkills %}
-                                    {{ hard.getNomComp() }};&nbsp;
+                                    {{ hard }};&nbsp;
                                 {% endfor %}
                             </textarea>
                         </div>

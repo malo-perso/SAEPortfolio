@@ -1,12 +1,13 @@
 <?php
 
 require ("../common/DB.inc.php");
+include ("../common/fctAux.inc.php");
 
 session_start();
 
-if(! isset($_SESSION['id_utilisateur'])) 
+if(!gestionAcces()) 
 {
-    header('Location: ..\connexion.php');
+    echo "Accès refusé errorrrrrr";
 }
 else 
 {
@@ -22,10 +23,22 @@ else
     $tpl = $twig->loadTemplate( "templateEditCompetences.tpl" );
 
     $db = DB::getInstance();
-    $competence = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Competences");
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $CV = $db->getPage('CV',$_GET['idPortfolio']);
+        $contenu = json_decode($CV->getContenu(), false);
+        $CV_courant = new CV($contenu);
+    }
+
+    $tabCompetences = $CV_courant->__get("competences");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        echo "POST";
+        
         if (isset($_POST['contenu']))
         {
             $contenu = $_POST['contenu'];
@@ -42,7 +55,7 @@ else
                 }
                 else {
 
-                    if ($db->updatePage($pageCompetence,"Competences", $_GET['id_portfolio']))
+                    if ($db->updatePage($pageCompetence,"Competences", $_GET['idPortfolio']))
                     {
                         echo "Competences mis à jour";
                     }
@@ -62,7 +75,7 @@ else
             echo "Impossible de se connecter à la base de données !\n";
         }
         else {
-            $pageCompetence = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Competences");
+            $pageCompetence = $db->getPage($_SESSION['id_utilisateur'],$_GET['idPortfolio'], "Competences");
         }
 
 

@@ -9,7 +9,8 @@
         <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("Accueil.php","edit");
+                var para = window.location.search;
+                var result = getNav("editAccueil.php"+para,"edit");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });

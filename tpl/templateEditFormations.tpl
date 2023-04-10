@@ -7,7 +7,8 @@
 <script>
     window.addEventListener('DOMContentLoaded', function() 
     {
-        var result = getNav("editFormation.php", "edit");
+        var para = window.location.search;
+        var result = getNav("editFormation.php"+para, "edit");
         var id = document.getElementById("nav");
         id.innerHTML = result;
     });

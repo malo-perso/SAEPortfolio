@@ -155,7 +155,7 @@ function gestionAcces(){
     }
     else{
         //pas d'idPortfolio rediriger vers page d'accueil
-        header("location: ../indexx.php");
+        header("location: ../index.php");
     }
 }
 

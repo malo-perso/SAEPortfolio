@@ -10,15 +10,19 @@ class CV implements \JsonSerializable
 {
     // Attributs (tableau de compétences, tableau d'expériences, tableau de formations, tableau de langues, coordonnées)
     private $coordonnees;
-    private $competences = array();
+    private $competences;
     private $experiences = array();
     private $formations = array();
     private $langues = array();
     
 
     // Constructeur
-    public function __construct($coordonnees,$competences, $experiences, $formations, $langues )
+    public function __construct($coordonnees = null , $competences = null, $experiences = array(), $formations = array(), $langues = array())
     {
+    // Vérifiez si la variable $coordonnees est null avant de l'utiliser
+    if ($coordonnees === null) {
+        $coordonnees = new Coordonnees();
+    }
         $this->coordonnees = $coordonnees;
         $this->competences = $competences;
         $this->experiences = $experiences;
@@ -27,12 +31,32 @@ class CV implements \JsonSerializable
     }
 
     // Accesseurs
-    public function getCoordonnees() { return $this->coordonnees; }
-    public function getCompetences() { return $this->competences; }
+    public function getCoordonnees() {
+        if ($this->coordonnees == null) {
+            echo "Coordonnées null";
+            $this->coordonnees = new Coordonnees();
+        }
+        return $this->coordonnees; 
+    }
+
+    public function getCompetences() {
+        if ($this->competences == null) {
+            echo "Compétences null";
+            $this->competences = new Competences();
+        }
+        return $this->competences; 
+    }
+
     public function getExperiences() { return $this->experiences; }
     public function getFormations() { return $this->formations; }
     public function getLangues() { return $this->langues; }
    
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
 
     // Méthodes
     public function __toString()

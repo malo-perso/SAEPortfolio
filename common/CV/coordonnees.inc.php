@@ -13,7 +13,7 @@ class Coordonnees implements JsonSerializable
     private $email;
     private $phraseAccroche;
 
-    public function __construct($img = "", $p = "", $n = "", $nPoste = "", $adr = "", $cp = "", $v = "", $tel = "", $mail = "", $pAccroche = "")
+    public function __construct($img = "", $p = "prenom", $n = "nom", $nPoste = "poste", $adr = "adresse", $cp = "76 600", $v = "Le Havre", $tel = "0000000000", $mail = "user@mail.com", $pAccroche = "phrase d'accroche")
     {
         $this->image            = $img;
         $this->prenom           = $p;
@@ -37,6 +37,14 @@ class Coordonnees implements JsonSerializable
     public function getTelephone    () { return $this->telephone;      }
     public function getEmail        () { return $this->email;          }
     public function getPhraseAccroche(){ return $this->phraseAccroche; }
+
+    // Méthode magique __get()
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
 
     public function __toString()
     {
