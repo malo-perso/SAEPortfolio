@@ -15,7 +15,13 @@ function contenu() {
     echo "        <input type=\"text\" class=\"form-control\" placeholder=\"Recherche\">\n";
     echo "        <button class=\"btn btn-primary\" type=\"submit\">Rechercher</button>\n";
     echo "    </div>\n";
-    echo "</form>\n";
+    if(isset($_SESSION['email'])){
+
+        echo "<div class=\"d-flex justify-content-center mt-2\">\n";
+            echo "<a href=\"./accueilSite.php\" class=\"btn btn-primary\">Mes portfolios !</a>\n";
+        echo "</div>\n";
+        echo "</form>\n";
+    }
     echo "<div class=\"cardSlider\">\n";
 
 /*script insersion card profil */

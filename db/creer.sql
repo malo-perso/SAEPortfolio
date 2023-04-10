@@ -10,7 +10,7 @@ CREATE TABLE utilisateur(
     idUser SERIAL PRIMARY KEY,
     prenom VARCHAR(20) NOT NULL,
     nom VARCHAR(20) NOT NULL,
-    mdp VARCHAR(20) NOT NULL,
+    mdp text NOT NULL,
     mail VARCHAR(50) NOT NULL
 );
 

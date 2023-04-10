@@ -8,6 +8,8 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
         var para = window.location.search;
+        document.getElementById("precedent").href="editCoordonnee.php"+para;
+        document.getElementById("suivant").href="editExperience.php"+para;
         var result = getNav("editFormation.php", "edit",para);
         var id = document.getElementById("nav");
         id.innerHTML = result;
@@ -149,8 +151,8 @@
         </div>
         <div style="display:flex; justify-content: center;">
             <div class="btn-group" role="group" style="width:35%">
-                <a href="editCoordonnee.php" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (coordonnées)</button></a>
-                <a href="editExperience.php" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (expérience)</button></a>
+                <a id="precedent" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (coordonnées)</button></a>
+                <a id="suivant" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (expérience)</button></a>
         
             </div>
         </div>

@@ -12,8 +12,8 @@ class Contact implements \JsonSerializable {
 
     public function __construct($n="",$d="") {
       	$this->idContact = ++self::$numLangue;
-	      $this->nomContact = $n;
-	      $this->descContact = $d;
+	    $this->nomContact = $n;
+	    $this->descContact = $d;
     }
 
     public function getIdContact  () { return $this->idContact; }

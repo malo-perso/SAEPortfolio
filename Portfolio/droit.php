@@ -26,7 +26,8 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("droit.php", "consult");
+                var para = window.location.search;
+                var result = getNav("droit.php", "consult",para);
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });
