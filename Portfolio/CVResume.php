@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form-styles.css">
     <link rel="stylesheet" href="../assets/css/Profile-Edit-Form.css">
     <script src="../assets/js/getNav.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
     <script>
             window.addEventListener('DOMContentLoaded', function() 
             {
-                var result = getNav("CVResume.php", "edit");
+                var result = getNav("CVResume.php", "CV");
                 var id = document.getElementById("nav");
                 id.innerHTML = result;
             });
@@ -43,7 +44,7 @@
                                     <button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">
                                         Modifier le CV</button>
                                 </a>
-                                    <button class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
+                                    <button id="sauvegarder" class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
                                     <button id="choixTemplate" class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button>
                             </div>
                         </div>
@@ -73,12 +74,14 @@
             </div>
     </div>
     
+    
     <script>
         
         tmpl1 = document.getElementById("img1");
         tmpl2 = document.getElementById("img2");
         resume = document.getElementById("resume");
-        var coul = "#ffffff";
+        var tpl = "";
+        var coul = "";
         //event listener for the button
         document.getElementById("choixTemplate").addEventListener("click", function() {
 
@@ -92,24 +95,54 @@
                     console.log("Template 1");
                     tmpl1.style.border = "2px solid var(--color-brown)";
                     tmpl2.style.border = "none";
+                    tpl = "CV1.tpl"
                 });
 
                 tmpl2.addEventListener("click", function() {
                     console.log("Template 2");
                     tmpl2.style.border = "2px solid var(--color-brown)";
                     tmpl1.style.border = "none";
+                    tpl = "CV2.tpl"
                 });
                         
                 console.log("Choisissez une template");
+                coul = document.getElementById("favcolor");
             }
             else
             {
                 div.style.display = "none";
-                coul = document.getElementById("favcolor");
+                
                 console.log(coul.value);
                 console.log("Cacher");
+                //toPDF();
             }
         });
+
+        document.getElementById("sauvegarder").addEventListener("click", function() {
+
+            if(tpl != "" && coul != "")
+            {
+                console.log("Sauvegarder le CV");
+                var j = jQuery.noConflict();
+                j.ajax({
+                    url: "consultCV.php",
+                    type: "POST",
+                    data: { tpl: tpl, couleur:coul.value },
+                    success: function(response) {
+                    }
+                    
+                });
+            }
+
+            else
+            {
+                console.log("Veuillez choisir une template et une couleur");
+            }
+            console.log(tpl);
+            console.log(coul.value);
+
+            });
+
     </script>
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
