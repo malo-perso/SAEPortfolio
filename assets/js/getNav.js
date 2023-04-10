@@ -10,8 +10,8 @@ function getNav(pageEnCours, typePage)
         var array = ["accueilSite.php", "editAccueil.php", "CVResume.php", "editCoordonnee.php", "editFormation.php", "editExperience.php", "editCVCompetence.php", "editLangue.php", "editCompetence.php", "editProjets.php", "editContact.php"];
     }
     else if (typePage == "consult") {
-        var array = ["accueilSite.php", "Accueil.php", "consultCV.php", "Competence.php", "Projets.php", "consultContact.php"];
-        var arrayNom = ["", "Accueil", "CV", "Compétences", "Projets", "Contact"];
+        var array = ["accueilSite.php", "consultAccueil.php", "consultCV.php", "consultCompetence.php", "consultProjet.php", "droit.php", "consultContact.php"];
+        var arrayNom = ["", "Accueil", "CV", "Compétences", "Projets","Propriété intellectuelle", "Contact"];
     }
     
     
@@ -28,7 +28,7 @@ function getNav(pageEnCours, typePage)
 
     for (let i = 1; i < array.length; i++) 
     {
-        if (i > 2 && i < 8) 
+        if (i > 2 && i < 8 && typePage == "edit") 
         {
             if (array[i] === pageEnCours) 
             {
