@@ -321,7 +321,7 @@ class DB {
         $row = $resultats[0];
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête : " /*. $this->getLastError()*/;
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
@@ -338,7 +338,7 @@ class DB {
         $tparam = array($idUser);
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête : " /*. $this->getLastError()*/;
             return null;
         } elseif (empty($resultats)) {
             echo "Aucun portfolio trouvé";
@@ -374,7 +374,7 @@ class DB {
         $row = $resultats[0];
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête : " /*. $this->getLastError()*/;
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
@@ -383,6 +383,26 @@ class DB {
         } else {
             echo "portfolio trouvé \n";
             return  $row->getIdPortfolio();
+        }
+    }
+
+    public function getPassword($email)
+    {
+        $requete = "SELECT mdp FROM utilisateur WHERE mail = ?";
+        $tparam = array($email);
+        $resultats = $this->execQuery($requete,$tparam,'user');
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            echo "Erreur lors de l'exécution de la requête : " /*. $this->getLastError()*/;
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            echo "Aucun utilisateur trouvé";
+            return null;
+        } else {
+            //L'objet est valide, on peut accéder à sa propriété "mdp"
+            return $row->getMdp();
         }
     }
 
@@ -409,8 +429,8 @@ class DB {
     /*****************************/
     public function addUser($mail, $prenom, $nom,$mdp)
     {
-        $requete = "INSERT INTO utilisateur (mail, prenom, nom,mdp) VALUES (?, ?, ?, ?);";
-        $tparam = array($mail, $prenom, $nom,$mdp);
+        $requete = "INSERT INTO utilisateur VALUES (?, ?, ?, ?);";
+        $tparam = array($prenom, $nom, $mdp, $mail);
         return $this->execMaj($requete, $tparam);
     }
 
