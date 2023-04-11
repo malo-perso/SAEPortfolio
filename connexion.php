@@ -122,7 +122,7 @@ else {
 
                if(emailValide($login) && motDePasseValide($mdp))
                {
-                    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+                    //$mdp = password_hash($mdp, PASSWORD_DEFAULT);
                     
                     if($db->isemailOK($login) && $db->isMotDePasseOK($login,$mdp)){
                          //remplir les informations de l'utilisateur dans la session

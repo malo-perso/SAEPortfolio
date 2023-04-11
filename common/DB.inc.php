@@ -374,7 +374,7 @@ class DB {
         $row = $resultats[0];
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            //echo "Erreur lors de l'exécution de la requête";
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
@@ -383,6 +383,26 @@ class DB {
         } else {
             echo "portfolio trouvé \n";
             return  $row->getIdPortfolio();
+        }
+    }
+
+    public function getIdUser($idPortfolio)
+    {
+        $requete = "SELECT idUser FROM portfolio WHERE idPortfolio = ?";
+        $tparam = array($idPortfolio);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            //echo "Erreur lors de l'exécution de la requête";
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            echo "Aucun portfolio trouvé";
+            return null;
+        } else {
+            //echo "portfolio trouvé \n";
+            return  $row->getIdUser();
         }
     }
 
