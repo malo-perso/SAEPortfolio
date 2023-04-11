@@ -5,10 +5,10 @@ include("../common/fctAux.inc.php");
 
 session_start();
 
-if(!gestionAcces()) {
+/*if(!gestionAcces()) {
     echo "Accès refusé errorrrrrr";
-}
-else{
+}*/
+if(true){
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -28,19 +28,40 @@ else{
     else 
     {
         $CV = $db->getPage('CV',$_GET['idPortfolio']);
-        $contenu = json_decode($CV->getContenu(), false);
-        $CV_courant = new CV($contenu);
+        $contenu = json_decode($CV->getContenu(), true);
+        $CV_courant = new CV();
+        if ( $contenu['tabExperiences'] != null ) {
+            for ($i=0; $i < count($contenu['tabExperiences']); $i++) { 
+                $CV_courant->ajouterExperience(new Experience($contenu['tabExperiences'][$i]['intitulePoste'], $contenu['tabExperiences'][$i]['nomEmployeur'], $contenu['tabExperiences'][$i]['villeEmployeur'], $contenu['tabExperiences'][$i]['typeContrat'], $contenu['tabExperiences'][$i]['dateDebutMois'], $contenu['tabExperiences'][$i]['dateDebutAnnee'], $contenu['tabExperiences'][$i]['dateFinMois'], $contenu['tabExperiences'][$i]['dateFinAnnee'], $contenu['tabExperiences'][$i]['mission']));
+            }
+        }
+        if ( $contenu['tabFormations'] != null ) {
+            for ($i=0; $i < count($contenu['tabFormations']); $i++) {
+                $CV_courant->ajouterFormation(new Formation($contenu['tabFormations'][$i]['nomEtablissement'], $contenu['tabFormations'][$i]['villeEtablissement'], $contenu['tabFormations'][$i]['diplome'], $contenu['tabFormations'][$i]['domaine'], $contenu['tabFormations'][$i]['mention'], $contenu['tabFormations'][$i]['dateDebutMois'], $contenu['tabFormations'][$i]['dateDebutAnnee'], $contenu['tabFormations'][$i]['dateFinMois'], $contenu['tabFormations'][$i]['dateFinAnnee']));
+            }
+        }
+        if ( $contenu['tabLangues'] != null ) {
+            for ($i=0; $i < count($contenu['tabLangues']); $i++) { 
+                $CV_courant->ajouterLangue(new Langue($contenu['tabLangues'][$i]['nomLangue'], $contenu['tabLangues'][$i]['niveau']));
+            }
+        }
+        if ( $contenu['coordonnees'] != null) {
+            $contenu['coordonnees'] = new Coordonnees($contenu['coordonnees']['image'], $contenu['coordonnees']['nom'], $contenu['coordonnees']['prenom'], $contenu['coordonnees']['nomPoste'], $contenu['coordonnees']['adresse'], $contenu['coordonnees']['codePostal'], $contenu['coordonnees']['ville'], $contenu['coordonnees']['telephone'], $contenu['coordonnees']['email'], $contenu['coordonnees']['phraseAccroche']);
+        }
+        if ( $contenu['competences'] != null) {
+            $contenu['competences'] = new Competences($contenu['competences']['idComp'],$contenu['competences']['softSkills'],$contenu['competences']['hardSkills']);
+        }
     }
     //$coordonnees = $CV->getCoordonnees();
-    $tabFormations = $CV_courant->__get("formations");
+    $tabFormations = $CV_courant->getTabFormations();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         echo "POST";
         
-        if(isset($_POST['nomEtat']) && isset($_POST['ville']) && isset($_POST['diplome']) && isset($_POST['domaine']) && isset($_POST['mention']) && isset($_POST['moisDeb']) && isset($_POST['anneeDeb']) && isset($_POST['moisFin']) && isset($_POST['anneeFin']))
+        if(isset($_POST['etablissement']) && isset($_POST['ville']) && isset($_POST['diplome']) && isset($_POST['domaine']) && isset($_POST['mention']) && isset($_POST['moisDeb']) && isset($_POST['anneeDeb']) && isset($_POST['moisFin']) && isset($_POST['anneeFin']))
         {
-            $nometat = $_POST['nomEtat'];
+            $nometat = $_POST['etablissement'];
             $ville  = $_POST['ville'];
             $diplome = $_POST['diplome'];
             $domaine = $_POST['domaine'];
@@ -50,23 +71,22 @@ else{
             $moisFin = $_POST['moisFin'];
             $anneeFin = $_POST['anneeFin'];
 
-            //$formation = new Formation($nometat, $ville, $diplome, $domaine, $mention, $moisDeb."-".$anneeDeb, $moisFin."-".$anneeFin);
-
-            echo "Formation : ".$formation->getNomEtat()." ".$formation->getVille()." ".$formation->getDiplome()." ".$formation->getDomaine()." ".$formation->getMention()." ".$formation->getMoisDeb()." ".$formation->getAnneeDeb()." ".$formation->getMoisFin()." ".$formation->getAnneeFin();
-
+            $formation = new Formation($nometat, $ville, $diplome, $domaine, $mention, $moisDeb."-".$anneeDeb, $moisFin."-".$anneeFin);
             
-            if(ajouterFormation($formation))
+            if($CV_courant->ajouterFormation($formation))
             {
                 echo "Formation ajoutée";
                 //mise à jour bd CV
-                $db = DB::getInstance();
                 if ($db == null) {
                     echo "Impossible de se connecter à la base de données !\n";
                 }
                 else {
-                    if ($db->updatePage(null,"CV", $_GET['idPortfolio']))
+                    $json = json_encode($CV_courant);
+
+                    if ($db->updatePage($json,"CV", $_GET['idPortfolio']))
                     {
                         echo "CV mis à jour";
+                        unset($_POST);
                     }
                     else
                     {
@@ -80,6 +100,10 @@ else{
             }
 
         }
+        else
+        {
+            echo "Les champns n'ont pas été correctement remplis";
+        }
     }
     
     if (isset($_POST['supprimer']))
@@ -89,13 +113,6 @@ else{
         //mise à jour bd CV
     }
 
-    /*
-    $tabFormations = array( new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013"),
-                            new Formation("Iut du Havre", "Le Havre", "BUT", "Informatique", "09/2010", "06/2013"),
-                            new Formation("Ecole de la Paix", "Paris", "Licence", "Droit", "09/2010", "06/2013")
-                          );
-
-    */
     echo $tpl->render( array("tabFormations"=>$tabFormations,"titre"=>$titre) );
 }
 ?>

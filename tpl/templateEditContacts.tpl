@@ -25,7 +25,7 @@
             <p class="text-center" style="width:35%; border: 1px solid var(--color-blue);border-radius:3%; justify-content: center;margin:3%;"> {{ contact.getNomContact() }} -&nbsp;{{ contact.getDescContact() }} </p>
                 <form id="btnSupp" method="POST">
                     <input type="hidden" name="contact_id" value="{{ contact.getIdContact() }}">
-                    <button type="submit" class="btn-remove-contact">{{ contact.getIdContact() }}</button>
+                    <button type="submit" class="btn-remove-contact">X</button>
                 </form>
         </div>
     {% endfor %}

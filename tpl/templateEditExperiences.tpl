@@ -8,6 +8,8 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
         var para = window.location.search;
+        document.getElementById("btnAjout").action="editExperience.php"+para;
+        document.getElementById("btnSupp").action="editExperience.php"+para;
         document.getElementById("precedent").href="editFormation.php"+para;
         document.getElementById("suivant").href="editCVCompetence.php"+para;
         var result = getNav("editExperience.php", "edit" , para);
@@ -19,13 +21,13 @@
 <section class="text-start" style="margin-left:15%; width:85%;">
     <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Expériences</h2>
     <div style="display:grid; justify-content:center; margin-left:-10%;">
-    <form method="POST" action="editExperience.php">
+    <form method="POST" id="btnSupp" action="editExperience.php">
         {% for exp in tabExperiences %}
             <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
                 <p class="index_nom_ville"> {{ exp.getIntitulePoste() }} -&nbsp;{{ exp.getNomEmployeur() }} ,&nbsp;{{ exp.getVilleEmployeur() }} </p>
-                <p class="diplome_domaine_dates"> {{ exp.getTypeContrat() }} :&nbsp;{{ exp.getDateDebut() }} |&nbsp;{{ exp.getDateFin() }} </p>
+                <p class="diplome_domaine_dates"> {{ exp.getTypeContrat() }} :&nbsp;{{ exp.getDateDebutMois() }}-{{ exp.getDateDebutAnnee }} |&nbsp;{{ exp.getDateFinMois() }}-{{ exp.getDateFinAnnee }} </p>
 
-                <button type="submit" value="{{ formation.getIdExperience() }}" name="supprimer" class="btn btn-primary float-none d-lg-flex" data-bss-hover-animate="pulse" style="margin-bottom: 15px;width: 23%;text-align: center;margin-top: 22px;color: var(--bs-body-bg);border-color: var(--color-brown);background: var(--color-brown);">Supprimer</button>
+                <button type="submit" value="{{ exp.getIdExperience() }}" name="supprimer" class="btn btn-primary float-none d-lg-flex" data-bss-hover-animate="pulse" style="margin-bottom: 15px;width: 23%;text-align: center;margin-top: 22px;color: var(--bs-body-bg);border-color: var(--color-brown);background: var(--color-brown);">Supprimer</button>
             </section>
         {% endfor %}
     </form>
@@ -113,7 +115,7 @@
                     </div>
                     <div class="row">
                        <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 17px;margin-top: 0px;">
-                            <button class="btn btn-primary d-lg-flex" data-bss-hover-animate="pulse" type="submit" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;padding-top: 6px;margin-top: 8px;">Ajouter expérience</button>
+                            <button class="btn btn-primary d-lg-flex" id="btnAjout" data-bss-hover-animate="pulse" type="submit" style="background: var(--color-brown);border-color: var(--color-brown);margin-left: 3px;padding-top: 6px;margin-top: 8px;">Ajouter expérience</button>
                         </div>
                     </div>
                 </div>

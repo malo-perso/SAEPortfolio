@@ -8,6 +8,8 @@
     window.addEventListener('DOMContentLoaded', function() 
     {
         var para = window.location.search;
+        document.getElementById("btnAjout").action="editFormation.php"+para;
+        document.getElementById("btnSupp").action="editFormation.php"+para;
         document.getElementById("precedent").href="editCoordonnee.php"+para;
         document.getElementById("suivant").href="editExperience.php"+para;
         var result = getNav("editFormation.php", "edit",para);
@@ -20,11 +22,11 @@
     <section class="text-start" style="margin-left:15%; width:85%">
         <h2 class="text-center" style="color: var(--bs-body-color);padding-top: 5%;">Formations</h2>
         <div id="formations" style="display:grid; justify-content:center; margin-left:-10%;">
-            <form method="POST" action="editFormation.php">
+            <form method="POST" id="btnSupp" action="editFormation.php">
                 {% for formation in tabFormations %}
                     <section style="margin: 0px 10px 10px 10px;margin-top: 34px;border-style: solid;border-color: var(--color-brown);width: 500px;padding: 22px 10px 10px 10px;margin-bottom: 14px;margin-right: 23px;padding-left: 51px;margin-left: 164px;">
                         <p class="index_nom_ville">{{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
-                        <p class="diplome_domaine_dates">{{ formation.getDiplome() }} -&nbsp;{{ formation.getDomaine() }} -&nbsp;{{ formation.getDateDebut() }} |&nbsp;{{ formation.getDateFin() }}</p>
+                        <p class="diplome_domaine_dates">{{ formation.getDiplome() }}&nbsp;{{ formation.getDomaine() }} -&nbsp;{{ formation.getMention() }} :&nbsp;{{ formation.getDateDebutMois() }} |&nbsp;{{ formation.getDateDebutAnnee }}&nbsp;{{ formation.getDateFinMois() }}{{ formation.getDateFinAnnee }}</p>
 
                         <button type="submit" value="{{ formation.getIdFormation() }}" name="supprimer" class="btn btn-primary float-none d-lg-flex" data-bss-hover-animate="pulse" style="margin-bottom: 15px;width: 23%;text-align: center;margin-top: 22px;color: var(--bs-body-bg);border-color: var(--color-brown);background: var(--color-brown);">Supprimer</button>
                     </section>
@@ -32,7 +34,7 @@
             </form>
         </div>
         <div class="container-fluid text-start d-xl-flex align-items-center justify-content-xl-center profile profile-view" id="profile" style="width: 60%;border: 1px solid; margin-top:5%;">
-            <form method="POST" action="editFormation.php" style="width:70%;">
+            <form method="POST" id="btnAjout" action="editFormation.php" style="width:70%;">
                 <div class="row profile-row" style="margin-right: -60%;padding-right: 48px;">
                     <div class="col-md-8">
                         <div class="row">
@@ -83,7 +85,7 @@
                             <div class="col">
                                 <div>
                                     <label class="form-label form-label form-label">Domaine d'étude</label>
-                                    <input class="form-control form-control form-control" type="text" id="domaine">
+                                    <input class="form-control form-control form-control" type="text" name="domaine" id="domaine">
                                 </div>
                             </div>
                         </div>
@@ -91,7 +93,7 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label form-label form-label">Mention</label>
-                                    <input class="form-control" type="text" id="mention">
+                                    <input class="form-control" type="text" name="mention" id="mention">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6"></div>
@@ -99,7 +101,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-6"><label class="form-label form-label form-label form-label">Date début</label>
                                 <div class="d-lg-flex align-items-lg-center form-group mb-3">
-                                <select class="form-select form-select form-select" style="width: 123.4px;margin-right: 10px;" id="moisDeb">
+                                <select class="form-select form-select form-select" style="width: 123.4px;margin-right: 10px;" name="moisDeb" id="moisDeb">
                                     <optgroup label="Mois">
                                         <option value="" selected="">Mois</option>
                                         <option value="1">Janvier</option>
@@ -120,7 +122,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6"><label class="form-label form-label form-label form-label">Date fin</label>
                                 <div class="d-lg-flex align-items-lg-center form-group mb-3">
-                                <select class="form-select form-select form-select" style="width: 123.4px;margin-right: 10px;" id="moisFin">
+                                <select class="form-select form-select form-select" style="width: 123.4px;margin-right: 10px;" name="moisFin" id="moisFin">
                                     <optgroup label="Mois" >
                                         <option value="" selected="">Mois</option>
                                         <option value="1">Janvier</option>

@@ -3,7 +3,7 @@
 
 class Experience implements \JsonSerializable {
 
-    private static $compteur = 0;
+    private static $numExperience = 0;
 
     private $idExperience;
     private $intitulePoste;
@@ -17,8 +17,8 @@ class Experience implements \JsonSerializable {
     private $mission;
 
 
-    public function __construct($idExp = "", $intitule = "", $nomEmp = "", $villeEmp = "", $typeContrat = "", $dateDebutMois = "", $dateDebutAnnee = "", $dateFinMois = "", $dateFinAnnee = "", $mission = "") {
-        $this->idExperience = $idExp;
+    public function __construct($intitule = "", $nomEmp = "", $villeEmp = "", $typeContrat = "", $dateDebutMois = "", $dateDebutAnnee = "", $dateFinMois = "", $dateFinAnnee = "", $mission = "") {
+        $this->idExperience = ++self::$numExperience;
         $this->intitulePoste = $intitule;
         $this->nomEmployeur = $nomEmp;
         $this->villeEmployeur = $villeEmp;
