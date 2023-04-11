@@ -8,16 +8,16 @@ require ('langue.inc.php');
 
 class CV implements \JsonSerializable
 {
-    // Attributs (tableau de compétences, tableau d'expériences, tableau de formations, tableau de langues, coordonnées)
+    // Attributs (tableau de compétences, tableau d'expériences, tableau de tabFormations, tableau de tabLangues, coordonnées)
     private $coordonnees;
     private $competences;
-    private $experiences = array();
-    private $formations = array();
-    private $langues = array();
+    private $tabExperiences = array();
+    private $tabFormations = array();
+    private $tabLangues = array();
     
 
     // Constructeur
-    public function __construct($coordonnees = null , $competences = null, $experiences = array(), $formations = array(), $langues = array())
+    public function __construct($coordonnees = null , $competences = null, $tabExperiences = array(), $tabFormations = array(), $tabLangues = array())
     {
     // Vérifiez si la variable $coordonnees est null avant de l'utiliser
     if ($coordonnees === null) {
@@ -25,9 +25,9 @@ class CV implements \JsonSerializable
     }
         $this->coordonnees = $coordonnees;
         $this->competences = $competences;
-        $this->experiences = $experiences;
-        $this->formations  = $formations;
-        $this->langues     = $langues;
+        $this->tabExperiences = $tabExperiences;
+        $this->tabFormations  = $tabFormations;
+        $this->tabLangues     = $tabLangues;
     }
 
 
@@ -48,9 +48,9 @@ class CV implements \JsonSerializable
         return $this->competences; 
     }
 
-    public function getExperiences() { return $this->experiences; }
-    public function getFormations() { return $this->formations; }
-    public function getLangues() { return $this->langues; }
+    public function getTabExperiences() { return $this->tabExperiences; }
+    public function getTabFormations() { return $this->tabFormations; }
+    public function getTabLangues() { return $this->tabLangues; }
    
     public function __get($property)
     {
@@ -65,16 +65,16 @@ class CV implements \JsonSerializable
         $res = "Coordonnées : ".$this->coordonnees."\n";
         $res = $res ."<br/>";
         $res = $res . "Compétences : ".$this->competences."\n";
-        for ($i=0; $i < count($this->experiences); $i++) { 
-            $res = $res . "Expérience : ".$this->experiences[$i]."\n";
+        for ($i=0; $i < count($this->tabExperiences); $i++) { 
+            $res = $res . "Expérience : ".$this->tabExperiences[$i]."\n";
             $res = $res ."<br/>";
         }
-        for ($i=0; $i < count($this->formations); $i++) { 
-            $res = $res . "Formation : ".$this->formations[$i]."\n";
+        for ($i=0; $i < count($this->tabFormations); $i++) { 
+            $res = $res . "Formation : ".$this->tabFormations[$i]."\n";
             $res = $res ."<br/>";
         }
-        for ($i=0; $i < count($this->langues); $i++) { 
-            $res = $res . "Langue : ".$this->langues[$i]."\n";
+        for ($i=0; $i < count($this->tabLangues); $i++) { 
+            $res = $res . "Langue : ".$this->tabLangues[$i]."\n";
             $res = $res ."<br/>";
         }
         return $res;
@@ -83,13 +83,14 @@ class CV implements \JsonSerializable
 
     public function ajouterFormation($formation)
     {
-        array_push($this->formations, $formation);
+        array_push($this->tabFormations, $formation);
         return true;
     }
 
     public function ajouterExperience($experience)
     {
-        array_push($this->experiences, $experience);
+        array_push($this->tabExperiences, $experience);
+        return true;
     }
 
     public function majCompetence($competence)
@@ -99,30 +100,30 @@ class CV implements \JsonSerializable
 
     public function ajouterLangue($langue)
     {
-        array_push($this->langues, $langue);
+        array_push($this->tabLangues, $langue);
     }
 
 
     public function supprimerFormation($idFormation) {
-        for ($i=0; $i < count($this->formations); $i++) { 
-            if ($this->formations[$i]->getIdFormation() == $idFormation) {
-                unset($this->formations[$i]);
+        for ($i=0; $i < count($this->tabFormations); $i++) { 
+            if ($this->tabFormations[$i]->getIdFormation() == $idFormation) {
+                unset($this->tabFormations[$i]);
             }
         }
     }
 
     public function supprimerExperience($idExperience) {
-        for ($i=0; $i < count($this->experiences); $i++) { 
-            if ($this->experiences[$i]->getIdExperience() == $idExperience) {
-                unset($this->experiences[$i]);
+        for ($i=0; $i < count($this->tabExperiences); $i++) { 
+            if ($this->tabExperiences[$i]->getIdExperience() == $idExperience) {
+                unset($this->tabExperiences[$i]);
             }
         }
     }
 
     public function supprimerLangue($idLangue) {
-        for ($i=0; $i < count($this->langues); $i++) { 
-            if ($this->langues[$i]->getIdLangue() == $idLangue) {
-                unset($this->langues[$i]);
+        for ($i=0; $i < count($this->tabLangues); $i++) { 
+            if ($this->tabLangues[$i]->getIdLangue() == $idLangue) {
+                unset($this->tabLangues[$i]);
             }
         }
     }

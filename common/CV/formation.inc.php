@@ -9,19 +9,21 @@ class Formation implements JsonSerializable{
     private $villeEtablissement;
     private $diplome;
     private $domaine;
+    private $mention;
     private $dateDebutMois;
     private $dateDebutAnnee;
     private $dateFinMois;
     private $dateFinAnnee;
 
 
-    public function __construct($n="",$v="", $di="", $do="", $dbm="", $dba="", $dfm="", $dfa="") 
+    public function __construct($n="",$v="", $di="", $do="", $m="", $dbm="", $dba="", $dfm="", $dfa="") 
     {
         $this->idFormation = ++self::$numFormation;
         $this->nomEtablissement = $n;
         $this->villeEtablissement = $v;
         $this->diplome = $di;
         $this->domaine = $do;
+        $this->mention = $m;
         $this->dateDebutMois = $dbm;
         $this->dateDebutAnnee = $dba;
         $this->dateFinMois = $dfm;
@@ -35,6 +37,7 @@ class Formation implements JsonSerializable{
     public function getVilleEtablissement () { return $this->villeEtablissement; }
     public function getDiplome            () { return $this->diplome; }
     public function getDomaine            () { return $this->domaine; }
+    public function getMention            () { return $this->mention; }
     public function getDateDebutMois      () { return $this->dateDebutMois; }
     public function getDateDebutAnnee     () { return $this->dateDebutAnnee; }
     public function getDateFinMois        () { return $this->dateFinMois; }
@@ -46,6 +49,7 @@ class Formation implements JsonSerializable{
         $res = $res ."villeEtablissement:".$this->villeEtablissement."\n";
         $res = $res ."diplome:".$this->diplome."\n";
         $res = $res ."domaine:".$this->domaine."\n";
+        $res = $res ."mention:".$this->mention."\n";
         $res = $res ."dateDebutMois:".$this->dateDebutMois."\n";
         $res = $res ."dateDebutAnnee:".$this->dateDebutAnnee."\n";
         $res = $res ."dateFinMois:".$this->dateFinMois."\n";

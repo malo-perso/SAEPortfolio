@@ -116,7 +116,7 @@ function gestionAcces(){
                     else{
                         // utilisateur non connecté => redirection page connexion
                             // possible de refaire revenir ici après connexion avec $_SESSION["redirect"] = $_SERVER["REQUEST_URI"]; 
-                        header("Location: ./connexion.php");
+                        header("Location: ../connexion.php");
                         return false;
                     }
                 }
@@ -142,7 +142,7 @@ function gestionAcces(){
                         }else{
                             // utilisateur non connecté => redirection page connexion
                                 // possible de refaire revenir ici après connexion avec $_SESSION["redirect"] = $_SERVER["REQUEST_URI"]; 
-                            header("Location: ./connexion.php");
+                            header("Location: ../connexion.php");
                             return false;
                         }
                     }
