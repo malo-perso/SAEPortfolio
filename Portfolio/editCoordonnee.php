@@ -86,4 +86,5 @@ else{
 
     echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
 }
+
 ?>

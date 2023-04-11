@@ -9,19 +9,23 @@ class Formation implements JsonSerializable{
     private $villeEtablissement;
     private $diplome;
     private $domaine;
-    private $dateDebut;
-    private $dateFin;
+    private $dateDebutMois;
+    private $dateDebutAnnee;
+    private $dateFinMois;
+    private $dateFinAnnee;
 
 
-    public function __construct($n="",$v="", $di="", $do="", $dd="", $df="") 
+    public function __construct($n="",$v="", $di="", $do="", $dbm="", $dba="", $dfm="", $dfa="") 
     {
         $this->idFormation = ++self::$numFormation;
         $this->nomEtablissement = $n;
         $this->villeEtablissement = $v;
         $this->diplome = $di;
         $this->domaine = $do;
-        $this->dateDebut = $dd;
-        $this->dateFin = $df;
+        $this->dateDebutMois = $dbm;
+        $this->dateDebutAnnee = $dba;
+        $this->dateFinMois = $dfm;
+        $this->dateFinAnnee = $dfa;
     }
 
     public function setIdFormation        ($id) { $this->idFormation = $id; }
@@ -31,8 +35,10 @@ class Formation implements JsonSerializable{
     public function getVilleEtablissement () { return $this->villeEtablissement; }
     public function getDiplome            () { return $this->diplome; }
     public function getDomaine            () { return $this->domaine; }
-    public function getDateDebut          () { return $this->dateDebut; }
-    public function getDateFin            () { return $this->dateFin; }
+    public function getDateDebutMois      () { return $this->dateDebutMois; }
+    public function getDateDebutAnnee     () { return $this->dateDebutAnnee; }
+    public function getDateFinMois        () { return $this->dateFinMois; }
+    public function getDateFinAnnee       () { return $this->dateFinAnnee; }
 
     public function __toString() {
         $res = "idFormation:".$this->idFormation."\n";
@@ -40,8 +46,10 @@ class Formation implements JsonSerializable{
         $res = $res ."villeEtablissement:".$this->villeEtablissement."\n";
         $res = $res ."diplome:".$this->diplome."\n";
         $res = $res ."domaine:".$this->domaine."\n";
-        $res = $res ."dateDebut:".$this->dateDebut."\n";
-        $res = $res ."dateFin:".$this->dateFin."\n";
+        $res = $res ."dateDebutMois:".$this->dateDebutMois."\n";
+        $res = $res ."dateDebutAnnee:".$this->dateDebutAnnee."\n";
+        $res = $res ."dateFinMois:".$this->dateFinMois."\n";
+        $res = $res ."dateFinAnnee:".$this->dateFinAnnee."\n";
         $res = $res ."<br/>";
 	    return $res;
     }

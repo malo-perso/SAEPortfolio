@@ -114,7 +114,6 @@ function cardUser() {
     {
         echo "<script>console.log('connexion reussie');</script>";
         $idPortfolio = $db->getIdPortfolio($recherche);
-        //echo $idPortfolio;
 
         if ($idPortfolio == -1 || $idPortfolio == null || $idPortfolio == "" || $idPortfolio == 0) {
             echo "<script>console.log('portfolio inexistant');</script>";

@@ -123,7 +123,6 @@
                 
                 console.log(coul.value);
                 console.log("Cacher");
-                //toPDF();
             }
         });
 
