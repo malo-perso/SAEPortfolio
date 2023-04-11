@@ -30,6 +30,7 @@ class CV implements \JsonSerializable
         $this->tabLangues     = $tabLangues;
     }
 
+
     // Accesseurs
     public function getCoordonnees() {
         if ($this->coordonnees == null) {
@@ -119,14 +120,6 @@ class CV implements \JsonSerializable
         }
     }
 
-    public function supprimerCompetence($idCompetence) {
-        for ($i=0; $i < count($this->competences); $i++) { 
-            if ($this->competences[$i]->getIdCompetence() == $idCompetence) {
-                unset($this->competences[$i]);
-            }
-        }
-    }
-
     public function supprimerLangue($idLangue) {
         for ($i=0; $i < count($this->tabLangues); $i++) { 
             if ($this->tabLangues[$i]->getIdLangue() == $idLangue) {
@@ -135,8 +128,10 @@ class CV implements \JsonSerializable
         }
     }
 
-    public function modifierCoordonnees($coordonnees) {
+    public function modifierCoordonnees($coordonnees) 
+    {
         $this->coordonnees = $coordonnees;
+        echo "Coordonnées modifiées";
     }
 
 
@@ -144,6 +139,79 @@ class CV implements \JsonSerializable
     {
         $vars = get_object_vars($this);
         return $vars;
+    }
+
+    public function tabToCV($tab) 
+    {
+        //Coordonnées
+        $contenu_Coord = $tab['coordonnees'];
+
+        $coordonnees = new Coordonnees($contenu_Coord['image'],
+                                       $contenu_Coord['prenom'], 
+                                       $contenu_Coord['nom'], 
+                                       $contenu_Coord['nomPoste'], 
+                                       $contenu_Coord['adresse'], 
+                                        $contenu_Coord['codePostal'],
+                                        $contenu_Coord['ville'],
+                                        $contenu_Coord['telephone'],
+                                        $contenu_Coord['email'],
+                                        $contenu_Coord['phraseAccroche']);
+        
+        //Formation
+        $contenu_Formation = $tab['formations'];
+        $tabFormation = array();
+        for ($i=0; $i < count($contenu_Formation); $i++) 
+        { 
+            $formation = new Formation($contenu_Formation[$i]['intituleFormation'],
+                                       $contenu_Formation[$i]['dateDebut'],
+                                       $contenu_Formation[$i]['dateFin'],
+                                       $contenu_Formation[$i]['lieu'],
+                                       $contenu_Formation[$i]['description']);
+
+            $formation->setIdFormation($contenu_Formation[$i]['idFormation']);
+
+            array_push($tabFormation, $formation);
+        }
+
+        //Experience
+        $contenu_Experience = $tab['experiences'];
+        $tabExperience = array();
+        for ($i=0; $i < count($contenu_Experience); $i++) 
+        { 
+            $experience = new Experience($contenu_Experience[$i]['idExperience'],
+                                         $contenu_Experience[$i]['intituleExperience'],
+                                         $contenu_Experience[$i]['dateDebut'],
+                                         $contenu_Experience[$i]['dateFin'],
+                                         $contenu_Experience[$i]['lieu'],
+                                         $contenu_Experience[$i]['description']);
+
+            array_push($tabExperience, $experience);
+        }
+
+        //Competences
+        $contenu_Competence = $tab['competences'];
+        $competences = new Competences($contenu_Competence['softSkills'],
+                                       $contenu_Competence['hardSkills']);
+
+                
+        //Langues
+        $contenu_Langue = $tab['langues'];
+        $tabLangue = array();
+        for ($i=0; $i < count($contenu_Langue); $i++) 
+        { 
+            $langue = new Langue($contenu_Langue[$i]['intituleLangue'],
+                                 $contenu_Langue[$i]['niveauLangue']);
+
+            $langue->setIdLangue($contenu_Langue[$i]['idLangue']);
+
+            array_push($tabLangue, $langue);
+        }
+
+        $this->coordonnees = $coordonnees;
+        $this->formations = $tabFormation;
+        $this->experiences = $tabExperience;
+        $this->competences = $competences;
+        $this->langues = $tabLangue;
     }
 }
 

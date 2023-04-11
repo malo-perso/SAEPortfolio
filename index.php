@@ -37,27 +37,61 @@ function cardUser() {
         echo "Impossible de se connecter à la base de données !\n";
     }
     else {
-        try {
-            //interroge la base de données et récupère tous les utilisateurs qui ont un portfolio publié
-            $users = $db->getUserPortfolioPublie();
-            foreach($users as $row) {
-                echo '
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card">
-                        <a href="">
-                            <img src="./images/user.png" class="card-img-top" alt="Image 2">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$row['nom'].'-'.$row['prenom'].'</h5>
-                                <p class="card-text">Métier 3</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>';
-            }
+        if (isset($_GET['recherche'])) {
+            $recherche = $_GET['recherche'];
+            $recherche = trim($recherche); 
+            $recherche = strip_tags($recherche);
 
-        } //fin try
-        catch (Exception $e) {
-            echo $e->getMessage();
+            $idPortfolio = $db->getIdPortfolio($recherche);
+    
+            if ($idPortfolio == -1 || $idPortfolio == null || $idPortfolio == "" || $idPortfolio == 0) {
+                echo "<script>console.log('portfolio inexistant');</script>";
+            }
+            else
+            {
+                foreach ($idPortfolio as $row) {
+                    if($db->isPublic($row)) {
+                        $user = $db->getUserByPortfolio($idPortfolio);
+                        echo $user['nom'];
+                        /*echo '
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <a href="">
+                                    <img src="./images/user.png" class="card-img-top" alt="Image 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">'.$user['nom'].'-'.$user['prenom'].'</h5>
+                                        <p class="card-text">Métier 3</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>';*/
+                    }
+                }
+            }
+        }
+        else {
+            try {
+                //interroge la base de données et récupère tous les utilisateurs qui ont un portfolio pub
+                $users = $db->getUserPortfolioPublie();
+                foreach($users as $row) {
+                    echo '
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card">
+                            <a href="">
+                                <img src="./images/user.png" class="card-img-top" alt="Image 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">'.$row['nom'].'-'.$row['prenom'].'</h5>
+                                    <p class="card-text">Métier 3</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>';
+                }
+
+            } //fin try
+            catch (Exception $e) {
+                echo $e->getMessage();
+            }
         }  
         //$db->close();
 } //fin du else connexion reussie
@@ -67,7 +101,7 @@ function cardUser() {
 
 }
 
-if (isset($_GET['recherche'])) {
+/*if (isset($_GET['recherche'])) {
     $recherche = $_GET['recherche'];
     $recherche = trim($recherche); 
     $recherche = strip_tags($recherche);
@@ -97,6 +131,6 @@ if (isset($_GET['recherche'])) {
         }
         
     }
-}
+}*/
 
 ?>

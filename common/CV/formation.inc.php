@@ -30,6 +30,8 @@ class Formation implements JsonSerializable{
         $this->dateFinAnnee = $dfa;
     }
 
+    public function setIdFormation        ($id) { $this->idFormation = $id; }
+
     public function getIdFormation        () { return $this->idFormation; }
     public function getNomEtablissement   () { return $this->nomEtablissement; }
     public function getVilleEtablissement () { return $this->villeEtablissement; }

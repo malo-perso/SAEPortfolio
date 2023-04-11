@@ -368,10 +368,10 @@ class DB {
     }
 
     public function getIdPortfolio($nomPortfolio){
-        $requete = "SELECT idPortfolio FROM portfolio WHERE nomPortfolio = ?";
+        $requete = "SELECT idPortfolio FROM portfolio WHERE nomPortfolio LIKE ?";
         $tparam = array($nomPortfolio);
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
-        $row = $resultats[0];
+        
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             echo "Erreur lors de l'exécution de la requête";
@@ -382,7 +382,34 @@ class DB {
             return null;
         } else {
             echo "portfolio trouvé \n";
-            return  $row->getIdPortfolio();
+            $res = array();
+            foreach ($resultats as $row) {
+                $res[] = $row->getIdPortfolio();
+            }
+            return  $res;
+        }
+    }
+
+    public function getUserByPortfolio($idportfolio)
+    {
+        $requete = "SELECT nom, prenom FROM portfolio NATURAL JOIN utilisateur WHERE idPortfolio = ?";
+        $tparam = array($idportfolio);
+        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            echo "Erreur lors de l'exécution de la requête";
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            echo "Aucun portfolio trouvé";
+            return null;
+        } else {
+            echo "portfolio trouvé \n";
+            $res = array();
+            foreach ($resultats as $row) {
+                $res[] = $row->getIdUser();
+            }
+            return  $res;
         }
     }
 
