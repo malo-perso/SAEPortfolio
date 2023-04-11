@@ -58,7 +58,7 @@ else{
                 $coordonnees = new Coordonnees("", $nom, $prenom, $intitulePoste, $adr, $codePostal, $ville, $tel, $mail, $accroche);
             }
         
-            if(ajouterCoordonnees($coordonnees))
+            if($db->ajouterCoordonnees($coordonnees))
             {
                 echo "Coordonnées ajoutées";
                 //mise à jour bd CV
@@ -89,4 +89,5 @@ else{
 
     echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
 }
+
 ?>

@@ -63,10 +63,7 @@ class CV implements \JsonSerializable
     {
         $res = "Coordonnées : ".$this->coordonnees."\n";
         $res = $res ."<br/>";
-        for ($i=0; $i < count($this->competences); $i++) { 
-            $res = $res . "Compétence : ".$this->competences[$i]."\n";
-            $res = $res ."<br/>";
-        }
+        $res = $res . "Compétences : ".$this->competences."\n";
         for ($i=0; $i < count($this->experiences); $i++) { 
             $res = $res . "Expérience : ".$this->experiences[$i]."\n";
             $res = $res ."<br/>";
@@ -94,9 +91,9 @@ class CV implements \JsonSerializable
         array_push($this->experiences, $experience);
     }
 
-    public function ajouterCompetence($competence)
+    public function majCompetence($competence)
     {
-        array_push($this->competences, $competence);
+        $this->competences = $competence;
     }
 
     public function ajouterLangue($langue)

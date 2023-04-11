@@ -80,14 +80,20 @@ if (isset($_GET['recherche'])) {
     {
         echo "<script>console.log('connexion reussie');</script>";
         $idPortfolio = $db->getIdPortfolio($recherche);
-        echo $idPortfolio;
 
-        if($db->isPublic($idPortfolio)) {
-            echo "<script>console.log('portfolio public');</script>";
-            header("Location: ./Portfolio/consultAccueil.php?id=".$idPortfolio);
+        if ($idPortfolio == -1 || $idPortfolio == null || $idPortfolio == "" || $idPortfolio == 0) {
+            echo "<script>console.log('portfolio inexistant');</script>";
         }
-        else {
-            echo "<script>console.log('portfolio prive');</script>";
+        else
+        {
+
+            if($db->isPublic($idPortfolio)) {
+                echo "<script>console.log('portfolio public');</script>";
+                header("Location: ./Portfolio/consultAccueil.php?idPortfolio=".$idPortfolio);
+            }
+            else {
+                echo "<script>console.log('portfolio prive');</script>";
+            }
         }
         
     }
