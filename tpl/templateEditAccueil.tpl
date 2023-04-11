@@ -114,7 +114,7 @@
                         url : 'editAccueil.php',
                         data : {contenu: contenu},
                         success: function(response) {
-                            alert(response);
+                           
                         }
                     });
                 }).catch((error) => {

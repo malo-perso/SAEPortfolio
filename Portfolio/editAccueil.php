@@ -34,7 +34,7 @@ else
             $contenu = " ";
         }
         else{
-            $contenu = json_decode($Accueil->getContenu(), false);
+            $contenu = $Accueil->getContenu();
         }
     }
 
@@ -45,32 +45,20 @@ else
         {
             $contenu = $_POST['contenu'];
 
-            $pageAccueil = new Page ($accueil->getIdPage(),$accueil->getNomPage(), $contenu, $accueil->getIdPortfolio());
+            $Accueil->majPage($contenu);
+            
+            echo "Accueil ajouté";
+            //mise à jour bd Accueil
 
-            if (majAccueil($pageAccueil))
+            if ($db->updatePage($pageAccueil,"Accueil", $_GET['id_portfolio']))
             {
-                echo "Accueil ajouté";
-                //mise à jour bd Accueil
-
-                if ($db == null) {
-                    echo "Impossible de se connecter à la base de données !\n";
-                }
-                else {
-
-                    if ($db->updatePage($pageAccueil,"Accueil", $_GET['id_portfolio']))
-                    {
-                        echo "Accueil mis à jour";
-                    }
-                    else
-                    {
-                        echo "Erreur lors de la mise à jour de l'accueil";
-                    }
-                }
+                echo "Accueil mis à jour";
             }
             else
             {
-                echo "Erreur lors de l'ajout de l'accueil";
+                echo "Erreur lors de la mise à jour de l'accueil";
             }
+            
         }
 
     }

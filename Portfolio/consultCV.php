@@ -1,8 +1,8 @@
 <?php
+    ini_set('display_errors', 1);
     require ("../common/DB.inc.php");
     include ("./CVResume.php");
 
-    session_start();
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -10,39 +10,45 @@
        
         $twig = new Twig_Environment( new Twig_Loader_Filesystem("../TemplatesCV"));    
 
-        $tpl1 = $_POST['tpl'];
-        $couleur = $_POST['couleur'];
-
-        $tpl = $twig->loadTemplate( $tpl1 );
-    
    
         //récuperration des données du CV
         $db = DB::getInstance();
-        echo "6";
+       
         if ($db == null) {
             echo "Impossible de se connecter à la base de données !\n";
         }
         else 
         {
-            echo "7";
-            $CV = $db->getPage("CV",$_SESSION['id_portfolio']);
-            $coordonnees = $CV->getCoordonnees();
-            $formations = $CV->getFormations();
-            $experiences = $CV->getExperiences();
-            $competence = $CV->getCompetences();
+            
+            $CV = $db->getPage("CV",$_GET['idPortfolio']);
+
+            $contenu = json_decode($CV->getContenu(), true);
+            $CV_courant = new CV();
+            $CV_courant->tabToCV($contenu);
+
+            $coordonnees = $CV_courant->getCoordonnees();
+            $formations = $CV_courant->getTabFormations();
+            $experiences = $CV_courant->getTabExperiences();
+            $competence = $CV_courant->getCompetences();
             $softskills = $competence->getSoftSkills();
             $hardskills = $competence->getHardSkills();
-            $langue = $CV->getLangues();
-            echo "8";
+            $langue = $CV_courant->getTabLangues();
+            $couleur = $CV_courant->getCouleur();
+            $template = $CV_courant->getTemplate();
+
+            $tpl = $twig->loadTemplate( $template );
+           
         }
 
+    
         echo $tpl->render(array(
             'coordonnees' => $coordonnees,
             'formations' => $formations,
             'experiences' => $experiences,
             'softskills' => $softskills,
             'hardskills' => $hardskills,
-            'langue' => $langue
+            'langue' => $langue,
+            'couleur' => $couleur
         ));
 
         /*echo $tpl->render(array(

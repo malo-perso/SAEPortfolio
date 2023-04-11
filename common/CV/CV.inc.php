@@ -14,6 +14,8 @@ class CV implements \JsonSerializable
     private $tabExperiences = array();
     private $tabFormations = array();
     private $tabLangues = array();
+    private $couleur;
+    private $template;
     
 
     // Constructeur
@@ -28,6 +30,8 @@ class CV implements \JsonSerializable
         $this->tabExperiences = $tabExperiences;
         $this->tabFormations  = $tabFormations;
         $this->tabLangues     = $tabLangues;
+        $this->couleur = "#9DBB59";
+        $this->template = "CV2.tpl";
     }
 
 
@@ -51,6 +55,8 @@ class CV implements \JsonSerializable
     public function getTabExperiences() { return $this->tabExperiences; }
     public function getTabFormations() { return $this->tabFormations; }
     public function getTabLangues() { return $this->tabLangues; }
+    public function getCouleur() { return $this->couleur; }
+    public function getTemplate() { return $this->template; }
    
     public function __get($property)
     {
@@ -131,6 +137,16 @@ class CV implements \JsonSerializable
     {
         $this->coordonnees = $coordonnees;
         echo "Coordonnées modifiées";
+    }
+
+    public function modifierCouleur($couleur) 
+    {
+        $this->couleur = $couleur;
+    }
+
+    public function modifierTemplate($template) 
+    {
+        $this->template = $template;
     }
 
 
