@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            
         </div>
 
         <h4 class="text-center" style="margin:2%;" >Ajoutez une phrase d'accroche</h4>
@@ -114,10 +114,13 @@
         <div style="display:flex; justify-content: center;">
             <div class="btn-group" role="group" style="width:50%">
                 <a id="precedent" style="color: var(--color-brown); margin:5%"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style="order-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Précédent (résumé)</button></a>
-                <a href="#" style="margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="submit" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Enregistrer</button></a>
+                <button class="btn btn-secondary" data-bss-hover-animate="pulse" type="submit" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Enregistrer</button>
                 <a id="suivant" style="color: var(--color-brown); margin:5%;"><button class="btn btn-secondary" data-bss-hover-animate="pulse" type="button" style=" border-color: var(--color-brown);background: rgb(255,255,255);color: var(--color-brown);">Suivant (Formations)</button></a>
             </div>
         </div>
+
+        </form>
+
     </section>
 </div>
 

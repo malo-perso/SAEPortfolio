@@ -28,11 +28,15 @@ else{
     else 
     {
         $CV = $db->getPage('CV',$_GET['idPortfolio']);
-        $contenu = json_decode($CV->getContenu(), false);
-        $CV_courant = new CV($contenu);
+        
+        $contenu = json_decode($CV->getContenu(), true);
+        var_dump($contenu);
+
+        $CV_courant = new CV();
+        $CV_courant->tabToCV($contenu);
+        //echo "CV_courant : ".$CV_courant;
     }
-    //$coordonnees = $CV->getCoordonnees();
-    $coordonnees = $CV_courant->__get("coordonnees");
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -50,7 +54,7 @@ else{
 
             if (isset($_POST["avatar-file"]))
             {
-                $avatar = $_POST["avatar-file"];
+                $avatar = $_POST["avatar-file"]; 
                 $coordonnees = new Coordonnees($avatar, $nom, $prenom, $intitulePoste, $adr, $codePostal, $ville, $tel, $mail, $accroche);
             }
             else
@@ -58,34 +62,27 @@ else{
                 $coordonnees = new Coordonnees("", $nom, $prenom, $intitulePoste, $adr, $codePostal, $ville, $tel, $mail, $accroche);
             }
         
-            if(ajouterCoordonnees($coordonnees))
-            {
-                echo "Coordonnées ajoutées";
-                //mise à jour bd CV
+            $CV_courant->modifierCoordonnees($coordonnees);
             
-                if ($db == null) {
-                    echo "Impossible de se connecter à la base de données !\n";
-                }
-                else {
-                    
-                    if ($db->updatePage($CV,"CV", $_GET['idPortfolio']))
-                    {
-                        echo "CV mis à jour";
-                    }
-                    else
-                    {
-                        echo "Erreur lors de la mise à jour du CV";
-                    }
-                }
+            echo "Coordonnées ajoutées";
+            //mise à jour bd CV
+                
+            $CV_json = json_encode($CV_courant);
+            echo "CV_json : ".$CV_json;
+            if ($db->updatePage($CV_json,"CV", $_GET['idPortfolio']))
+            {
+                echo "<script> console.log(\"CV mis à jour \");</script>";
             }
             else
             {
-                echo "Erreur lors de l'ajout des coordonnées";
+                echo "<script> console.log(\"ERREUR lors de la maj CV \");</script>";
             }
                 
         }
-
     }
+
+
+    $coordonnees = $CV_courant->getCoordonnees(); 
 
     echo $tpl->render( array("coordonnees"=>$coordonnees,"titre"=>$titre) );
 }

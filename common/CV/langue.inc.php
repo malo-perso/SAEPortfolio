@@ -20,6 +20,8 @@ class Langue implements JsonSerializable{
     public function getNomLangue() { return $this->nomLangue; }
     public function getNiveauLangue() { return $this->niveauLangue; }
 
+    public function setIdLangue($id) { $this->idLangue = $id; }
+
     public function __toString() {
         $res = "idLangue:".$this->idLangue."\n";
 	    $res = $res ."nomLangue:".$this->nomLangue."\n";
