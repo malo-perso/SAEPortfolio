@@ -131,14 +131,27 @@
             //enregistrement du contenu de l'éditeur dans la base de données
             document.getElementById('save').addEventListener('click', function() 
             {
-                editor.save().then((outputData) => 
-                {
-                    console.log('Article data: ', outputData);
-                    var data = JSON.stringify(outputData);
-                    console.log(data);
+                  // Récupération du contenu de l'éditeur
+                editor.save().then((outputData) => {
+                    // Envoi du contenu au serveur via une requête AJAX
+                    $.ajax({
+                        type: 'POST',
+                        url: 'saveContent.php',
+                        data: {
+                            content: JSON.stringify(outputData.blocks)
+                        },
+                        success: function(response) {
+                            alert(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+
+                    console.log(JSON.stringify(outputData.blocks));
 
                 }).catch((error) => {
-                    console.log('Saving failed: ', error);
+                    console.error('Saving failed: ', error)
                 });
             });
 

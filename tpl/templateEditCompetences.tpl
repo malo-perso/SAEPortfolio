@@ -1,35 +1,34 @@
 {% extends "templateBase.tpl" %}
 
-{%block contenu %}
+{% block contenu %}
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<div id="nav" style="width: 15%; background: #e7e4df; border-style: solid; border-color: var(--color-brown); position: fixed; height: 100%"></div>
 
-<div id="nav" style="width: 15%;background: #e7e4df;border-style: solid;border-color: var(--color-brown);position: fixed;height: 100%"> </div>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var para = window.location.search;
+        var result = getNav("editCompetence.php", "edit", para);
+        var id = document.getElementById("nav");
+        id.innerHTML = result;
+    });
+</script>
 
-    <script>
-            window.addEventListener('DOMContentLoaded', function() 
-            {
-                var para = window.location.search;
-                var result = getNav("editCompetence.php", "edit",para);
-                var id = document.getElementById("nav");
-                id.innerHTML = result;
-            });
+<div style="margin-left: 15%; width: 85%;">
 
-        </script>
-    
-    <div style="margin-left:15%; width:85%;">
+    <h1 class="text-center" style="padding-top: 5%;">Page de Compétences</h1>
 
-            <h1 class="text-center" style="padding-top: 5%;">Page de Compétences</h1>
+        
+        <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;"></div>
 
-            <div id=editorjs style="margin-top: 5%;margin-left:5%; margin-right:5%;">{{ competence.getContenu() }}</div>
-
-            <!-- bouton au milieu de la page -->
-            <div style="display:flex; justify-content:center">
-            <button id=save class="btn btn-primary" data-bss-hover-animate="pulse" type="button" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Enregistrer</button>
-            </div>
-
+        <div style="display:flex; justify-content:center">
+            <button id=save type="submit" class="btn btn-primary" data-bss-hover-animate="pulse" style="border-style: solid;border-color: var(--color-brown);background: rgba(255,255,255,0.5);color: var(--color-brown);">Enregistrer</button>
         </div>
+
+    
+
+</div>
 
         <script src="ckeditor/ckeditor.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
@@ -104,27 +103,34 @@
                 }
             });
 
-            //enregistrement du contenu de l'éditeur dans la base de données
+             //enregistrement du contenu de l'éditeur dans la base de données
             document.getElementById('save').addEventListener('click', function() 
             {
-                editor.save().then((output) => {
+            
+                editor.save().then((outputData) => {
 
-                    var contenu = JSON.stringify(output.blocks);
-                    $.ajax({
-                        type : 'POST',
-                        url : 'editCompetence.php',
-                        data : {contenu: contenu},
-                        success: function(response) {
-                            alert(response);
-                        }
-                    });
-                }).catch((error) => {
-                    console.log('Saving failed: ', error)
+                console.log (JSON.stringify(outputData.blocks));
+                // Envoi du contenu au serveur via une requête AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'editCompetence.php',
+                    data: {
+                        'content': JSON.stringify(outputData.blocks)
+                    },
+                    success: function(response) {
+                        alert("Enregistré avec succès");
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Une erreur est survenue");
+                    }
                 });
-            });
-
-
+                }).catch((error) => {
+                    console.error('Saving failed: ', error)
+                });
+            });       
+            
 
         </script>
     </div>
+
 {% endblock %}

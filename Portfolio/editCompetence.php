@@ -28,48 +28,41 @@ else
     }
     else 
     {
-        $Competences = $db->getPage('Competences',$_GET['idPortfolio']);
-        $contenu = json_decode($Competences->getContenu(), false);
+        echo "Connexion à la base de données réussie !\n";
+        $competence = $db->getPage('Competences',$_GET['idPortfolio']);
+        $content = $competence->getContenu();
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        echo "POST";
+        echo "POST ";
         
-        if (isset($_POST['contenu']))
+        if (isset($_POST['content']))
         {
-            $contenu = $_POST['contenu'];
-
-            $pageCompetence = new Page ($competence->getIdPage(),$competence->getNomPage(), $contenu, $competence->getIdPortfolio());
-
-            if (majCompetence($pageCompetence))
-            {
-                echo "competence ajouté";
-                //mise à jour bd competence
-
-                if ($db == null) {
-                    echo "Impossible de se connecter à la base de données !\n";
-                }
-                else {
-
-                    if ($db->updatePage($pageCompetence,"Competences", $_GET['idPortfolio']))
-                    {
-                        echo "Competences mis à jour";
-                    }
-                    else
-                    {
-                        echo "Erreur lors de la mise à jour de la page Competences";
-                    }
-                }
+            
+           /* echo "<script>console.log('PHP: ".$content."');</script>";
+            
+            if ($db == null) {
+                echo "Impossible de se connecter à la base de données !\n";
             }
-            else
-            {
-                echo "Erreur lors de l'ajout de la page Competences";
-            }
+            else {
+
+                if ($db->updatePage($content,"Competences", $_GET['idPortfolio']))
+                {
+                    echo "Competences mis à jour";
+                }
+                else
+                {
+                    echo "Erreur lors de la mise à jour de la page Competences";
+                }
+            }*/
+            
         }
     }
 
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'competence' => $contenu ) );
+    //$competence = $db->getPage('Competences',$_GET['idPortfolio']);
+
+    echo $tpl->render( array( "content" =>$content, 'titre' => $titre) );
 }
 ?>
 
