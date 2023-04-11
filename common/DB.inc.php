@@ -334,7 +334,7 @@ class DB {
     }
 
     public function getPortfolioByUser($idUser){
-        $requete = "SELECT * FROM portfolio WHERE idUser = ?";
+        $requete = "SELECT * FROM portfolio WHERE idUser = ? ORDER BY idPortfolio";
         $tparam = array($idUser);
         $resultats = $this->execQuery($requete,$tparam,'portfolio');
         if (!$resultats) {
@@ -381,7 +381,6 @@ class DB {
             echo "Aucun portfolio trouvé";
             return null;
         } else {
-            echo "portfolio trouvé \n";
             $res = array();
             foreach ($resultats as $row) {
                 $res[] = $row->getIdPortfolio();
@@ -392,10 +391,9 @@ class DB {
 
     public function getUserByPortfolio($idportfolio)
     {
-        $requete = "SELECT nom, prenom FROM portfolio NATURAL JOIN utilisateur WHERE idPortfolio = ?)";
+        $requete = "SELECT idUser FROM portfolio WHERE idPortfolio = ? ORDER BY idPortfolio";
         $tparam = array($idportfolio);
-        $class = array('portfolio','utilisateur');
-        $resultats = $this->execQuery($requete,$tparam, $class);
+        $resultats = $this->execQuery($requete, $tparam, 'portfolio');
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             echo "Erreur lors de l'exécution de la requête";
@@ -405,14 +403,30 @@ class DB {
             echo "Aucun user trouvé";
             return null;
         } else {
-            echo "user trouvé \n";
-            $res = array();
-            foreach ($resultats as $row) {
-                echo $row."<br>";
+            $requete = "SELECT nom, prenom FROM utilisateur WHERE idUser = ?";
+            $tparam = array($resultats[0]->getIdUser());
+            $user = $this->execQuery($requete, $tparam, 'utilisateur');
+            if (!$user) {
+                //Erreur lors de l'exécution de la requête
+                echo "Erreur lors de l'exécution de la requête";
+                return null;
+            } elseif (empty($user)) {
+                //Aucun utilisateur trouvé
+                echo "Aucun user trouvé";
+                return null;
+            } else {
+                $res = array();
+                foreach ($user as $row) {
+                    $res['nom'] = $row['nom'];
+                    $res['prenom'] = $row['prenom'];
+                }
+                return $res;
             }
-            //return  $res;
+    
         }
     }
+
+
 
     public function getPassword($email)
     {

@@ -84,14 +84,13 @@ class CV implements \JsonSerializable
     public function ajouterFormation($formation)
     {
         array_push($this->tabFormations, $formation);
-        return true;
     }
 
     public function ajouterExperience($experience)
     {
         array_push($this->tabExperiences, $experience);
-        return true;
     }
+
 
     public function majCompetence($competence)
     {
@@ -146,9 +145,9 @@ class CV implements \JsonSerializable
         if ($tab == null) {
             $this->coordonnees = new Coordonnees();
             $this->competences = new Competences();
-            $this->experiences = array();
-            $this->formations  = array();
-            $this->langues     = array();
+            $this->tabExperiences = array();
+            $this->tabFormations  = array();
+            $this->tabLangues     = array();
 
             echo "CV null";
         }
@@ -169,7 +168,7 @@ class CV implements \JsonSerializable
                                             $contenu_Coord['phraseAccroche']);
             
             //Formation
-            $contenu_Formation = $tab['formations'];
+            $contenu_Formation = $tab['tabFormations'];
             $tabFormation = array();
             for ($i=0; $i < count($contenu_Formation); $i++) 
             { 
@@ -188,7 +187,7 @@ class CV implements \JsonSerializable
             }
 
             //Experience
-            $contenu_Experience = $tab['experiences'];
+            $contenu_Experience = $tab['tabExperiences'];
             $tabExperience = array();
             for ($i=0; $i < count($contenu_Experience); $i++) 
             { 
@@ -207,11 +206,13 @@ class CV implements \JsonSerializable
 
             //Competences
             $contenu_Competence = $tab['competences'];
-            $competences = null;
+            var_dump($contenu_Competence);
+            $competence = new Competences($contenu_Competence['softSkills'],
+                                        $contenu_Competence['hardSkills']);
 
                     
             //Langues
-            $contenu_Langue = $tab['langues'];
+            $contenu_Langue = $tab['tabLangues'];
             $tabLangue = array();
             for ($i=0; $i < count($contenu_Langue); $i++) 
             { 
@@ -224,10 +225,10 @@ class CV implements \JsonSerializable
             }
 
             $this->coordonnees = $coordonnees;
-            $this->formations = $tabFormation;
-            $this->experiences = $tabExperience;
-            $this->competences = $competences;
-            $this->langues = $tabLangue;
+            $this->tabFormations = $tabFormation;
+            $this->tabExperiences = $tabExperience;
+            $this->competences = $competence;
+            $this->tabLangues = $tabLangue;
         }
     }
 }

@@ -28,13 +28,13 @@ else{
     else 
     {
         $CV = $db->getPage('CV',$_GET['idPortfolio']);
-        $contenu = json_decode($CV->getContenu(), false);
-        $CV_courant = new CV($contenu);
+        
+        $contenu = json_decode($CV->getContenu(), true);
+        $CV_courant = new CV();
+        $CV_courant->tabToCV($contenu);
+
+        $competences = $CV_courant->getCompetences();
     }
-    //$coordonnees = $CV->getCoordonnees();
-    $competences = $CV_courant->getCompetences();
-    $softSkills = $competences->getSoftSkills();
-    $hardSkills = $competences->getHardSkills();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -43,36 +43,39 @@ else{
 
             $softSkills = $_POST['softSkills'];
             $hardSkills = $_POST['hardSkills'];
+            
+            var_dump($softSkills);
+            var_dump($hardSkills);
 
             $competences = new Competences($softSkills, $hardSkills);
 
-            if(ajouterCompetence($competences))
-            {
-                echo "Compétence ajoutée";
-                //mise à jour bd CV
+            $CV_courant->majCompetence($competences);
             
-                if ($db == null) {
-                    echo "Impossible de se connecter à la base de données !\n";
-                }
-                else {
-                    
-                    if ($db->updatePage($CV,"CV", $_GET['idPortfolio']))
-                    {
-                        echo "CV mis à jour";
-                    }
-                    else
-                    {
-                        echo "Erreur lors de la mise à jour du CV";
-                    }
-                }
+            echo "Compétence ajoutée";
+            //mise à jour bd CV
+
+            $json = json_encode($CV_courant);
+
+            echo "<script>console.log('PHP: ".$json."');</script>";
+        
+            
+            if ($db->updatePage($json,"CV", $_GET['idPortfolio']))
+            {
+                echo "CV mis à jour";
+                unset($_POST);
             }
             else
             {
-                echo "Erreur lors de l'ajout des compétences";
+                echo "Erreur lors de la mise à jour du CV";
             }
+            
                 
         }
     }
+
+    $softSkills = $competences->getSoftSkills();
+    $hardSkills = $competences->getHardSkills();
+
     echo $tpl->render( array("softSkills"=>$softSkills,"hardSkills"=>$hardSkills,"titre"=>$titre) );
 }
 ?>

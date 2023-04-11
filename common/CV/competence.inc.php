@@ -30,9 +30,26 @@ class Competences implements JsonSerializable
         return $this->hardSkills;
     }
 
+    public function addSoftSkill($softSkill)
+    {
+        array_push($this->softSkills, $softSkill);
+    }
+
 
     public function __toString() {
-        return "idComp : " . $this->idComp . " softSkills : " . $this->softSkills . " hardSkills : " . $this->hardSkills;
+        $res = "idComp : " . $this->idComp . "\n";
+
+        for ($i = 0; $i < count($this->softSkills); $i++) {
+            $res = $res . "softSkills : " . $this->softSkills[$i] . "\n";
+        }
+
+        for ($i = 0; $i < count($this->hardSkills); $i++) {
+            $res = $res . "hardSkills : " . $this->hardSkills[$i] . "\n";
+        }
+
+        return $res;
+
+
     }
 
     public function jsonSerialize() : array
