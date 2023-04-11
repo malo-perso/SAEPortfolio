@@ -122,11 +122,11 @@ else {
 
                if(emailValide($login) && motDePasseValide($mdp))
                {
-                    //$mdp = password_hash($mdp, PASSWORD_DEFAULT);
-                    
-                    if($db->isemailOK($login) && $db->isMotDePasseOK($login,$mdp)){
-                         //remplir les informations de l'utilisateur dans la session
+                    $mdp_db = $db->getPassword($login);
 
+                    if($db->isemailOK($login) && password_verify($mdp, $mdp_db))
+                    {
+                         //remplir les informations de l'utilisateur dans la session
                          //$id = $IdUser->getIdUser();
                          echo "Login et mot de passe correct";
                          $nom = $db->getNom($login);
@@ -176,6 +176,8 @@ else {
                          else{
 
                               $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                              echo $hashed_password . "\n";
 
                               $db->addUser($email, $firstname, $lastname, $hashed_password);
                               echo "Utilisateur ajouté";
