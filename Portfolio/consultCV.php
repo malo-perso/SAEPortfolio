@@ -10,10 +10,10 @@
        
         $twig = new Twig_Environment( new Twig_Loader_Filesystem("../TemplatesCV"));    
 
-        $tpl = $_POST['tpl'];
+        $tpl1 = $_POST['tpl'];
         $couleur = $_POST['couleur'];
 
-        $tpl = $twig->loadTemplate( $tpl );
+        $tpl = $twig->loadTemplate( $tpl1 );
     
    
         //récuperration des données du CV
