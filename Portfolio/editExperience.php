@@ -80,6 +80,8 @@ else{
         //mise à jour bd CV
     }
 
+    $tabExperiences = $CV_courant->getTabExperiences();
+
     echo $tpl->render( array("tabExperiences"=>$tabExperiences,"titre"=>$titre) );
 }
 ?>

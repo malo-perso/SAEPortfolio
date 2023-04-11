@@ -176,6 +176,7 @@ class CV implements \JsonSerializable
                                         $contenu_Formation[$i]['villeEtablissement'],
                                         $contenu_Formation[$i]['diplome'],
                                         $contenu_Formation[$i]['domaine'],
+                                        $contenu_Formation[$i]['mention'],
                                             $contenu_Formation[$i]['dateDebutMois'],
                                             $contenu_Formation[$i]['dateDebutAnnee'],
                                             $contenu_Formation[$i]['dateFinMois'],
@@ -191,16 +192,15 @@ class CV implements \JsonSerializable
             $tabExperience = array();
             for ($i=0; $i < count($contenu_Experience); $i++) 
             { 
-                $experience = new Experience($contenu_Experience[$i]['idExperience'],
-                                            $contenu_Experience[$i]['intitulePoste'],
+                $experience = new Experience($contenu_Experience[$i]['intitulePoste'],
                                             $contenu_Experience[$i]['nomEmployeur'],
                                             $contenu_Experience[$i]['villeEmployeur'],
                                             $contenu_Experience[$i]['typeContrat'],
                                             $contenu_Experience[$i]['dateDebutMois'],
                                             $contenu_Experience[$i]['dateDebutAnnee'],
                                             $contenu_Experience[$i]['dateFinMois'],
-                                            $contenu_Experience[$i]['dateFinAnnee']);
-
+                                            $contenu_Experience[$i]['dateFinAnnee'],
+                                            $contenu_Experience[$i]['mission']);
                 array_push($tabExperience, $experience);
             }
 
