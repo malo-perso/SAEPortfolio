@@ -30,11 +30,8 @@ else{
         $CV = $db->getPage('CV',$_GET['idPortfolio']);
         
         $contenu = json_decode($CV->getContenu(), true);
-        var_dump($contenu);
-
         $CV_courant = new CV();
         $CV_courant->tabToCV($contenu);
-        //echo "CV_courant : ".$CV_courant;
     }
 
 

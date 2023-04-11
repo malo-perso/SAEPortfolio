@@ -392,24 +392,25 @@ class DB {
 
     public function getUserByPortfolio($idportfolio)
     {
-        $requete = "SELECT nom, prenom FROM portfolio NATURAL JOIN utilisateur WHERE idPortfolio = ?";
+        $requete = "SELECT nom, prenom FROM portfolio NATURAL JOIN utilisateur WHERE idPortfolio = ?)";
         $tparam = array($idportfolio);
-        $resultats = $this->execQuery($requete,$tparam,'portfolio');
+        $class = array('portfolio','utilisateur');
+        $resultats = $this->execQuery($requete,$tparam, $class);
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
             echo "Erreur lors de l'exécution de la requête";
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
-            echo "Aucun portfolio trouvé";
+            echo "Aucun user trouvé";
             return null;
         } else {
-            echo "portfolio trouvé \n";
+            echo "user trouvé \n";
             $res = array();
             foreach ($resultats as $row) {
-                $res[] = $row->getIdUser();
+                echo $row."<br>";
             }
-            return  $res;
+            //return  $res;
         }
     }
 
