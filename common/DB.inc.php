@@ -374,7 +374,7 @@ class DB {
         $row = $resultats[0];
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            echo "Erreur lors de l'exécution de la requête : " /*. $this->getLastError()*/;
+            echo "Erreur lors de l'exécution de la requête";
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
