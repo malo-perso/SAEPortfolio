@@ -374,7 +374,7 @@ class DB {
         $row = $resultats[0];
         if (!$resultats) {
             //Erreur lors de l'exécution de la requête
-            echo "Erreur lors de l'exécution de la requête : " . $this->getLastError();
+            echo "Erreur lors de l'exécution de la requête";
             return null;
         } elseif (empty($resultats)) {
             //Aucun utilisateur trouvé
@@ -383,6 +383,26 @@ class DB {
         } else {
             echo "portfolio trouvé \n";
             return  $row->getIdPortfolio();
+        }
+    }
+
+    public function getPassword($email)
+    {
+        $requete = "SELECT mdp FROM utilisateur WHERE mail = ?";
+        $tparam = array($email);
+        $resultats = $this->execQuery($requete,$tparam,'user');
+        $row = $resultats[0];
+        if (!$resultats) {
+            //Erreur lors de l'exécution de la requête
+            echo "Erreur lors de l'exécution de la requête : " /*. $this->getLastError()*/;
+            return null;
+        } elseif (empty($resultats)) {
+            //Aucun utilisateur trouvé
+            echo "Aucun utilisateur trouvé";
+            return null;
+        } else {
+            //L'objet est valide, on peut accéder à sa propriété "mdp"
+            return $row->getMdp();
         }
     }
 
