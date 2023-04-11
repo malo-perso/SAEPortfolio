@@ -429,7 +429,7 @@ class DB {
     /*****************************/
     public function addUser($mail, $prenom, $nom,$mdp)
     {
-        $requete = "INSERT INTO utilisateur VALUES (?, ?, ?, ?);";
+        $requete = "INSERT INTO utilisateur (prenom, nom, mdp, mail) VALUES (?, ?, ?, ?);";
         $tparam = array($prenom, $nom, $mdp, $mail);
         return $this->execMaj($requete, $tparam);
     }
