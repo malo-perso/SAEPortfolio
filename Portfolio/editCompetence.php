@@ -1,13 +1,12 @@
 <?php
 
 require ("../common/DB.inc.php");
-include ("../common/fctAux.inc.php");
 
 session_start();
 
-if(!gestionAcces()) 
+if(! isset($_SESSION['id_utilisateur'])) 
 {
-    echo "Accès refusé errorrrrrr";
+    header('Location: ..\connexion.php');
 }
 else 
 {
@@ -16,9 +15,9 @@ else
     Twig_Autoloader::register();
     $twig = new Twig_Environment( new Twig_Loader_Filesystem("../tpl"));
 
-    $titre = "Édition de la page Competences";
+    $titre = "Édition de la page Compétences";
 
-    $titrecentre = "Competences";
+    $titrecentre = "Compétences";
 
     $tpl = $twig->loadTemplate( "templateEditCompetences.tpl" );
 
@@ -28,41 +27,36 @@ else
     }
     else 
     {
-        echo "Connexion à la base de données réussie !\n";
-        $competence = $db->getPage('Competences',$_GET['idPortfolio']);
-        $content = $competence->getContenu();
+        $comp = $db->getPage("Competences", $_GET['idPortfolio']);
+        if($comp != null)
+            $contenu = json_decode($comp->getContenu(), true);
+        else
+            $contenu = "";
+        
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        echo "POST ";
-        
-        if (isset($_POST['content']))
+        if (isset($_POST['competence']))
         {
-            
-           /* echo "<script>console.log('PHP: ".$content."');</script>";
-            
-            if ($db == null) {
-                echo "Impossible de se connecter à la base de données !\n";
-            }
-            else {
+            $contenu = $_POST['competence'];
 
-                if ($db->updatePage($content,"Competences", $_GET['idPortfolio']))
-                {
-                    echo "Competences mis à jour";
-                }
-                else
-                {
-                    echo "Erreur lors de la mise à jour de la page Competences";
-                }
-            }*/
-            
+            //mise à jour bd Accueil
+            $json = json_encode($contenu);
+
+            if ($db->updatePage($json,"Competences", $_GET['idPortfolio']))
+            {
+                echo "Projets mis à jour";
+            }
+            else
+            {
+                echo "Erreur lors de la mise à jour de la page Projets";
+            }
         }
     }
 
-    //$competence = $db->getPage('Competences',$_GET['idPortfolio']);
 
-    echo $tpl->render( array( "content" =>$content, 'titre' => $titre) );
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'competence' => $contenu ) );
 }
 ?>
 
