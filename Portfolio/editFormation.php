@@ -8,7 +8,7 @@ session_start();
 if(!gestionAcces()) {
     echo "Accès refusé errorrrrrr";
 }
-if(true){
+else{
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );
 
@@ -81,6 +81,14 @@ if(true){
         $formation_id = $_POST['formation_id'];
 
         $formation_key = array_search($formation_id, array_column($tabFormations, 'idFormation'));
+
+        /*for ($i = 0; $i < count($tabFormations); $i++) {
+            if ($tabFormations[$i]['idFormation'] == $formation_id) {
+                $formation_key = $i;
+                break;
+            }
+        }*/
+        
         echo "formation_key : ".$formation_key." a supp<br>";
 
         $CV_courant->supprimerFormation($formation_key);

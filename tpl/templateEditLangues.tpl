@@ -19,9 +19,11 @@
         <h2 class="text-center" style="color: var(--bs-body-color);padding-top:5%;">Langues</h2>
             <div name="langues" style="display:grid; justify-content:center; border: 1px solid var(--color-blue);border-radius:3%;">
                 {% for langue in tabLangues %}
-                    
                     <p class="text-center" style="width:100%;  justify-content: center;margin:1%;"> {{ langue.getNomLangue() }} -&nbsp;{{ langue.getNiveauLangue() }} </p>
-                   
+                    <form id="btnSupp" method="POST">
+                        <input type="hidden" name="idLangue" value="{{ langue.getIdLangue() }}">
+                        <button type="submit" class="btn btn-primary" data-bss-hover-animate="pulse" style="background: var(--color-brown);border-color: var(--color-brown);">Supprimer</button>
+                    </form>
                 {% endfor %}
             </div>
         
@@ -38,7 +40,7 @@
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group mb-3">
                                         <label class="form-label form-label form-label">Niveau</label>
-                                        <select class="form-select form-select" name="niveau" style="width: 190px;" id="niveauLangue">
+                                        <select class="form-select form-select" name="niveau" style="width: 190px;" id="niveau">
                                             <option value="">Débutant (A1)</option>
                                             <option value="">Elémentaire (A2)</option>
                                             <option value="">Intermédiare (B1)</option>

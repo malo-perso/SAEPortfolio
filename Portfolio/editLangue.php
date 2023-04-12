@@ -28,11 +28,13 @@ else{
     else 
     {
         $CV = $db->getPage('CV',$_GET['idPortfolio']);
-        $contenu = json_decode($CV->getContenu(), false);
-        $CV_courant = new CV($contenu);
+        $contenu = json_decode($CV->getContenu(), true);
+        $CV_courant = new CV();
+        $CV_courant->tabToCV($contenu);
+
+        $tabLangues = $CV_courant->getTabLangues();
     }
-    //$coordonnees = $CV->getCoordonnees();
-    $tabLangues = $CV_courant->__get("langues");
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -44,33 +46,30 @@ else{
 
             $langue = new Langue($langue, $niveau);
 
-            if(ajouterLangue($langue))
+            $CV_courant->ajouterLangue($langue);
+
+            echo "Langue ajoutée";
+
+            $json = json_encode($CV_courant);
+      
+            if ($db->updatePage($json,"CV", $_GET['idPortfolio']))
             {
-                echo "Langue ajoutée";
-                //mise à jour bd CV
-            
-                if ($db == null) {
-                    echo "Impossible de se connecter à la base de données !\n";
-                }
-                else {
-                    
-                    if ($db->updatePage($CV,"CV", $_GET['idPortfolio']))
-                    {
-                        echo "CV mis à jour";
-                    }
-                    else
-                    {
-                        echo "Erreur lors de la mise à jour du CV";
-                    }
-                }
+                echo "CV mis à jour";
+                unset($_POST['langue'], $_POST['niveau']);
             }
             else
             {
-                echo "Erreur lors de l'ajout des langues";
-            }
-                
+                echo "Erreur lors de la mise à jour du CV";
+            }                
+        }
+        else
+        {
+            echo "Les champs n'ont pas été correctement remplis";
         }
     }
+
+    $tabLangues = $CV_courant->getTabLangues();
+
+    echo $tpl->render( array("tabLangues"=>$tabLangues,"titre"=>$titre) );
 }
-echo $tpl->render( array("tabLangues"=>$tabLangues,"titre"=>$titre) );
 ?>
