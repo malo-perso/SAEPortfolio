@@ -47,7 +47,7 @@ if (isset($_GET["Portfolio"])){
     }
 }
 
-enTete();
+enTeteIndex();
 contenu();
 pied();
 
@@ -60,14 +60,14 @@ function contenu() {
                     </button>
                 </form>
             </div>';
-    echo "<div class=\"card\">";
+    
     //$IdUser = $db->getUserID('user1@mail.com');
     //echo "idUser : $IdUser";
 
     /*script insersion card Portfolio */
     cardPortfolio();
 
-    echo "</div>\n";   
+     
 }
 
 function cardPortfolio() {
@@ -80,7 +80,9 @@ function cardPortfolio() {
             //interroge la base de données et récupère tous les portfolio d'un utilisateur
             $resultats = $db->getPortfolioByUser($_SESSION['id_utilisateur']);
             if (!empty($resultats)) {
+                
                 echo "<p style=\"color: white;\">" .count($resultats) . " portfolio(s) trouvé(s) : </p>\n";
+                echo "<div class=\"cardSlider\">";
                 foreach($resultats as $row) {
                     echo '
                     <div class="col-lg-3 col-md-6 mb-4">
@@ -125,7 +127,9 @@ function cardPortfolio() {
                             </a>
                         </div>
                     </div>';
+                
                 }
+                echo "</div>\n";  
             } else {
                 echo "Aucun portfolio trouvé";
             }
