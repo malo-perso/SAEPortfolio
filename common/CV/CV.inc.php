@@ -222,7 +222,7 @@ class CV implements \JsonSerializable
 
             //Competences
             $contenu_Competence = $tab['competences'];
-            var_dump($contenu_Competence);
+            //var_dump($contenu_Competence);
             $competence = new Competences($contenu_Competence['softSkills'],
                                         $contenu_Competence['hardSkills']);
 

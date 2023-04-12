@@ -14,6 +14,7 @@
                 color: {{couleur}};
             }
         </style>
+        <script src="../assets/js/getNav.js"></script>
     </head>
     <body>
         <div id="cv-t2" style="background-color: {{couleur}};">
@@ -58,7 +59,7 @@
                 <div id="formation-t2">
                     <h4 class="h4-t2 cadre-t2">Formation</h4>
                     {% for formation in formations %}
-                        <p><span class="span-t2">{{ formation.getDateDebutAnnee() }} -&nbsp;{{ formation.getDateFinAnnee() }} </span> :&nbsp;{{ formation.getDiplome() }} ,&nbsp; {{ formation.getDomaine() }} ,&nbsp; {{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
+                        <p><span class="span-t2">{{ formation.getDateDebutMois() }} -&nbsp;{{ formation.getDateDebutAnnee() }} </span> :&nbsp;{{ formation.getDiplome() }} ,&nbsp; {{ formation.getDomaine() }} ,&nbsp; {{ formation.getNomEtablissement() }} -&nbsp;{{ formation.getVilleEtablissement() }}</p>
                     {% endfor %}
                 </div>
                 <div id="experience">

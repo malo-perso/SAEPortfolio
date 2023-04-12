@@ -1,7 +1,6 @@
 <?php
     ini_set('display_errors', 1);
     require ("../common/DB.inc.php");
-    include ("./CVResume.php");
 
 
     require_once( "../Twig/lib/Twig/Autoloader.php" );

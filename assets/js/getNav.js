@@ -36,7 +36,11 @@ function getNav(pageEnCours, typePage, para)
         } else {
             if (array[i] === pageEnCours) {
                 navHtml += "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"./" + array[i] + para +"\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);\">" +arrayNom[i]+ "</a></li>";
-            } else {
+            } 
+            else if(arrayNom[i] === "CV") {
+                navHtml += "<li class=\"nav-item\"><a class=\"nav-link\" target=\"_blank\" href=\"./" + array[i] + para +"\" style=\"color: var(--bs-body-color);\"> " + arrayNom[i] + " </a></li>";
+            }
+            else {
                 navHtml += "<li class=\"nav-item\"><a class=\"nav-link\" href=\"./" + array[i] + para +"\" style=\"color: var(--bs-body-color);\"> " + arrayNom[i] + " </a></li>";
             }
         }
