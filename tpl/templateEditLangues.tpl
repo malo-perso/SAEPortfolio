@@ -41,13 +41,13 @@
                                     <div class="form-group mb-3">
                                         <label class="form-label form-label form-label">Niveau</label>
                                         <select class="form-select form-select" name="niveau" style="width: 190px;" id="niveau">
-                                            <option value="">Débutant (A1)</option>
-                                            <option value="">Elémentaire (A2)</option>
-                                            <option value="">Intermédiare (B1)</option>
-                                            <option value="">Intermédiaire (B2)</option>
-                                            <option value="">Avancé (C1)</option>
-                                            <option value="">Expérimenté (C2)</option>
-                                            <option value="">Langue maternelle</option>
+                                            <option value="Débutant (A1)">Débutant (A1)</option>
+                                            <option value="Elémentaire (A2)">Elémentaire (A2)</option>
+                                            <option value="Intermédiare (B1)">Intermédiare (B1)</option>
+                                            <option value="Intermédiaire (B2)">Intermédiaire (B2)</option>
+                                            <option value="Avancé (C1)">Avancé (C1)</option>
+                                            <option value="Expérimenté (C2)">Expérimenté (C2)</option>
+                                            <option value="Langue maternelle">Langue maternelle</option>
                                         </select>
                                     </div>
                                 </div>
