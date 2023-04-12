@@ -8,7 +8,7 @@ function getNav(pageEnCours, typePage, para)
     }
     else if (typePage == "consult") {
         var array = ["accueilSite.php", "consultAccueil.php", "consultCV.php", "consultCompetence.php", "consultProjet.php", "droit.php", "consultContact.php"];
-        var arrayNom = ["", "Accueil", "CV", "Compétences", "Projets","Propriété intellectuelle", "Contact"];
+        var arrayNom = ["", "Accueil", "CV ", "Compétences", "Projets","Propriété intellectuelle", "Contact"];
     }
     
     
@@ -37,7 +37,7 @@ function getNav(pageEnCours, typePage, para)
             if (array[i] === pageEnCours) {
                 navHtml += "<li class=\"nav-item\"><a class=\"nav-link active\" href=\"./" + array[i] + para +"\" style=\"color: var(--bs-body-color);background: #c8b79c;border-color: var(--bs-body-bg);\">" +arrayNom[i]+ "</a></li>";
             } 
-            else if(arrayNom[i] === "CV") {
+            else if(arrayNom[i] === "CV ") {
                 navHtml += "<li class=\"nav-item\"><a class=\"nav-link\" target=\"_blank\" href=\"./" + array[i] + para +"\" style=\"color: var(--bs-body-color);\"> " + arrayNom[i] + " </a></li>";
             }
             else {

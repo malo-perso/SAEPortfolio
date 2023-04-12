@@ -22,53 +22,41 @@ else
     $tpl = $twig->loadTemplate( "templateEditProjets.tpl" );
 
     $db = DB::getInstance();
-    $projets = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Projets");
+    if ($db == null) {
+        echo "Impossible de se connecter à la base de données !\n";
+    }
+    else 
+    {
+        $projets = $db->getPage("Projet", $_GET['idPortfolio']);
+        if($projets != null)
+            $contenu = json_decode($projets->getContenu(), true);
+        else
+            $contenu = "";
+        
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        if (isset($_POST['contenu']))
+        if (isset($_POST['projet']))
         {
-            $contenu = $_POST['contenu'];
+            $contenu = $_POST['projet'];
+        
+        
+            //mise à jour bd Accueil
+            $json = json_encode($contenu);
 
-            $pageProjet = new Page ($projets->getIdPage(),$projets->getNomPage(), $contenu, $projets->getIdPortfolio());
-
-            if (majProjets($pageProjet))
+            if ($db->updatePage($json,"Projets", $_GET['idPortfolio']))
             {
-                echo "Projet ajouté";
-                //mise à jour bd Accueil
-
-                if ($db == null) {
-                    echo "Impossible de se connecter à la base de données !\n";
-                }
-                else {
-
-                    if ($db->updatePage($pageProjet,"Projets", $_GET['id_portfolio']))
-                    {
-                        echo "Projets mis à jour";
-                    }
-                    else
-                    {
-                        echo "Erreur lors de la mise à jour de la page Projets";
-                    }
-                }
+                //echo "Projets mis à jour";
             }
             else
             {
-                echo "Erreur lors de l'ajout de la page Projets";
+                echo "Erreur lors de la mise à jour de la page Projets";
             }
         }
-
-        if ($db == null) {
-            echo "Impossible de se connecter à la base de données !\n";
-        }
-        else {
-            $projets = $db->getPage($_SESSION['id_utilisateur'],$_GET['id_portfolio'], "Projets");
-        }
-
-
     }
 
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'projets' => $projets ) );
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'projet' => $contenu ) );
 }
 ?>
 

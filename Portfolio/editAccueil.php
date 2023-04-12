@@ -1,13 +1,12 @@
 <?php
 
 require ("../common/DB.inc.php");
-include ("../common/fctAux.inc.php");
 
 session_start();
 
-if(!gestionAcces()) 
+if(! isset($_SESSION['id_utilisateur'])) 
 {
-    echo "Accès refusé errorrrrrr";
+    header('Location: ..\connexion.php');
 }
 else 
 {
@@ -28,41 +27,35 @@ else
     }
     else 
     {
-        $Accueil = $db->getPage('Accueil',$_GET['idPortfolio']);
-        //$contenu = json_decode($Accueil->getContenu(), false);
-        if($Accueil==null){
-            $contenu = " ";
-        }
-        else{
-            $contenu = $Accueil->getContenu();
-        }
+        $accueil = $db->getPage("Accueil", $_GET['idPortfolio']);
+        if($accueil != null)
+            $contenu = json_decode($accueil->getContenu(), true);
+        else
+            $contenu = "";
+        
     }
-
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        if (isset($_POST['contenu']))
+        if (isset($_POST['accueil']))
         {
-            $contenu = $_POST['contenu'];
-
-            $Accueil->majPage($contenu);
-            
-            echo "Accueil ajouté";
+            $contenu = $_POST['accueil'];
+        
             //mise à jour bd Accueil
+            $json = json_encode($contenu);
 
-            if ($db->updatePage($pageAccueil,"Accueil", $_GET['id_portfolio']))
+            if ($db->updatePage($json,"Accueil", $_GET['idPortfolio']))
             {
-                echo "Accueil mis à jour";
+                //echo "Projets mis à jour";
             }
             else
             {
-                echo "Erreur lors de la mise à jour de l'accueil";
+                echo "Erreur lors de la mise à jour de la page Projets";
             }
-            
         }
-
     }
-    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $contenu) );
+
+    echo $tpl->render( array( 'titre' => $titre, 'titrecentre' => $titrecentre, 'accueil' => $contenu ) );
 }
 ?>
 
