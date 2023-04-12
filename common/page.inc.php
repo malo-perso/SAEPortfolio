@@ -27,6 +27,10 @@ class Page implements JsonSerializable{
         return $res;
     }
 
+    public function majPage($contenu){
+        $this->contenu = $contenu;
+    }
+
     public function jsonSerialize() : array 
     {
         $vars = get_object_vars($this);

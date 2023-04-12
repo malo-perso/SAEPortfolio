@@ -53,7 +53,9 @@
                                     <button class="btn btn-primary" type="button" style="margin-left: 0px;margin-right: 15px;margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">
                                         Modifier le CV</button>
                                 </a>
-                                    <button id="sauvegarder" class="btn btn-primary" type="button" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
+                                <form method="post">
+                                    <button id="sauvegarder" class="btn btn-primary" type="submit" style="margin-top: 15px;margin-right: 15px;border-color: var(--color-brown);background: var(--bs-btn-disabled-color);color: var(--color-brown);">Sauvegarder le CV</button>
+                                </form>
                                     <button id="choixTemplate" class="btn btn-primary" type="button" style="margin-top: 15px;color: var(--color-brown);background: var(--bs-btn-disabled-color);border-color: var(--color-brown);">Choisir une Template</button>
                             </div>
                         </div>
@@ -66,19 +68,19 @@
                         </div>
 
                         <div class="row" style="margin-left:20%; margin-bottom:2%">
-                            <div id="tmpl1" class="col-6">
+                            <div id="tmpl1" name="tpl1" class="col-6">
                                 <h3>Template 1</h3>
                                 <img src="../images/template1.png" id="img1" alt="Template 1" style="width:40%; ">
                             </div>
-                            <div id="tmpl2" class="col-6">
+                            <div id="tmpl2" name="tpl2" class="col-6">
                                 <h3>Template 2</h3>
                                 <img src="../images/template2.png" id="img2" alt="Template 2" style="width:40%; ">
                             </div>
                         </div>
-                        <div id="couleur" class="col-4" style="margin-left: 45%;">
+                        <!--<div id="couleur" class="col-4" style="margin-left: 45%;">
                             <h3>Couleur</h3>
                             <input type="color" id="favcolor" name="favcolor" value="#ff0000">
-                        </div>
+                        </div>-->
                     </div>
             </div>
     </div>
@@ -128,12 +130,12 @@
 
         document.getElementById("sauvegarder").addEventListener("click", function() {
 
-            if(tpl != "" && coul != "")
+           /* if(tpl != "" && coul != "")
             {
                 console.log("Sauvegarder le CV");
                 var j = jQuery.noConflict();
                 j.ajax({
-                    url: "consultCV.php",
+                    url: "CVResume.php",
                     type: "POST",
                     data: { tpl: tpl, couleur:coul.value },
                     success: function(response) {
@@ -141,7 +143,6 @@
                     
                 });
             }
-
             else
             {
                 console.log("Veuillez choisir une template et une couleur");
@@ -149,9 +150,40 @@
             console.log(tpl);
             console.log(coul.value);
 
-            });
+            });*/
+            var xhr = new XMLHttpRequest();
+
+            // définir l'URL de la requête et le type de requête (POST)
+            xhr.open('POST', 'CVResume.php');
+
+            // définir le type de données que vous envoyez
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // définir la fonction de rappel pour la réponse
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('La requête a été envoyée avec succès !');
+                } else {
+                    console.log('Une erreur s\'est produite.');
+                }
+            };
+
+            // envoyer la requête avec les données
+            xhr.send('tpl=' + encodeURIComponent(tpl) + '&couleur=' + encodeURIComponent(coul.value));
+        });
 
     </script>
+
+    <?php
+        if(isset($_POST['tpl']) && isset($_POST['couleur']))
+        {
+            $tpl = $_POST['tpl'];
+            $coul = $_POST['couleur'];
+            echo "<script>console.log('PHP!!!');</script>";
+            echo "<script>console.log('php: ".$tpl."');</script>";
+            echo "<script>console.log('php :".$coul."');</script>";
+        }
+    ?>
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
